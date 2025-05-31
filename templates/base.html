@@ -9,10 +9,10 @@
   </head>
   <body>
     <header>
-      <nav class="navbar">
+      <nav class="navbar bg-dark">
         <div class="navbar-container">
-          <div class="navbar=logo">
-            <a href="{% url 'home' %}">My Portfolio</a>
+          <div class="navbar-logo">
+            <a href="{% url 'home' %}"class="logo-style">My Portfolio Logo</a>
           </div>
           <div class="navbar-links">
             <ul class="navbar-menu">
@@ -22,6 +22,9 @@
               <li><a href="{% url 'blog'%}" class="navbar-link">Blog</a></li>
               <li><a href="{% url 'contact'%}" class="navbar-link">Contact</a></li>
             </ul>
+          </div>
+          <div class="navbar-button">
+            <button>🌙</button> veya <button>Dark Mode</button>
           </div>
         </div>
       </nav>
