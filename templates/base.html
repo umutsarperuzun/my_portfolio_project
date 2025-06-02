@@ -6,6 +6,7 @@
     <title>{% block title %}My Portfolio{% endblock %}</title>
     {% tailwind_css %}
     <link href="{% static 'portfolio/css/custom.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   </head>
   <body class="bg-gray-100 text-gray-900 scroll-smooth">
     <!-- Navbar -->
@@ -44,5 +45,10 @@
     <footer class="text-center text-gray-500 mt-10 py-4">
       <p>Footer coming</p>
     </footer>
+    <!-- JavaScript Section -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init()
+    </script>
   </body>
 </html>
