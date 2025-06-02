@@ -3,25 +3,35 @@
 {% load static %}
 {% block title %}Home{% endblock %} 
 {% block content%}
+<!-- Floating Panel Area -->
+ <div id="social-panel" class="fixed lef-4 top-1/4 z-50 flex flex-col item-center  space-y-4 bg-gray-300 p-2 rounded-lg transition-all duration-500">
+  <!-- Toggle Button -->
+<button id="toggle-panel"
+  class="text-sm text-white font-semibold  mt-4 px-3 py-1 w-fit leading-tight rounded-md bg-zinc-700 hover:bg-zinc-800 transition duration-300">
+   Quick Contact
+</button>
 
-<div class="fixed top-1/3 left-4 z-50 flex flex-col space-y-4 bg-gray-300 p-4 rounded-lg">
-  <a href="https://www.linkedin.com/in/umut-sarper-uzun" target="_blank">
-  <img src="{% static 'icons/linkedin.svg' %}" alt="LinkedIn"
-      class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300" />
-  </a>
-  <a href="https://www.github.com/umutsarperuzun" target="_blank">
-  <img src="{% static 'icons/github.svg' %}" alt="LinkedIn"
-      class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300" />
-  </a>
-<a href="https://www.instagram.com/srpruzn" target="_blank">
-  <img src="{% static 'icons/instagram.svg' %}" alt="Instagram"
-       class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300" />
-</a>
-<a href="mailto:sarperuzun1@gmail.com?subject=Let's%20Connect&body=Hello%20Sarper%2C%0AI%20visited%20your%20portfolio%20and%20wanted%20to%20reach%20out." target="_blank">
-  <img src="{% static 'icons/gmail.svg' %}" alt="Email"
-       class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300" />
-</a>
-</div>
+
+   <!-- Firstly these area gonna be hidden -->
+    <div id="icon-area" class="flex flex-col items-center space-y-4 opacity-0 max-h-0 overflow-hidden transition-all duration-700">
+      <a href="https://www.linkedin.com/in/umut-sarper-uzun" target="_blank">
+      <img src="{% static 'icons/linkedin.svg' %}" alt="LinkedIn"
+          class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300" />
+      </a>
+      <a href="https://www.github.com/umutsarperuzun" target="_blank">
+      <img src="{% static 'icons/github.svg' %}" alt="LinkedIn"
+          class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300" />
+      </a>
+      <a href="https://www.instagram.com/srpruzn" target="_blank">
+        <img src="{% static 'icons/instagram.svg' %}" alt="Instagram"
+            class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300" />
+      </a>
+      <a href="mailto:sarperuzun1@gmail.com?subject=Let's%20Connect&body=Hello%20Sarper%2C%0AI%20visited%20your%20portfolio%20and%20wanted%20to%20reach%20out." target="_blank">
+        <img src="{% static 'icons/gmail.svg' %}" alt="Email"
+            class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300" />
+      </a>
+    </div>
+ </div>
 <section
   id="home"
   class="min-h-screen flex items-center justify-center bg-white"
@@ -58,5 +68,15 @@
 <section id="contact" class="min-h-screen bg-white py-20">
   <h2 class="text-3xl font-bold text-center">Contact</h2>
 </section>
+<script>
+  const toggleBtn = document.getElementById("toggle-panel")
+  const iconSection = document.getElementById("icon-area")
+
+  toggleBtn.addEventListener("click",()=> {
+    iconSection.classList.toggle("opacity-0");
+    iconSection.classList.toggle("max-h-0");
+    iconSection.classList.toggle("max-h-[500px]");
+  })
+</script>
 
 {% endblock %}
