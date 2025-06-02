@@ -21,4 +21,5 @@ from django.urls import path,include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('',include('portfolio.urls')),#connected between my app to base
+    path("__reload__/",include("django_browser_reload.urls")),
 ]

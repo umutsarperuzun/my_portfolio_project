@@ -1,11 +1,11 @@
 <!-- templates/base.html -->
-{% load static %}
+{% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}" />
     <title>{% block title %}My Portfolio{% endblock %}</title>
+    {% tailwind_css %}
   </head>
   <body>
     <header>
