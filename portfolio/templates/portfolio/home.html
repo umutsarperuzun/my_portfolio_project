@@ -1,16 +1,50 @@
 <!-- portfolio/templates/portfolio/home.html -->
-{% extends "base.html" %}
+{% extends "base.html" %} 
+{% load static %}
+{% block title %}Home{% endblock %} 
+{% block content%}
 
-{% block title %}Home{% endblock %}
-
-{% block content %}
-<section id="home" class="min-h-screen flex items-center justify-center bg-white">
+<div class="fixed top-1/3 left-4 z-50 flex flex-col space-y-4 bg-gray-300 p-4 rounded-lg">
+  <a href="https://www.linkedin.com/in/umut-sarper-uzun" target="_blank">
+  <img src="{% static 'icons/linkedin.svg' %}" alt="LinkedIn"
+      class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300" />
+  </a>
+  <a href="https://www.github.com/umutsarperuzun" target="_blank">
+  <img src="{% static 'icons/github.svg' %}" alt="LinkedIn"
+      class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300" />
+  </a>
+<a href="https://www.instagram.com/srpruzn" target="_blank">
+  <img src="{% static 'icons/instagram.svg' %}" alt="Instagram"
+       class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300" />
+</a>
+<a href="mailto:sarperuzun1@gmail.com?subject=Let's%20Connect&body=Hello%20Sarper%2C%0AI%20visited%20your%20portfolio%20and%20wanted%20to%20reach%20out." target="_blank">
+  <img src="{% static 'icons/gmail.svg' %}" alt="Email"
+       class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300" />
+</a>
+</div>
+<section
+  id="home"
+  class="min-h-screen flex items-center justify-center bg-white"
+>
   <h1 class="text-5xl font-bold">Welcome to My Portfolio</h1>
 </section>
 
 <section id="about" class="min-h-screen bg-gray-100 py-20">
   <h2 class="text-3xl font-bold text-center">About Me</h2>
-  <p data-aos="fade-up" class="text-center mt-4 max-w-xl mx-auto">Hello, I am Sarper...</p>
+  <p data-aos="fade-up" class="text-center mt-4 max-w-xl mx-auto">
+    I'm a passionate and detail-oriented Junior Software Developer with a strong
+    focus on building clean, scalable, and user-friendly web applications. With
+    a background in Computer Science (MSc, Distinction), I have hands-on
+    experience in both frontend and backend technologies including Django,
+    React, Tailwind CSS, and RESTful APIs. My projects range from AI-powered
+    chatbots and fleet management tools to e-commerce dashboards and weather
+    apps. I enjoy solving real-world problems through code, continuously
+    learning new technologies, and working on projects that make a meaningful
+    impact. Currently, I’m focused on enhancing my skills in Django, Tailwind
+    CSS, and JavaScript by building this portfolio from scratch — combining
+    technical depth with aesthetic polish. Let’s build something meaningful
+    together.
+  </p>
 </section>
 
 <section id="projects" class="min-h-screen bg-white py-20">
@@ -24,6 +58,5 @@
 <section id="contact" class="min-h-screen bg-white py-20">
   <h2 class="text-3xl font-bold text-center">Contact</h2>
 </section>
-
 
 {% endblock %}
