@@ -68,14 +68,33 @@
 <section id="contact" class="min-h-screen bg-white py-20">
   <h2 class="text-3xl font-bold text-center">Contact</h2>
 </section>
+
+
+
+
+
+
+
 <script>
   const toggleBtn = document.getElementById("toggle-panel")
   const iconSection = document.getElementById("icon-area")
 
+  let panelOpen=false;
   toggleBtn.addEventListener("click",()=> {
     iconSection.classList.toggle("opacity-0");
     iconSection.classList.toggle("max-h-0");
     iconSection.classList.toggle("max-h-[500px]");
+    panelOpen=!panelOpen; //Panel situation checking
+  });
+
+  window.addEventListener("scroll",()=>{
+    if (panelOpen) {
+      //if panel is open
+      iconSection.classList.add("opacity-0");
+      iconSection.classList.add("max-h-0");
+      iconSection.classList.remove("max-h-[500px]");
+      panelOpen=false;
+    }
   })
 </script>
 
