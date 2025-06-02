@@ -5,36 +5,30 @@
     <meta charset="UTF-8" />
     <title>{% block title %}My Portfolio{% endblock %}</title>
     {% tailwind_css %}
+    <link href="{% static 'portfolio/css/custom.css' %}" rel="stylesheet">
   </head>
   <body class="bg-gray-100 text-gray-900 scroll-smooth">
+    <!-- Navbar -->
     <header>
       <nav class="bg-zinc-900 text-white">
-        <div
-          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"
-        >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <!-- Logo -->
           <div class="text-xl font-bold">
-            <a href="{% url 'home' %}" class="text-white hover:text-gray-300"
-              >My Portfolio Logo</a
-            >
+            <a href="#home" class="text-white hover:text-gray-300">My Portfolio Logo</a>
           </div>
 
           <!-- Menu -->
           <ul class="hidden md:flex space-x-6">
             <li><a href="#home" class="hover:text-gray-300">Home</a></li>
             <li><a href="#about" class="hover:text-gray-300">About</a></li>
-            <li>
-              <a href="#projects" class="hover:text-gray-300">Projects</a>
-            </li>
+            <li><a href="#projects" class="hover:text-gray-300">Projects</a></li>
             <li><a href="#blog" class="hover:text-gray-300">Blog</a></li>
             <li><a href="#contact" class="hover:text-gray-300">Contact</a></li>
           </ul>
 
-          <!-- Dark Mode Button -->
+          <!-- Dark Mode Button (placeholder) -->
           <div>
-            <button
-              class="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded text-sm"
-            >
+            <button class="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded text-sm">
               🌙
             </button>
           </div>
@@ -42,10 +36,13 @@
       </nav>
     </header>
 
-    {% block content %}{% endblock %}
+    <!-- Page Content -->
+    {% block content %}
+    {% endblock %}
 
-    <footer class="text-center text-gray-500 mt-10">
-      <p>Footer gelecek</p>
+    <!-- Footer -->
+    <footer class="text-center text-gray-500 mt-10 py-4">
+      <p>Footer coming</p>
     </footer>
   </body>
 </html>

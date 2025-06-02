@@ -1,5 +1,5 @@
 /* Navbar Section */
-.navbar-container {
+/* .navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,22 +10,22 @@
 }
 
 /* Logo Section */
-.navbar-logo {
+/* .navbar-logo {
     flex: 1;
     font-weight: bold;
     font-size: 1.2rem;
-}
+} */
 
-.logo-style {
+/* .logo-style {
     text-decoration: none;
     color: white;
-}
+} */
 /* Menu Block */
-.navbar-links {
+/* .navbar-links {
     flex: 2;
     text-align:center;
-}
-.navbar-menu {
+} */
+/* .navbar-menu {
     display: flex;
     gap: 1.5rem;
     list-style: none;
@@ -36,5 +36,5 @@
 .navbar-link{
     text-decoration: none;
     color: white;
-}
+} */
 
