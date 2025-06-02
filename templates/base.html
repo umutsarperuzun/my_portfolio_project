@@ -1,4 +1,3 @@
-<!-- templates/base.html -->
 {% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
@@ -7,24 +6,37 @@
     <title>{% block title %}My Portfolio{% endblock %}</title>
     {% tailwind_css %}
   </head>
-  <body>
+  <body class="bg-gray-100 text-gray-900 scroll-smooth">
     <header>
-      <nav class="navbar bg-dark">
-        <div class="navbar-container">
-          <div class="navbar-logo">
-            <a href="{% url 'home' %}"class="logo-style">My Portfolio Logo</a>
+      <nav class="bg-zinc-900 text-white">
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"
+        >
+          <!-- Logo -->
+          <div class="text-xl font-bold">
+            <a href="{% url 'home' %}" class="text-white hover:text-gray-300"
+              >My Portfolio Logo</a
+            >
           </div>
-          <div class="navbar-links">
-            <ul class="navbar-menu">
-              <li><a href="{% url 'home'%}" class="navbar-link">Home</a></li>
-              <li><a href="{% url 'about'%}" class="navbar-link">About</a></li>
-              <li><a href="{% url 'projects'%}" class="navbar-link">Projects</a></li>
-              <li><a href="{% url 'blog'%}" class="navbar-link">Blog</a></li>
-              <li><a href="{% url 'contact'%}" class="navbar-link">Contact</a></li>
-            </ul>
-          </div>
-          <div class="navbar-button">
-            <button>🌙</button> veya <button>Dark Mode</button>
+
+          <!-- Menu -->
+          <ul class="hidden md:flex space-x-6">
+            <li><a href="#home" class="hover:text-gray-300">Home</a></li>
+            <li><a href="#about" class="hover:text-gray-300">About</a></li>
+            <li>
+              <a href="#projects" class="hover:text-gray-300">Projects</a>
+            </li>
+            <li><a href="#blog" class="hover:text-gray-300">Blog</a></li>
+            <li><a href="#contact" class="hover:text-gray-300">Contact</a></li>
+          </ul>
+
+          <!-- Dark Mode Button -->
+          <div>
+            <button
+              class="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded text-sm"
+            >
+              🌙
+            </button>
           </div>
         </div>
       </nav>
@@ -32,7 +44,7 @@
 
     {% block content %}{% endblock %}
 
-    <footer>
+    <footer class="text-center text-gray-500 mt-10">
       <p>Footer gelecek</p>
     </footer>
   </body>
