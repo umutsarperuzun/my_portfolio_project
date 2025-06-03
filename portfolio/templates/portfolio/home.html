@@ -120,6 +120,12 @@
     if (iterations <= length) {
       iterations++;
       setTimeout(decodeEffect, 200); // animation speed control
+    } else {
+      //for cycle each 5 sec
+      setTimeout(()=>{
+        iterations=0;
+        decodeEffect();
+      },5000);
     }
   }
 
