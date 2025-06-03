@@ -33,7 +33,7 @@
 <section id="home"class="min-h-screen flex items-center bg-white px-6 md:px-16">
   <div class="text-left">
     <h1 class="text-5xl font-bold text-gray-900">
-      <span id="decode-title"></span>
+      <span id="decoding-title"></span>
     </h1>
   </div>
 </section>
@@ -96,5 +96,35 @@
     }
   })
 </script>
+
+<script>
+  const targetText = "XXXXXXXXXXX";
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()-_=+";
+  const display = document.getElementById("decoding-title");
+  let iterations = 0;
+
+  function decodeEffect() {
+    const length = targetText.length;
+    let output = "";
+
+    for (let i = 0; i < length; i++) {
+      if (i < iterations) {
+        output += targetText[i];
+      } else {
+        output += characters[Math.floor(Math.random() * characters.length)];
+      }
+    }
+
+    display.textContent = output;
+
+    if (iterations <= length) {
+      iterations++;
+      setTimeout(decodeEffect, 200); // animation speed control
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", decodeEffect);
+</script>
+
 
 {% endblock %}
