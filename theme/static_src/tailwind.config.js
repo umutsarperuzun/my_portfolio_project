@@ -42,8 +42,24 @@ module.exports = {
         // '../../**/*.py'
     ],
     theme: {
-        extend: {},
+    extend: {
+        keyframes: {
+            slideInRight: {
+                '0%': { opacity: '0', transform: 'translateX(1000px)' },
+                '100%': { opacity: '1', transform: 'translateX(0)' },
+            },
+            slideInLeft: {
+                '0%': { opacity: '0', transform: 'translateX(-1000px)' },
+                '100%': { opacity: '1', transform: 'translateX(0)' },
+            },
+        },
+        animation: {
+            'slide-in': 'slideInRight 0.8s ease-out',
+            'slide-left': 'slideInLeft 0.8s ease-out',
+        },
     },
+},
+
     plugins: [
         /**
          * '@tailwindcss/forms' is the forms plugin that provides a minimal styling

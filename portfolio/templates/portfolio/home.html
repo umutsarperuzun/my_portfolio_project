@@ -56,12 +56,40 @@
   </p>
 </section>
 
-<section id="projects" class="min-h-screen bg-white py-20">
+<section id="projects" class="min-h-screen bg-white py-20 right-manual">
   <h2 class="text-3xl font-bold text-center">Projects</h2>
+    <p>
+    I'm a passionate and detail-oriented Junior Software Developer with a strong
+    focus on building clean, scalable, and user-friendly web applications. With
+    a background in Computer Science (MSc, Distinction), I have hands-on
+    experience in both frontend and backend technologies including Django,
+    React, Tailwind CSS, and RESTful APIs. My projects range from AI-powered
+    chatbots and fleet management tools to e-commerce dashboards and weather
+    apps. I enjoy solving real-world problems through code, continuously
+    learning new technologies, and working on projects that make a meaningful
+    impact. Currently, I’m focused on enhancing my skills in Django, Tailwind
+    CSS, and JavaScript by building this portfolio from scratch — combining
+    technical depth with aesthetic polish. Let’s build something meaningful
+    together.
+  </p>
 </section>
 
 <section id="blog" class="min-h-screen bg-gray-100 py-20">
   <h2 class="text-3xl font-bold text-center">Blog</h2>
+      <p>
+    I'm a passionate and detail-oriented Junior Software Developer with a strong
+    focus on building clean, scalable, and user-friendly web applications. With
+    a background in Computer Science (MSc, Distinction), I have hands-on
+    experience in both frontend and backend technologies including Django,
+    React, Tailwind CSS, and RESTful APIs. My projects range from AI-powered
+    chatbots and fleet management tools to e-commerce dashboards and weather
+    apps. I enjoy solving real-world problems through code, continuously
+    learning new technologies, and working on projects that make a meaningful
+    impact. Currently, I’m focused on enhancing my skills in Django, Tailwind
+    CSS, and JavaScript by building this portfolio from scratch — combining
+    technical depth with aesthetic polish. Let’s build something meaningful
+    together.
+  </p>
 </section>
 
 <section id="contact" class="min-h-screen bg-white py-20">
@@ -73,7 +101,7 @@
 
 
 
-
+<!-- Quick Contact tags on the left-side -->
 <script>
   const toggleBtn = document.getElementById("toggle-panel")
   const iconSection = document.getElementById("icon-area")
@@ -96,9 +124,9 @@
     }
   })
 </script>
-
+<!-- decode section in header -->
 <script>
-  const targetText = "XXXXXXXXXXX";
+  const targetText = "This is my portfolio";
   const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()-_=+";
   const display = document.getElementById("decoding-title");
   let iterations = 0;
@@ -119,18 +147,46 @@
 
     if (iterations <= length) {
       iterations++;
-      setTimeout(decodeEffect, 200); // animation speed control
+      setTimeout(decodeEffect, 60); // animation speed control
     } else {
       //for cycle each 5 sec
       setTimeout(()=>{
         iterations=0;
         decodeEffect();
-      },5000);
+      },2000);
     }
   }
-
   document.addEventListener("DOMContentLoaded", decodeEffect);
 </script>
+
+<!-- Projects section animation with vanilla.js -->
+<script>
+  // hedef section'ları class ile seçiyoruz
+  const sections = document.querySelectorAll('.right-manual');
+
+  // IntersectionObserver tanımlanıyor
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      // eleman şu an görünür alana girdi
+      if (entry.isIntersecting) {
+        // animasyon class’ı eklenerek efekt başlatılır
+        entry.target.classList.add('animate-slide-in');
+      } else {
+        // eleman görünürlükten çıkınca animasyon class’ı kaldırılır
+        // böylece bir dahaki görünümde yeniden animasyon yapabilir
+        entry.target.classList.remove('animate-slide-in');
+      }
+    });
+  }, {
+    // elemanın %10'u görünür olunca animasyon başlasın demek
+    threshold: 0.1
+  });
+  // seçilen her bölümü gözlemlemeye başla demek
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+</script>
+
 
 
 {% endblock %}
