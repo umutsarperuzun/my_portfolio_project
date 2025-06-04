@@ -56,7 +56,7 @@
   </p>
 </section>
 
-<section id="projects" class="min-h-screen bg-white py-20 right-manual">
+<section id="projects" class="min-h-screen bg-white py-20 reveal-manual will-change-transform">
   <h2 class="text-3xl font-bold text-center">Projects</h2>
     <p>
     I'm a passionate and detail-oriented Junior Software Developer with a strong
@@ -74,7 +74,7 @@
   </p>
 </section>
 
-<section id="blog" class="min-h-screen bg-gray-100 py-20">
+<section id="blog" class="min-h-screen bg-gray-100 py-20 reveal-manual will-change-transform">
   <h2 class="text-3xl font-bold text-center">Blog</h2>
       <p>
     I'm a passionate and detail-oriented Junior Software Developer with a strong
@@ -159,33 +159,42 @@
   document.addEventListener("DOMContentLoaded", decodeEffect);
 </script>
 
-<!-- Projects section animation with vanilla.js -->
+<!-- Projects & Blog section animation with vanilla.js -->
 <script>
   // hedef section'ları class ile seçiyoruz
-  const sections = document.querySelectorAll('.right-manual');
+  const sections = document.querySelectorAll('.reveal-manual');
 
   // IntersectionObserver tanımlanıyor
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       // eleman şu an görünür alana girdi
       if (entry.isIntersecting) {
-        // animasyon class’ı eklenerek efekt başlatılır
-        entry.target.classList.add('animate-slide-in');
+        // hangi section olduğunu kontrol ederek uygun animasyon class’ı eklenir
+        if (entry.target.id === "projects") {
+          // projects bölümü için sağdan gelen animasyon uygulanır
+          entry.target.classList.add('animate-slide-in');
+        } else if (entry.target.id === "blog") {
+          // blog bölümü için soldan gelen animasyon uygulanır
+          entry.target.classList.add('animate-slide-left');
+        }
       } else {
         // eleman görünürlükten çıkınca animasyon class’ı kaldırılır
         // böylece bir dahaki görünümde yeniden animasyon yapabilir
         entry.target.classList.remove('animate-slide-in');
+        entry.target.classList.remove('animate-slide-left');
       }
     });
   }, {
     // elemanın %10'u görünür olunca animasyon başlasın demek
-    threshold: 0.1
+    threshold: 0.05
   });
+
   // seçilen her bölümü gözlemlemeye başla demek
   sections.forEach(section => {
     observer.observe(section);
   });
 </script>
+
 
 
 

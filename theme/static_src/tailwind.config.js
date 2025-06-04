@@ -45,11 +45,11 @@ module.exports = {
     extend: {
         keyframes: {
             slideInRight: {
-                '0%': { opacity: '0', transform: 'translateX(1000px)' },
+                '0%': { opacity: '0', transform: 'translateX(500px)' },
                 '100%': { opacity: '1', transform: 'translateX(0)' },
             },
             slideInLeft: {
-                '0%': { opacity: '0', transform: 'translateX(-1000px)' },
+                '0%': { opacity: '0', transform: 'translateX(-500px)' },
                 '100%': { opacity: '1', transform: 'translateX(0)' },
             },
         },
