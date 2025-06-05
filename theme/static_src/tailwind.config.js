@@ -61,13 +61,14 @@ module.exports = {
         },
         slideBackground: {
           '0%': { backgroundPosition: '0% 50%' },
-          '100%': { backgroundPosition: '100% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
         },
       },
       animation: {
         "slide-in": "slideInRight 0.8s ease-out",
         "slide-left": "slideInLeft 0.8s ease-out",
-        "slideBg": 'slideBackground 5s ease-out forwards',
+        "slideBg": 'slideBackground 10s ease-out infinite',
         "marquee": 'marquee 30s linear infinite',
       },
     },

@@ -1037,13 +1037,17 @@ select {
     background-position: 0% 50%;
   }
 
-  100% {
+  50% {
     background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
   }
 }
 
 .animate-slideBg {
-  animation: slideBackground 5s ease-out forwards;
+  animation: slideBackground 10s ease-out infinite;
 }
 
 .flex-col {
@@ -1122,6 +1126,10 @@ select {
   background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
 }
 
+.bg-transparent {
+  background-color: transparent;
+}
+
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
@@ -1135,10 +1143,6 @@ select {
 .bg-zinc-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(24 24 27 / var(--tw-bg-opacity, 1));
-}
-
-.bg-transparent {
-  background-color: transparent;
 }
 
 .bg-opacity-80 {
