@@ -56,21 +56,23 @@
   <!-- 1 sector hareketli  arka plan -->
   <div class="absolute top-0 left-0 w-full h-full z-0 bg-gradient-to-r from-white via-gray-200 to-black bg-[length:200%] animate-slideBg"></div>
 
-  <!-- 2 sector Kayan görseller transparan arka planlı -->
-  <div class="absolute top-0 left-0 w-full h-full z-10 overflow-hidden bg-transparent">
-    <div class="fade-mask absolute top-0 left-0 w-full h-full z-10 pointer-events-none"></div>
+<!-- 2 sector Kayan görseller transparan arka planlı -->
+<div class="absolute top-[128px] left-0 w-full h-[calc(100vh-128px)] z-10 overflow-hidden bg-transparent">
+  <div class="fade-mask absolute top-0 left-0 w-full h-full z-10 pointer-events-none"></div>
 
-    <div class="absolute top-1/2 -translate-y-1/2 w-full">
-      <div class="slider-track flex animate-marquee space-x-6 px-10 py-16 items-center h-full min-w-[200%]">
-        {% for img in slider_images %}
-        <img
-          src="{% static img %}"
-          class="w-96 h-60 object-cover rounded-xl shadow-md opacity-20 filter grayscale contrast-75"
-        />
-        {% endfor %}
-      </div>
+  <div class="relative w-full h-full">
+    <div class="slider-track flex animate-marquee h-full px-10 py-16 items-stretch min-w-[200%]">
+      {% for img in slider_images %}
+      <img
+        src="{% static img %}"
+        class="h-full w-auto object-cover opacity-20 grayscale contrast-75"
+      />
+      {% endfor %}
     </div>
   </div>
+</div>
+
+
 
   <!-- 3 sector decode yazısi -->
   <div class="relative z-20 text-left px-6 md:px-16">

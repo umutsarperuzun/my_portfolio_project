@@ -68,7 +68,7 @@ module.exports = {
       animation: {
         "slide-in": "slideInRight 0.8s ease-out",
         "slide-left": "slideInLeft 0.8s ease-out",
-        "slideBg": 'slideBackground 10s ease-out infinite',
+        "slideBg": 'slideBackground 8s ease-out infinite',
         "marquee": 'marquee 30s linear infinite',
       },
     },
