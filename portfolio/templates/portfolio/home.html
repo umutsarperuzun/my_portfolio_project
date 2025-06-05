@@ -58,7 +58,7 @@
 
 <section id="projects" class="min-h-screen bg-white py-20 reveal-manual will-change-transform">
   <h2 class="text-3xl font-bold text-center">Projects</h2>
-    <p>
+    <p class="text-center mt-4 max-w-xl mx-auto">
     I'm a passionate and detail-oriented Junior Software Developer with a strong
     focus on building clean, scalable, and user-friendly web applications. With
     a background in Computer Science (MSc, Distinction), I have hands-on
@@ -76,7 +76,7 @@
 
 <section id="blog" class="min-h-screen bg-gray-100 py-20 reveal-manual will-change-transform">
   <h2 class="text-3xl font-bold text-center">Blog</h2>
-      <p>
+      <p class="text-center mt-4 max-w-xl mx-auto">
     I'm a passionate and detail-oriented Junior Software Developer with a strong
     focus on building clean, scalable, and user-friendly web applications. With
     a background in Computer Science (MSc, Distinction), I have hands-on
@@ -92,13 +92,29 @@
   </p>
 </section>
 
-<section id="contact" class="min-h-screen bg-white py-20">
-  <h2 class="text-3xl font-bold text-center">Contact</h2>
+<section
+  id="contact"
+  class="h-auto bg-white py-20"
+  data-aos="fade-up"
+  data-aos-duration="1200"
+  data-aos-easing="ease-out-cubic"
+>
+  <h2 class="text-3xl font-bold text-center mb-4">Contact</h2>
+  <p class="text-center mt-4 max-w-xl mx-auto text-gray-700 text-lg leading-relaxed">
+    I'm a passionate and detail-oriented Junior Software Developer with a strong
+    focus on building clean, scalable, and user-friendly web applications. With
+    a background in Computer Science (MSc, Distinction), I have hands-on
+    experience in both frontend and backend technologies including Django,
+    React, Tailwind CSS, and RESTful APIs. My projects range from AI-powered
+    chatbots and fleet management tools to e-commerce dashboards and weather
+    apps. I enjoy solving real-world problems through code, continuously
+    learning new technologies, and working on projects that make a meaningful
+    impact. Currently, I’m focused on enhancing my skills in Django, Tailwind
+    CSS, and JavaScript by building this portfolio from scratch — combining
+    technical depth with aesthetic polish. Let’s build something meaningful
+    together.
+  </p>
 </section>
-
-
-
-
 
 
 <!-- Quick Contact tags on the left-side -->
@@ -161,41 +177,39 @@
 
 <!-- Projects & Blog section animation with vanilla.js -->
 <script>
-  // hedef section'ları class ile seçiyoruz
   const sections = document.querySelectorAll('.reveal-manual');
+  let lastScrollY = window.scrollY; // ilk scroll pozisyonu
 
-  // IntersectionObserver tanımlanıyor
-  const observer = new IntersectionObserver((entries, observer) => {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      // eleman şu an görünür alana girdi
-      if (entry.isIntersecting) {
-        // hangi section olduğunu kontrol ederek uygun animasyon class’ı eklenir
+      const currentScrollY = window.scrollY;
+      const scrollingDown = currentScrollY > lastScrollY;
+
+      if (entry.isIntersecting && scrollingDown) {
+        // sadece aşağı inerken animasyonu uygula
         if (entry.target.id === "projects") {
-          // projects bölümü için sağdan gelen animasyon uygulanır
           entry.target.classList.add('animate-slide-in');
         } else if (entry.target.id === "blog") {
-          // blog bölümü için soldan gelen animasyon uygulanır
           entry.target.classList.add('animate-slide-left');
         }
-      } else {
-        // eleman görünürlükten çıkınca animasyon class’ı kaldırılır
-        // böylece bir dahaki görünümde yeniden animasyon yapabilir
+      }
+
+      if (!entry.isIntersecting) {
+        // yeniden animasyon oynatmak için class'ları kaldır
         entry.target.classList.remove('animate-slide-in');
         entry.target.classList.remove('animate-slide-left');
       }
+
+      // scroll pozisyonunu güncelle
+      lastScrollY = currentScrollY;
     });
   }, {
-    // elemanın %10'u görünür olunca animasyon başlasın demek
-    threshold: 0.05
+    threshold: 0.05 // %5'i görünür olunca tetiklensin
   });
 
-  // seçilen her bölümü gözlemlemeye başla demek
   sections.forEach(section => {
     observer.observe(section);
   });
 </script>
-
-
-
 
 {% endblock %}
