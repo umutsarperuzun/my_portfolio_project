@@ -1,41 +1,84 @@
 <!-- portfolio/templates/portfolio/home.html -->
-{% extends "base.html" %} 
-{% load static %}
-{% block title %}Home{% endblock %} 
+{% extends "base.html" %} {% load static %} {% block title %}Home{% endblock %}
 {% block content%}
 <!-- Floating Panel Area -->
- <div id="social-panel" class="fixed lef-4 top-1/4 z-50 flex flex-col item-center  space-y-4 bg-gray-300 p-2 rounded-lg transition-all duration-500">
+<div
+  id="social-panel"
+  class="fixed lef-4 top-1/4 z-50 flex flex-col item-center space-y-4 bg-gray-300 p-2 rounded-lg transition-all duration-500"
+>
   <!-- Toggle Button -->
-<button id="toggle-panel"
-  class="text-sm text-white font-semibold  mt-4 px-3 py-1 w-fit leading-tight rounded-md bg-zinc-700 hover:bg-zinc-800 transition duration-300">
-   Quick Contact
-</button>
-   <!-- Firstly these area gonna be hidden -->
-    <div id="icon-area" class="flex flex-col items-center space-y-4 opacity-0 max-h-0 overflow-hidden transition-all duration-700">
-      <a href="https://www.linkedin.com/in/umut-sarper-uzun" target="_blank">
-      <img src="{% static 'icons/linkedin.svg' %}" alt="LinkedIn"
-          class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300" />
-      </a>
-      <a href="https://www.github.com/umutsarperuzun" target="_blank">
-      <img src="{% static 'icons/github.svg' %}" alt="LinkedIn"
-          class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300" />
-      </a>
-      <a href="https://www.instagram.com/srpruzn" target="_blank">
-        <img src="{% static 'icons/instagram.svg' %}" alt="Instagram"
-            class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300" />
-      </a>
-      <a href="mailto:sarperuzun1@gmail.com?subject=Let's%20Connect&body=Hello%20Sarper%2C%0AI%20visited%20your%20portfolio%20and%20wanted%20to%20reach%20out." target="_blank">
-        <img src="{% static 'icons/gmail.svg' %}" alt="Email"
-            class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300" />
-      </a>
+  <button
+    id="toggle-panel"
+    class="text-sm text-white font-semibold mt-4 px-3 py-1 w-fit leading-tight rounded-md bg-zinc-700 hover:bg-zinc-800 transition duration-300"
+  >
+    Quick Contact
+  </button>
+  <!-- Firstly these area gonna be hidden -->
+  <div
+    id="icon-area"
+    class="flex flex-col items-center space-y-4 opacity-0 max-h-0 overflow-hidden transition-all duration-700"
+  >
+    <a href="https://www.linkedin.com/in/umut-sarper-uzun" target="_blank">
+      <img
+        src="{% static 'icons/linkedin.svg' %}"
+        alt="LinkedIn"
+        class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300"
+      />
+    </a>
+    <a href="https://www.github.com/umutsarperuzun" target="_blank">
+      <img
+        src="{% static 'icons/github.svg' %}"
+        alt="LinkedIn"
+        class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300"
+      />
+    </a>
+    <a href="https://www.instagram.com/srpruzn" target="_blank">
+      <img
+        src="{% static 'icons/instagram.svg' %}"
+        alt="Instagram"
+        class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300"
+      />
+    </a>
+    <a
+      href="mailto:sarperuzun1@gmail.com?subject=Let's%20Connect&body=Hello%20Sarper%2C%0AI%20visited%20your%20portfolio%20and%20wanted%20to%20reach%20out."
+      target="_blank"
+    >
+      <img
+        src="{% static 'icons/gmail.svg' %}"
+        alt="Email"
+        class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300"
+      />
+    </a>
+  </div>
+</div>
+<section id="home" class="relative min-h-screen flex items-center overflow-hidden">
+
+  <!-- 1. KATMAN: Hareketli GRADIENT arka plan -->
+  <div class="absolute top-0 left-0 w-full h-full z-0 bg-gradient-to-r from-white via-gray-200 to-black bg-[length:200%] animate-slideBg"></div>
+
+  <!-- 2. KATMAN: Kayan görseller (transparan arka planlı) -->
+  <div class="absolute top-0 left-0 w-full h-full z-10 overflow-hidden bg-transparent">
+    <div class="fade-mask absolute top-0 left-0 w-full h-full z-10 pointer-events-none"></div>
+
+    <div class="absolute top-1/2 -translate-y-1/2 w-full">
+      <div class="slider-track flex animate-marquee space-x-6 px-10 py-16 items-center h-full min-w-[200%]">
+        {% for img in slider_images %}
+        <img
+          src="{% static img %}"
+          class="w-96 h-60 object-cover rounded-xl shadow-md opacity-20 filter grayscale contrast-75"
+        />
+        {% endfor %}
+      </div>
     </div>
- </div>
-<section id="home" class="min-h-screen flex items-center px-6 md:px-16 bg-gradient-to-r from-white via-gray-200 to-black bg-[length:200%] animate-slideBg">
-  <div class="text-left">
+  </div>
+
+  <!-- 3. KATMAN: Ön plandaki yazı -->
+  <div class="relative z-20 text-left px-6 md:px-16">
     <h1 class="text-5xl font-bold text-gray-900">
       <span id="decoding-title"></span>
     </h1>
   </div>
+
 </section>
 
 
@@ -57,9 +100,12 @@
   </p>
 </section>
 
-<section id="projects" class="min-h-screen bg-white py-20 reveal-manual will-change-transform">
+<section
+  id="projects"
+  class="min-h-screen bg-white py-20 reveal-manual will-change-transform"
+>
   <h2 class="text-3xl font-bold text-center">Projects</h2>
-    <p class="text-center mt-4 max-w-xl mx-auto">
+  <p class="text-center mt-4 max-w-xl mx-auto">
     I'm a passionate and detail-oriented Junior Software Developer with a strong
     focus on building clean, scalable, and user-friendly web applications. With
     a background in Computer Science (MSc, Distinction), I have hands-on
@@ -75,9 +121,12 @@
   </p>
 </section>
 
-<section id="blog" class="min-h-screen bg-gray-100 py-20 reveal-manual will-change-transform">
+<section
+  id="blog"
+  class="min-h-screen bg-gray-100 py-20 reveal-manual will-change-transform"
+>
   <h2 class="text-3xl font-bold text-center">Blog</h2>
-      <p class="text-center mt-4 max-w-xl mx-auto">
+  <p class="text-center mt-4 max-w-xl mx-auto">
     I'm a passionate and detail-oriented Junior Software Developer with a strong
     focus on building clean, scalable, and user-friendly web applications. With
     a background in Computer Science (MSc, Distinction), I have hands-on
@@ -101,7 +150,9 @@
   data-aos-easing="ease-out-cubic"
 >
   <h2 class="text-3xl font-bold text-center mb-4">Contact</h2>
-  <p class="text-center mt-4 max-w-xl mx-auto text-gray-700 text-lg leading-relaxed">
+  <p
+    class="text-center mt-4 max-w-xl mx-auto text-gray-700 text-lg leading-relaxed"
+  >
     I'm a passionate and detail-oriented Junior Software Developer with a strong
     focus on building clean, scalable, and user-friendly web applications. With
     a background in Computer Science (MSc, Distinction), I have hands-on
@@ -117,34 +168,34 @@
   </p>
 </section>
 
-
 <!-- Quick Contact tags on the left-side -->
 <script>
-  const toggleBtn = document.getElementById("toggle-panel")
-  const iconSection = document.getElementById("icon-area")
+  const toggleBtn = document.getElementById("toggle-panel");
+  const iconSection = document.getElementById("icon-area");
 
-  let panelOpen=false;
-  toggleBtn.addEventListener("click",()=> {
+  let panelOpen = false;
+  toggleBtn.addEventListener("click", () => {
     iconSection.classList.toggle("opacity-0");
     iconSection.classList.toggle("max-h-0");
     iconSection.classList.toggle("max-h-[500px]");
-    panelOpen=!panelOpen; //Panel situation checking
+    panelOpen = !panelOpen; //Panel situation checking
   });
 
-  window.addEventListener("scroll",()=>{
+  window.addEventListener("scroll", () => {
     if (panelOpen) {
       //if panel is open
       iconSection.classList.add("opacity-0");
       iconSection.classList.add("max-h-0");
       iconSection.classList.remove("max-h-[500px]");
-      panelOpen=false;
+      panelOpen = false;
     }
-  })
+  });
 </script>
 <!-- decode section in header -->
 <script>
   const targetText = "This is my portfolio";
-  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()-_=+";
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()-_=+";
   const display = document.getElementById("decoding-title");
   let iterations = 0;
 
@@ -167,10 +218,10 @@
       setTimeout(decodeEffect, 60); // animation speed control
     } else {
       //for cycle each 5 sec
-      setTimeout(()=>{
-        iterations=0;
+      setTimeout(() => {
+        iterations = 0;
         decodeEffect();
-      },2000);
+      }, 2000);
     }
   }
   document.addEventListener("DOMContentLoaded", decodeEffect);
@@ -178,37 +229,40 @@
 
 <!-- Projects & Blog section animation with vanilla.js -->
 <script>
-  const sections = document.querySelectorAll('.reveal-manual');
+  const sections = document.querySelectorAll(".reveal-manual");
   let lastScrollY = window.scrollY; // ilk scroll pozisyonu
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const currentScrollY = window.scrollY;
-      const scrollingDown = currentScrollY > lastScrollY;
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const currentScrollY = window.scrollY;
+        const scrollingDown = currentScrollY > lastScrollY;
 
-      if (entry.isIntersecting && scrollingDown) {
-        // sadece aşağı inerken animasyonu uygula
-        if (entry.target.id === "projects") {
-          entry.target.classList.add('animate-slide-in');
-        } else if (entry.target.id === "blog") {
-          entry.target.classList.add('animate-slide-left');
+        if (entry.isIntersecting && scrollingDown) {
+          // sadece aşağı inerken animasyonu uygula
+          if (entry.target.id === "projects") {
+            entry.target.classList.add("animate-slide-in");
+          } else if (entry.target.id === "blog") {
+            entry.target.classList.add("animate-slide-left");
+          }
         }
-      }
 
-      if (!entry.isIntersecting) {
-        // yeniden animasyon oynatmak için class'ları kaldır
-        entry.target.classList.remove('animate-slide-in');
-        entry.target.classList.remove('animate-slide-left');
-      }
+        if (!entry.isIntersecting) {
+          // yeniden animasyon oynatmak için class'ları kaldır
+          entry.target.classList.remove("animate-slide-in");
+          entry.target.classList.remove("animate-slide-left");
+        }
 
-      // scroll pozisyonunu güncelle
-      lastScrollY = currentScrollY;
-    });
-  }, {
-    threshold: 0.05 // %5'i görünür olunca tetiklensin
-  });
+        // scroll pozisyonunu güncelle
+        lastScrollY = currentScrollY;
+      });
+    },
+    {
+      threshold: 0.05, // %5'i görünür olunca tetiklensin
+    }
+  );
 
-  sections.forEach(section => {
+  sections.forEach((section) => {
     observer.observe(section);
   });
 </script>

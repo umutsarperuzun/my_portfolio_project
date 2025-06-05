@@ -47,6 +47,10 @@ module.exports = {
             '200':'200% 200%',
         },
       keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
         slideInRight: {
           "0%": { opacity: "0", transform: "translateX(500px)" },
           "100%": { opacity: "1", transform: "translateX(0)" },
@@ -63,7 +67,8 @@ module.exports = {
       animation: {
         "slide-in": "slideInRight 0.8s ease-out",
         "slide-left": "slideInLeft 0.8s ease-out",
-        "slideBg": 'slideBackground 4s ease-out forwards',
+        "slideBg": 'slideBackground 5s ease-out forwards',
+        "marquee": 'marquee 30s linear infinite',
       },
     },
   },

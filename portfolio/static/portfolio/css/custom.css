@@ -1,40 +1,5 @@
-/* Navbar Section */
-/* .navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding:0 2rem;
-    height: 60px;
-    background-color: #1e1e1e;
-    color: white;
+/* custom.css */
+.fade-mask {
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0.3), rgba(0,0,0,0));
+  mask-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0.3), rgba(0,0,0,0));
 }
-
-/* Logo Section */
-/* .navbar-logo {
-    flex: 1;
-    font-weight: bold;
-    font-size: 1.2rem;
-} */
-
-/* .logo-style {
-    text-decoration: none;
-    color: white;
-} */
-/* Menu Block */
-/* .navbar-links {
-    flex: 2;
-    text-align:center;
-} */
-/* .navbar-menu {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.navbar-link{
-    text-decoration: none;
-    color: white;
-} */
-
