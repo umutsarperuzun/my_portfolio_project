@@ -1045,6 +1045,10 @@ select {
   animation: slideBackground 8s ease-out infinite;
 }
 
+.resize {
+  resize: both;
+}
+
 .flex-col {
   flex-direction: column;
 }

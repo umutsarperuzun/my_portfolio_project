@@ -160,7 +160,17 @@
           }
           requestAnimationFrame(animate);
         }
+        animate();
+        window.addEventListener("resize",()=> {
+          canvas.width=canvas.offsetWidth;
+          canvas.height=canvas.offsetHeight;
+        });
       }
+      //Farkli bolumler icin starter yapmak
+      document.addEventListener("DOMContentLoaded",()=> {
+        initStarField("navbar-stars")
+        initStarField("footer-stars")
+      });
     </script>
   </body>
 </html>
