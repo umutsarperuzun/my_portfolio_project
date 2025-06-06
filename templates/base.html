@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <title>{% block title %}My Portfolio{% endblock %}</title>
     {% tailwind_css %}
-    <link href="{% static 'portfolio/css/custom.css' %}" rel="stylesheet">
+    <link href="{% static 'portfolio/css/custom.css' %}" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     <style>
       html {
@@ -13,60 +13,134 @@
       }
     </style>
   </head>
-  <body class="bg-gray-100 text-gray-900 ">
+  <body class="bg-gray-100 text-gray-900">
     <!-- Navbar -->
     <header>
-      <nav id="navbar" class="fixed top-0 left-0 w-full bg-zinc-900 text-white z-50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-28 md:h-32 flex items-center justify-between transition-all duration-700 ease-in-out">
+      <nav
+        id="navbar"
+        class="fixed top-0 left-0 w-full bg-zinc-900 text-white z-50 transition-all duration-300"
+      >
+        <canvas
+          id="navbar-stars"
+          class="absolute top-0 left-0 w-full h-full z-0 pointer-events-none"
+        ></canvas>
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-28 md:h-32 flex items-center justify-between transition-all duration-700 ease-in-out"
+        >
           <!-- Logo -->
           <div class="text-xl font-bold">
-            <a href="#home" class="text-white hover:text-gray-300">My Portfolio Logo</a>
+            <a href="#home" class="text-white hover:text-gray-300"
+              >My Portfolio Logo</a
+            >
           </div>
 
           <!-- Menu -->
           <ul class="hidden md:flex space-x-6">
-            <li><a href="#home" class="hover-wave text-white hover:text-gray-300"><span>H</span><span>o</span><span>m</span><span>e</span></a></li>
-            <li><a href="#about" class="hover-wave text-white hover:text-gray-300"><span>A</span><span>b</span><span>o</span><span>u</span><span>t</span></a></li>
-            <li><a href="#projects" class="hover-wave text-white hover:text-gray-300"><span>P</span><span>r</span><span>o</span><span>j</span><span>e</span><span>c</span><span>t</span><span>s</span></a></li>
-            <li><a href="#blog" class="hover-wave text-white hover:text-gray-300"><span>B</span><span>l</span><span>o</span><span>g</span></a></li>
-            <li><a href="#contact" class="hover-wave text-white hover:text-gray-300"><span>C</span><span>o</span><span>n</span><span>t</span><span>a</span><span>c</span><span>t</span></a></li>
+            <li>
+              <a href="#home" class="hover-wave text-white hover:text-gray-300"
+                ><span>H</span><span>o</span><span>m</span><span>e</span></a
+              >
+            </li>
+            <li>
+              <a href="#about" class="hover-wave text-white hover:text-gray-300"
+                ><span>A</span><span>b</span><span>o</span><span>u</span
+                ><span>t</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="#projects"
+                class="hover-wave text-white hover:text-gray-300"
+                ><span>P</span><span>r</span><span>o</span><span>j</span
+                ><span>e</span><span>c</span><span>t</span><span>s</span></a
+              >
+            </li>
+            <li>
+              <a href="#blog" class="hover-wave text-white hover:text-gray-300"
+                ><span>B</span><span>l</span><span>o</span><span>g</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="hover-wave text-white hover:text-gray-300"
+                ><span>C</span><span>o</span><span>n</span><span>t</span
+                ><span>a</span><span>c</span><span>t</span></a
+              >
+            </li>
           </ul>
 
           <!-- Dark Mode Button (placeholder) -->
           <div>
-            <button class="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded text-sm">
+            <button
+              class="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded text-sm"
+            >
               🌙
             </button>
           </div>
         </div>
       </nav>
-      
     </header>
 
     <!-- Page Content -->
-    {% block content %}
-    
-    {% endblock %}
+    {% block content %} {% endblock %}
 
     <!-- Footer -->
-    <footer class="text-center text-gray-500 mt-10 py-4">
-      <p>Footer coming</p>
+    <footer
+      class="relative text-center text-grey-500 mt-10 py-4 bg-black text-white"
+    >
+      <canvas
+        id="footer-stars"
+        class="absolute top-0 left-0 w-full h-full z-0 pointer-events-none"
+      ></canvas>
+      <p class="relative z-10">© 2025 Sarper Uzun</p>
     </footer>
     <!-- JavaScript Section -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      AOS.init()
+      AOS.init();
     </script>
     <script>
-      const navbar = document.getElementById("navbar")
+      const navbar = document.getElementById("navbar");
 
-      window.addEventListener("scroll",()=> {
+      window.addEventListener("scroll", () => {
         if (window.scrollY > 10) {
-          navbar.classList.add("bg-opacity-80","backdrop-blur","shadow-md");
+          navbar.classList.add("bg-opacity-80", "backdrop-blur", "shadow-md");
         } else {
-          navbar.classList.remove("bg-opacity-80","backdrop-blur","shadow-md");
+          navbar.classList.remove(
+            "bg-opacity-80",
+            "backdrop-blur",
+            "shadow-md"
+          );
         }
       });
+    </script>
+    <script>
+      function initStarField(canvasId) {
+        const canvas = document.getElementById(canvasId);
+        const ctx = canvas.getContext("2d") // iki boyutlu cizecegimizin bilgisi 
+        //pixel boyutunu kendi genislik ve uzunluguna esitler
+        canvas.width=canvas.offsetWidth;
+        canvas.height=canvas.offsetHeight;
+
+        //yildiz olusturma (suan sadece nokta olusturduk 100 tane)
+        let stars=[];
+        const numStars = 100;
+        
+        for (let i=0;i<100;i++) {
+          stars.push({
+            x:Math.random() * canvas.width, //random x
+            y: Math.random() *canvas.height,
+            radius: Math.random() * 1.2 + 0.2, //  random yarıçap 
+            speed: Math.random() * 0.3 + 0.2   // random speed
+          });
+        }
+        let mouseX = canvas.width / 2;
+        canvas.addEventListener("mousemove",(e)=> {
+          const rect=canvas.getBoundingClientRect(); //canvasin konumu
+          mouseX=e.clientX-rect.left // mouse x koordinati
+        })
+      }
     </script>
   </body>
 </html>
