@@ -139,7 +139,10 @@
         canvas.addEventListener("mousemove",(e)=> {
           const rect=canvas.getBoundingClientRect(); //canvasin konumu
           mouseX=e.clientX-rect.left // mouse x koordinati
-        })
+        });
+        function animate() {
+          ctx.clearRect(0,0,canvas.width,canvas.height);
+        }
       }
     </script>
   </body>
