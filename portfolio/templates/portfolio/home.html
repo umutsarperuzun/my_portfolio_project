@@ -4,35 +4,35 @@
 <!-- Floating Panel Area -->
 <div
   id="social-panel"
-  class="fixed lef-4 top-1/4 z-50 flex flex-col item-center space-y-4 bg-gray-300 p-2 rounded-lg transition-all duration-500"
+  class="fixed left-4 top-1/4 z-50 flex flex-col items-center space-y-4 bg-gray-300 p-2 rounded-lg transition-all duration-500 dark:bg-zinc-800"
 >
   <!-- Toggle Button -->
   <button
     id="toggle-panel"
-    class="text-sm text-white font-semibold mt-4 px-3 py-1 w-fit leading-tight rounded-md bg-zinc-700 hover:bg-zinc-800 transition duration-300"
+    class="text-sm text-white font-semibold mt-4 px-3 py-1 w-fit leading-tight rounded-md bg-zinc-700 hover:bg-zinc-800 transition duration-300 dark:bg-zinc-600 dark:hover:bg-zinc-700"
   >
     Quick Contact
   </button>
-  <!-- Firstly these area gonna be hidden -->
+  <!-- Initially hidden -->
   <div
     id="icon-area"
     class="flex flex-col items-center space-y-4 opacity-0 max-h-0 overflow-hidden transition-all duration-700"
   >
-    <a href="https://www.linkedin.com/in/umut-sarper-uzun" target="_blank">
+    <a href="https://www.linkedin.com/in/umut-sarper-uzun" target="_blank" class="dark:filter dark:brightness-125">
       <img
         src="{% static 'icons/linkedin.svg' %}"
         alt="LinkedIn"
         class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300"
       />
     </a>
-    <a href="https://www.github.com/umutsarperuzun" target="_blank">
+    <a href="https://www.github.com/umutsarperuzun" target="_blank" class="dark:filter dark:brightness-125">
       <img
         src="{% static 'icons/github.svg' %}"
-        alt="LinkedIn"
+        alt="GitHub"
         class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300"
       />
     </a>
-    <a href="https://www.instagram.com/srpruzn" target="_blank">
+    <a href="https://www.instagram.com/srpruzn" target="_blank" class="dark:filter dark:brightness-125">
       <img
         src="{% static 'icons/instagram.svg' %}"
         alt="Instagram"
@@ -42,6 +42,7 @@
     <a
       href="mailto:sarperuzun1@gmail.com?subject=Let's%20Connect&body=Hello%20Sarper%2C%0AI%20visited%20your%20portfolio%20and%20wanted%20to%20reach%20out."
       target="_blank"
+      class="dark:filter dark:brightness-125"
     >
       <img
         src="{% static 'icons/gmail.svg' %}"
@@ -51,6 +52,7 @@
     </a>
   </div>
 </div>
+
 <section id="home" class="relative min-h-screen flex items-center overflow-hidden">
 
   <!-- 1 sector hareketli  arka plan -->
