@@ -84,9 +84,9 @@
 </section>
 
 
-<section id="about" class="min-h-screen bg-gray-100 py-20">
-  <h2 class="text-3xl font-bold text-center">About Me</h2>
-  <p data-aos="fade-up" class="text-center mt-4 max-w-xl mx-auto">
+<section id="about" class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20">
+  <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">About Me</h2>
+  <p data-aos="fade-up" class="text-center mt-4 max-w-xl mx-auto text-gray-800 dark:text-gray-300">
     I'm a passionate and detail-oriented Junior Software Developer with a strong
     focus on building clean, scalable, and user-friendly web applications. With
     a background in Computer Science (MSc, Distinction), I have hands-on
@@ -104,10 +104,9 @@
 
 <section
   id="projects"
-  class="min-h-screen bg-white py-20 reveal-manual will-change-transform"
->
-  <h2 class="text-3xl font-bold text-center">Projects</h2>
-  <p class="text-center mt-4 max-w-xl mx-auto">
+  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 reveal-manual will-change-transform">
+  <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">Projects</h2>
+  <p class="text-center mt-4 max-w-xl mx-auto text-gray-800 dark:text-gray-300">
     I'm a passionate and detail-oriented Junior Software Developer with a strong
     focus on building clean, scalable, and user-friendly web applications. With
     a background in Computer Science (MSc, Distinction), I have hands-on
@@ -125,10 +124,9 @@
 
 <section
   id="blog"
-  class="min-h-screen bg-gray-100 py-20 reveal-manual will-change-transform"
->
-  <h2 class="text-3xl font-bold text-center">Blog</h2>
-  <p class="text-center mt-4 max-w-xl mx-auto">
+  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 reveal-manual will-change-transform">
+  <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">Blog</h2>
+  <p class="text-center mt-4 max-w-xl mx-auto text-gray-800 dark:text-gray-300">
     I'm a passionate and detail-oriented Junior Software Developer with a strong
     focus on building clean, scalable, and user-friendly web applications. With
     a background in Computer Science (MSc, Distinction), I have hands-on
@@ -144,8 +142,8 @@
   </p>
 </section>
 
-<section
-  id="contact"
+<section 
+  id="contact" 
   class="h-auto bg-white py-20"
   data-aos="fade-up"
   data-aos-duration="1200"
@@ -155,6 +153,7 @@
   <p
     class="text-center mt-4 max-w-xl mx-auto text-gray-700 text-lg leading-relaxed"
   >
+
     I'm a passionate and detail-oriented Junior Software Developer with a strong
     focus on building clean, scalable, and user-friendly web applications. With
     a background in Computer Science (MSc, Distinction), I have hands-on
@@ -172,11 +171,11 @@
 
 <!-- Quick Contact tags on the left-side -->
 <script>
-  const toggleBtn = document.getElementById("toggle-panel");
+  const contactToggleBtn = document.getElementById("toggle-panel");
   const iconSection = document.getElementById("icon-area");
 
   let panelOpen = false;
-  toggleBtn.addEventListener("click", () => {
+  contactToggleBtn.addEventListener("click", () => {
     iconSection.classList.toggle("opacity-0");
     iconSection.classList.toggle("max-h-0");
     iconSection.classList.toggle("max-h-[500px]");
