@@ -65,13 +65,11 @@
           </ul>
 
           <!-- Dark Mode Button (placeholder) -->
-          <div>
-            <button
-              class="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded text-sm"
-            >
-              🌙
-            </button>
-          </div>
+          <label class="relative inline-flex item-center cursor-pointer">
+            <input type="checkbox" id="theme-toggle" class="sr-only-peer">
+            <div class="w-11 h-6 bg-gray-400 rounded-full peer peer-checkhed:bg-zinc-700 transition-colors duration-300"></div>
+            <div class="absolute left-0.5 top-0.5 bg-white rounded-full transition-transform duration-300 peer-checked:translate-x-full"></div>
+          </label>
         </div>
       </nav>
     </header>
