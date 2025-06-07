@@ -67,7 +67,7 @@
           <!-- Dark Mode Button (placeholder) -->
           <label class="relative inline-flex item-center cursor-pointer">
             <input type="checkbox" id="theme-toggle" class="sr-only-peer">
-            <div class="w-11 h-6 bg-gray-400 rounded-full peer peer-checkhed:bg-zinc-700 transition-colors duration-300"></div>
+            <div class="w-11 h-6 bg-gray-400 rounded-full peer peer-checked:bg-zinc-700 transition-colors duration-300"></div>
             <div class="absolute left-0.5 top-0.5 bg-white rounded-full transition-transform duration-300 peer-checked:translate-x-full"></div>
           </label>
         </div>
@@ -163,6 +163,26 @@
         initStarField("navbar-stars")
         initStarField("footer-stars")
       });
+    </script>
+    <script>
+      const toggle=document.getElementById("theme-toggle") //checkbox bolumunu js definition
+      const root = document.documentElement; //html etiketini temsil ediyor sunun gibi -> document.documentElement = <html>
+      const savedTheme = localStorage.getItem("theme"); //onceden secilmis tema varsa onu kaydediyoruz
+
+      //Eger kullanicida dark kayitliysa checkout box acik kalir degilse light ayarlanir ve check box kapali kalir
+      if(savedTheme === "dark") {
+        root.setAttribute("data-theme","dark");
+        toggle.checked=true;
+      } else {
+        root.setAttribute("data-theme","light");
+        toggle.checked=false;
+      }
+      //checkbox a degisiklik oldu olayi kullanici tiklarsa bu func calisir
+      toggle.addEventListener("change", function() {
+        const newTheme=toggle.checked ? "dark" : "light"; //kisa if kullandim eger checkbox isaretliyse true yani dark degilse light
+        root.setAttribute("data-theme",newTheme); //html etiketine yazilir dark or light
+        localStorage.setItem("theme",newTheme) //tarayiciya kullanicinin tercihi kaydedlir
+      })     
     </script>
   </body>
 </html>
