@@ -97,7 +97,7 @@
 
 
 
-<section id="about" class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20">
+<section id="about" class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 scroll-mt-32">
   <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">About Me</h2>
   <p data-aos="fade-up" class="text-center mt-4 max-w-xl mx-auto text-gray-800 dark:text-gray-300">
     I'm a passionate and detail-oriented Junior Software Developer with a strong
@@ -117,7 +117,8 @@
 
 <section
   id="projects"
-  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 reveal-manual will-change-transform">
+  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20  scroll-mt-32">
+  <div class="reveal-manual will-change-transform" data-section="projects">
   <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">Projects</h2>
   <p class="text-center mt-4 max-w-xl mx-auto text-gray-800 dark:text-gray-300">
     I'm a passionate and detail-oriented Junior Software Developer with a strong
@@ -133,11 +134,13 @@
     technical depth with aesthetic polish. Let’s build something meaningful
     together.
   </p>
+  </div>
 </section>
 
 <section
   id="blog"
-  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 reveal-manual will-change-transform">
+  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 scroll-mt-32">
+  <div class="reveal-manual will-change-transform" data-section="blog">
   <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">Blog</h2>
   <p class="text-center mt-4 max-w-xl mx-auto text-gray-800 dark:text-gray-300">
     I'm a passionate and detail-oriented Junior Software Developer with a strong
@@ -153,11 +156,12 @@
     technical depth with aesthetic polish. Let’s build something meaningful
     together.
   </p>
+  </div>
 </section>
 
 <section 
   id="contact" 
-  class="h-auto bg-white dark:bg-gray-900 py-20 transition-colors duration-500"
+  class="h-auto bg-white dark:bg-gray-900 py-20 transition-colors duration-500 scroll-mt-40"
   data-aos="fade-up"
   data-aos-duration="1200"
   data-aos-easing="ease-out-cubic"
@@ -252,12 +256,13 @@
         const scrollingDown = currentScrollY > lastScrollY;
 
         if (entry.isIntersecting && scrollingDown) {
+          const sectionName = entry.target.dataset.section; 
           // sadece aşağı inerken animasyonu uygula
-          if (entry.target.id === "projects") {
-            entry.target.classList.add("animate-slide-in");
-          } else if (entry.target.id === "blog") {
-            entry.target.classList.add("animate-slide-left");
-          }
+          if (sectionName === "projects") {
+          entry.target.classList.add("animate-slide-in");
+        } else if (sectionName === "blog") {
+          entry.target.classList.add("animate-slide-left");
+        }
         }
 
         if (!entry.isIntersecting) {
