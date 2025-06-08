@@ -11,28 +11,40 @@
     id="toggle-panel"
     class="text-xs text-white font-semibold mt-0 px-2 py-0.5 w-fit leading-tight rounded-md bg-zinc-700 hover:bg-zinc-800 transition duration-300 dark:bg-zinc-600 dark:hover:bg-zinc-700"
   >
-    Quick<br>Contact
+    Quick<br />Contact
   </button>
   <!-- Initially hidden -->
   <div
     id="icon-area"
     class="flex flex-col items-center space-y-4 opacity-0 max-h-0 overflow-hidden transition-all duration-700"
   >
-    <a href="https://www.linkedin.com/in/umut-sarper-uzun" target="_blank" class="dark:filter dark:brightness-125">
+    <a
+      href="https://www.linkedin.com/in/umut-sarper-uzun"
+      target="_blank"
+      class="dark:filter dark:brightness-125"
+    >
       <img
         src="{% static 'icons/linkedin.svg' %}"
         alt="LinkedIn"
         class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300"
       />
     </a>
-    <a href="https://www.github.com/umutsarperuzun" target="_blank" class="dark:filter dark:brightness-125">
+    <a
+      href="https://www.github.com/umutsarperuzun"
+      target="_blank"
+      class="dark:filter dark:brightness-125"
+    >
       <img
         src="{% static 'icons/github.svg' %}"
         alt="GitHub"
         class="w-6 h-6 max-w-[24px] max-h-[24px] object-contain hover:scale-110 transition-transform duration-300"
       />
     </a>
-    <a href="https://www.instagram.com/srpruzn" target="_blank" class="dark:filter dark:brightness-125">
+    <a
+      href="https://www.instagram.com/srpruzn"
+      target="_blank"
+      class="dark:filter dark:brightness-125"
+    >
       <img
         src="{% static 'icons/instagram.svg' %}"
         alt="Instagram"
@@ -53,14 +65,13 @@
   </div>
 </div>
 
-<section id="home" class="relative min-h-screen flex items-center overflow-hidden">
-
+<section
+  id="home"
+  class="relative min-h-screen flex items-center overflow-hidden"
+>
   <!-- 1 sector hareketli arka plan -->
   <div
-    class="absolute top-0 left-0 w-full h-full z-0
-           bg-gradient-to-r from-white via-gray-200 to-black
-           bg-[length:200%] animate-slideBg
-           dark:from-gray-900 dark:via-gray-800 dark:to-black"
+    class="absolute top-0 left-0 w-full h-full z-0 bg-gradient-to-r from-white via-gray-200 to-black bg-[length:200%] animate-slideBg dark:from-gray-900 dark:via-gray-800 dark:to-black"
   ></div>
 
   <!-- 2 sector Kayan görseller transparan arka planlı -->
@@ -78,8 +89,7 @@
         {% for img in slider_images %}
         <img
           src="{% static img %}"
-          class="h-full w-auto object-cover opacity-20 grayscale contrast-75
-                 dark:opacity-30 dark:grayscale-0 dark:contrast-100"
+          class="h-full w-auto object-cover opacity-20 grayscale contrast-75 dark:opacity-30 dark:grayscale-0 dark:contrast-100"
         />
         {% endfor %}
       </div>
@@ -92,14 +102,19 @@
       <span id="decoding-title"></span>
     </h1>
   </div>
-
 </section>
 
-
-
-<section id="about" class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 scroll-mt-32">
-  <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">About Me</h2>
-  <p data-aos="fade-up" class="text-center mt-4 max-w-xl mx-auto text-gray-800 dark:text-gray-300">
+<section
+  id="about"
+  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 scroll-mt-32"
+>
+  <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">
+    About Me
+  </h2>
+  <p
+    data-aos="fade-up"
+    class="text-center mt-4 max-w-xl mx-auto text-gray-800 dark:text-gray-300"
+  >
     I'm a passionate and detail-oriented Junior Software Developer with a strong
     focus on building clean, scalable, and user-friendly web applications. With
     a background in Computer Science (MSc, Distinction), I have hands-on
@@ -117,53 +132,63 @@
 
 <section
   id="projects"
-  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20  scroll-mt-32">
+  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 scroll-mt-32"
+>
   <div class="reveal-manual will-change-transform" data-section="projects">
-  <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">Projects</h2>
-  <p class="text-center mt-4 max-w-xl mx-auto text-gray-800 dark:text-gray-300">
-    I'm a passionate and detail-oriented Junior Software Developer with a strong
-    focus on building clean, scalable, and user-friendly web applications. With
-    a background in Computer Science (MSc, Distinction), I have hands-on
-    experience in both frontend and backend technologies including Django,
-    React, Tailwind CSS, and RESTful APIs. My projects range from AI-powered
-    chatbots and fleet management tools to e-commerce dashboards and weather
-    apps. I enjoy solving real-world problems through code, continuously
-    learning new technologies, and working on projects that make a meaningful
-    impact. Currently, I’m focused on enhancing my skills in Django, Tailwind
-    CSS, and JavaScript by building this portfolio from scratch — combining
-    technical depth with aesthetic polish. Let’s build something meaningful
-    together.
-  </p>
+    <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">
+      Projects
+    </h2>
+    <p
+      class="text-center mt-4 max-w-xl mx-auto text-gray-800 dark:text-gray-300"
+    >
+      I'm a passionate and detail-oriented Junior Software Developer with a
+      strong focus on building clean, scalable, and user-friendly web
+      applications. With a background in Computer Science (MSc, Distinction), I
+      have hands-on experience in both frontend and backend technologies
+      including Django, React, Tailwind CSS, and RESTful APIs. My projects range
+      from AI-powered chatbots and fleet management tools to e-commerce
+      dashboards and weather apps. I enjoy solving real-world problems through
+      code, continuously learning new technologies, and working on projects that
+      make a meaningful impact. Currently, I’m focused on enhancing my skills in
+      Django, Tailwind CSS, and JavaScript by building this portfolio from
+      scratch — combining technical depth with aesthetic polish. Let’s build
+      something meaningful together.
+    </p>
   </div>
 </section>
 
 <section
   id="blog"
-  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 scroll-mt-32">
+  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 scroll-mt-32"
+>
   <div class="reveal-manual will-change-transform" data-section="blog">
-  <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">Blog</h2>
-  <p class="text-center mt-4 max-w-xl mx-auto text-gray-800 dark:text-gray-300">
-    I'm a passionate and detail-oriented Junior Software Developer with a strong
-    focus on building clean, scalable, and user-friendly web applications. With
-    a background in Computer Science (MSc, Distinction), I have hands-on
-    experience in both frontend and backend technologies including Django,
-    React, Tailwind CSS, and RESTful APIs. My projects range from AI-powered
-    chatbots and fleet management tools to e-commerce dashboards and weather
-    apps. I enjoy solving real-world problems through code, continuously
-    learning new technologies, and working on projects that make a meaningful
-    impact. Currently, I’m focused on enhancing my skills in Django, Tailwind
-    CSS, and JavaScript by building this portfolio from scratch — combining
-    technical depth with aesthetic polish. Let’s build something meaningful
-    together.
-  </p>
+    <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">
+      Blog
+    </h2>
+    <p
+      class="text-center mt-4 max-w-xl mx-auto text-gray-800 dark:text-gray-300"
+    >
+      I'm a passionate and detail-oriented Junior Software Developer with a
+      strong focus on building clean, scalable, and user-friendly web
+      applications. With a background in Computer Science (MSc, Distinction), I
+      have hands-on experience in both frontend and backend technologies
+      including Django, React, Tailwind CSS, and RESTful APIs. My projects range
+      from AI-powered chatbots and fleet management tools to e-commerce
+      dashboards and weather apps. I enjoy solving real-world problems through
+      code, continuously learning new technologies, and working on projects that
+      make a meaningful impact. Currently, I’m focused on enhancing my skills in
+      Django, Tailwind CSS, and JavaScript by building this portfolio from
+      scratch — combining technical depth with aesthetic polish. Let’s build
+      something meaningful together.
+    </p>
   </div>
 </section>
 
-<section 
-  id="contact" 
+<section
+  id="contact"
   class="h-auto bg-white dark:bg-gray-900 py-20 transition-colors duration-500 scroll-mt-40"
 >
-  <div 
+  <div
     data-aos="fade-up"
     data-aos-duration="1200"
     data-aos-easing="ease-out-cubic"
@@ -173,22 +198,21 @@
     <p
       class="text-center mt-4 max-w-xl mx-auto text-gray-700 dark:text-gray-300 text-lg leading-relaxed"
     >
-     I'm a passionate and detail-oriented Junior Software Developer with a strong
-    focus on building clean, scalable, and user-friendly web applications. With
-    a background in Computer Science (MSc, Distinction), I have hands-on
-    experience in both frontend and backend technologies including Django,
-    React, Tailwind CSS, and RESTful APIs. My projects range from AI-powered
-    chatbots and fleet management tools to e-commerce dashboards and weather
-    apps. I enjoy solving real-world problems through code, continuously
-    learning new technologies, and working on projects that make a meaningful
-    impact. Currently, I’m focused on enhancing my skills in Django, Tailwind
-    CSS, and JavaScript by building this portfolio from scratch — combining
-    technical depth with aesthetic polish. Let’s build something meaningful
-    together.
+      I'm a passionate and detail-oriented Junior Software Developer with a
+      strong focus on building clean, scalable, and user-friendly web
+      applications. With a background in Computer Science (MSc, Distinction), I
+      have hands-on experience in both frontend and backend technologies
+      including Django, React, Tailwind CSS, and RESTful APIs. My projects range
+      from AI-powered chatbots and fleet management tools to e-commerce
+      dashboards and weather apps. I enjoy solving real-world problems through
+      code, continuously learning new technologies, and working on projects that
+      make a meaningful impact. Currently, I’m focused on enhancing my skills in
+      Django, Tailwind CSS, and JavaScript by building this portfolio from
+      scratch — combining technical depth with aesthetic polish. Let’s build
+      something meaningful together.
     </p>
   </div>
 </section>
-
 
 <!-- Quick Contact tags on the left-side -->
 <script>
@@ -261,13 +285,13 @@
         const scrollingDown = currentScrollY > lastScrollY;
 
         if (entry.isIntersecting && scrollingDown) {
-          const sectionName = entry.target.dataset.section; 
+          const sectionName = entry.target.dataset.section;
           // sadece aşağı inerken animasyonu uygula
           if (sectionName === "projects") {
-          entry.target.classList.add("animate-slide-in");
-        } else if (sectionName === "blog") {
-          entry.target.classList.add("animate-slide-left");
-        }
+            entry.target.classList.add("animate-slide-in");
+          } else if (sectionName === "blog") {
+            entry.target.classList.add("animate-slide-left");
+          }
         }
 
         if (!entry.isIntersecting) {

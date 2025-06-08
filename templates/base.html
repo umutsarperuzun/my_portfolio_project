@@ -88,7 +88,23 @@
       ></canvas>
       <p class="relative z-10">© 2025 Sarper Uzun</p>
     </footer>
-    <!-- JavaScript Section -->
+
+
+    <!-- Scroll to Top automated button -->
+    <button
+    id="scrollToTop"
+    class="fixed bottom-6 right-6 z-50 bg-zinc-800 text-white p-3 rounded-full shadow-md hover:bg-zinc-700 transition-opacity opacity-0 pointer-events-none"
+    title="Back to top"
+    >
+    <img 
+    src="{% static 'icons/scrollicon.png' %}" 
+    alt="ScrolltoTop"
+    class="w-10 h-10 max-w-[40px] max-h-[40px] object-contain hover:scale-110 transition-transform duration-300">
+
+    </button>
+
+    <!---------------------------------------------------- JavaScript Section -------------------------------------------------------------------------------->
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init();
@@ -168,6 +184,9 @@
     <script>
       const toggle=document.getElementById("theme-toggle") //checkbox bolumunu js definition
       const root = document.documentElement; //html etiketini temsil ediyor sunun gibi -> document.documentElement = <html>
+        console.log("xxxxxxxxxxxxx")
+        console.log(root)
+        console.log("xxxxxxxxxxxxx")
       const savedTheme = localStorage.getItem("theme"); //onceden secilmis tema varsa onu kaydediyoruz
 
       //Eger kullanicida dark kayitliysa checkout box acik kalir degilse light ayarlanir ve check box kapali kalir
@@ -184,6 +203,20 @@
         root.setAttribute("data-theme",newTheme); //html etiketine yazilir dark or light
         localStorage.setItem("theme",newTheme) //tarayiciya kullanicinin tercihi kaydedlir
       })     
+    </script>
+    <script>
+      const scrollToTopBtn = document.getElementById("scrollToTop");
+
+      window.addEventListener("scroll",()=> {
+        if (window.scrollY > 300) {
+          scrollToTopBtn.classList.remove("opacity-0","pointer-events-none");
+        } else {
+          scrollToTopBtn.classList.add("opacity-0","pointer-events-none");
+        }
+      });
+      scrollToTopBtn.addEventListener("click",()=> {
+        window.scrollTo({top:0,behavior:"smooth"});
+      });
     </script>
   </body>
 </html>

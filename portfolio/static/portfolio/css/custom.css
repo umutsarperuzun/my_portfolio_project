@@ -40,8 +40,3 @@
   100% { transform: translateY(0); }
 }
 
-/* Slide animasyonları sırasında arka plan geçişi */
-.reveal-manual {
-  transition: background-color 0.6s ease-in-out;
-  will-change: transform, background-color;
-}
