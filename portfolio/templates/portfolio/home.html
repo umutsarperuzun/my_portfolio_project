@@ -103,32 +103,116 @@
     </h1>
   </div>
 </section>
+<section id="about" class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 scroll-mt-32">
+  <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">About Me</h2>
 
-<section
-  id="about"
-  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 scroll-mt-32"
->
-  <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">
-    About Me
-  </h2>
-  <p
-    data-aos="fade-up"
-    class="text-center mt-4 max-w-xl mx-auto text-gray-800 dark:text-gray-300"
-  >
-    I'm a passionate and detail-oriented Junior Software Developer with a strong
-    focus on building clean, scalable, and user-friendly web applications. With
-    a background in Computer Science (MSc, Distinction), I have hands-on
-    experience in both frontend and backend technologies including Django,
-    React, Tailwind CSS, and RESTful APIs. My projects range from AI-powered
-    chatbots and fleet management tools to e-commerce dashboards and weather
-    apps. I enjoy solving real-world problems through code, continuously
-    learning new technologies, and working on projects that make a meaningful
-    impact. Currently, I’m focused on enhancing my skills in Django, Tailwind
-    CSS, and JavaScript by building this portfolio from scratch — combining
-    technical depth with aesthetic polish. Let’s build something meaningful
-    together.
-  </p>
+  <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto px-4">
+
+    <!-- Sol: Yazı -->
+    <div data-aos="fade-right">
+      <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Who am I?</h3>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        I'm a passionate and detail-oriented Junior Software Developer with a strong
+        focus on building clean, scalable, and user-friendly web applications. With
+        a background in Computer Science (MSc, Distinction), I have hands-on
+        experience in both frontend and backend technologies including Django,
+        React, Tailwind CSS, and RESTful APIs. I enjoy solving real-world problems
+        through code, continuously learning new technologies, and working on projects
+        that make a meaningful impact.
+      </p>
+    </div>
+
+    <!-- Sağ: Skills -->
+    <div id="skills-section" data-aos="fade-left" class="space-y-8">
+
+  <!-- GRID: Backend & Frontend yan yana -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+    <!-- Backend -->
+    <div class="space-y-4">
+      <h4 class="text-xl font-semibold text-gray-700 dark:text-white">Backend</h4>
+
+      <!-- Python -->
+      <div class="skill">
+        <div class="flex items-center justify-between mb-1">
+          <div class="flex items-center gap-2">
+            <img src="{% static 'icons/python.svg' %}" class="w-5 h-5" alt="Python" />
+            <span class="text-gray-800 dark:text-white">Python</span>
+          </div>
+          <span class="text-gray-600 dark:text-gray-400">90%</span>
+        </div>
+        <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
+          <div class="bg-blue-600 h-4 w-0 rounded-full transition-all duration-700 skill-bar" data-width="90%"></div>
+        </div>
+      </div>
+
+      <!-- Django -->
+      <div class="skill">
+        <div class="flex items-center justify-between mb-1">
+          <div class="flex items-center gap-2">
+            <img src="{% static 'icons/django.svg' %}" class="w-5 h-5" alt="Django" />
+            <span class="text-gray-800 dark:text-white">Django</span>
+          </div>
+          <span class="text-gray-600 dark:text-gray-400">80%</span>
+        </div>
+        <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
+          <div class="bg-emerald-600 h-4 w-0 rounded-full transition-all duration-700 skill-bar" data-width="80%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Frontend -->
+    <div class="space-y-4">
+      <h4 class="text-xl font-semibold text-gray-700 dark:text-white">Frontend</h4>
+
+      <!-- JavaScript -->
+      <div class="skill">
+        <div class="flex items-center justify-between mb-1">
+          <div class="flex items-center gap-2">
+            <img src="{% static 'icons/javascript.svg' %}" class="w-5 h-5" alt="JS" />
+            <span class="text-gray-800 dark:text-white">JavaScript</span>
+          </div>
+          <span class="text-gray-600 dark:text-gray-400">85%</span>
+        </div>
+        <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
+          <div class="bg-yellow-400 h-4 w-0 rounded-full transition-all duration-700 skill-bar" data-width="85%"></div>
+        </div>
+      </div>
+
+      <!-- React -->
+      <div class="skill">
+        <div class="flex items-center justify-between mb-1">
+          <div class="flex items-center gap-2">
+            <img src="{% static 'icons/react.svg' %}" class="w-5 h-5" alt="React" />
+            <span class="text-gray-800 dark:text-white">React</span>
+          </div>
+          <span class="text-gray-600 dark:text-gray-400">70%</span>
+        </div>
+        <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
+          <div class="bg-sky-400 h-4 w-0 rounded-full transition-all duration-700 skill-bar" data-width="70%"></div>
+        </div>
+      </div>
+
+      <!-- Tailwind CSS -->
+      <div class="skill">
+        <div class="flex items-center justify-between mb-1">
+          <div class="flex items-center gap-2">
+            <img src="{% static 'icons/tailwind.svg' %}" class="w-5 h-5" alt="Tailwind" />
+            <span class="text-gray-800 dark:text-white">Tailwind CSS</span>
+          </div>
+          <span class="text-gray-600 dark:text-gray-400">75%</span>
+        </div>
+        <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
+          <div class="bg-cyan-500 h-4 w-0 rounded-full transition-all duration-700 skill-bar" data-width="75%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
 </section>
+
 
 <section
   id="projects"
