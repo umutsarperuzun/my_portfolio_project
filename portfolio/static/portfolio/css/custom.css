@@ -40,3 +40,10 @@
   100% { transform: translateY(0); }
 }
 
+.skill-bar {
+  width: 0%;
+  height: 20px;
+  background-color: #38bdf8;
+  transition: width 1.5s ease;
+}
+

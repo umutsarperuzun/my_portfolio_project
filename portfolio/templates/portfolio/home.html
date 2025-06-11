@@ -397,5 +397,52 @@
     observer.observe(section);
   });
 </script>
+<script>
+  const skillSection = document.getElementById("skills-section");
+  const skillBars = document.querySelectorAll(".skill-bar");
+  let animationStarted = false;
+  let skillInterval;
+
+  function animateSkills() {
+    skillBars.forEach(bar => {
+      bar.style.transition = "none";     // animasyonu geçici kapat
+      bar.style.width = "0%";            // sıfırla
+    });
+
+    // Tarayıcının 0%'ı işlemesine fırsat vermek için küçük gecikme
+    setTimeout(() => {
+      skillBars.forEach((bar, index) => {
+        setTimeout(() => {
+          const targetWidth = bar.getAttribute("data-width");
+          bar.style.transition = "width 1.5s ease";
+          bar.style.width = targetWidth;
+        }, index * 150);
+      });
+    }, 50); // 50ms gecikme sayesinde animasyon düzgün başlar
+  }
+
+  const observering = new IntersectionObserver((entries, observering) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !animationStarted) {
+        animationStarted = true;
+        animateSkills();
+
+        // Her 10 saniyede bir tekrar et
+        skillInterval = setInterval(() => {
+          animateSkills();
+        }, 10000);
+
+        observering.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.3
+  });
+
+  observering.observe(skillSection);
+</script>
+
+
+
 
 {% endblock %}
