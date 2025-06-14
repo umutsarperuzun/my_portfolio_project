@@ -48,6 +48,10 @@ module.exports = {
             '200':'200% 200%',
         },
       keyframes: {
+        rotate360: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
         marquee: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' },
@@ -71,6 +75,7 @@ module.exports = {
         "slide-left": "slideInLeft 0.8s ease-out",
         "slideBg": 'slideBackground 8s ease-out infinite',
         "marquee": 'marquee 30s linear infinite',
+        "spin-once": 'rotate360 1s ease-out',
       },
     },
   },

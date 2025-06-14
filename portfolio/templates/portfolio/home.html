@@ -97,45 +97,69 @@
   </div>
 
   <!-- 3 sector decode yazısı -->
-  <div class="relative z-20 text-left px-6 md:px-16"><h1 class="text-5xl font-bold text-gray-900 dark:text-gray-100"><span id="decoding-title"></span></h1></div>
+  <div class="relative z-20 text-left px-6 md:px-16">
+    <h1 class="text-5xl font-bold text-gray-900 dark:text-gray-100">
+      <span id="decoding-title"></span>
+    </h1>
+  </div>
 </section>
-<section id="about" class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 scroll-mt-32">
-  <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">About Me</h2>
+<section
+  id="about"
+  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 scroll-mt-32"
+>
+  <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">
+    About Me
+  </h2>
 
   <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 w-full px-16">
-    
     <!-- Sol: Yazı -->
     <div data-aos="fade-right" class="text-center max-w-xl mx-auto">
-      <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Who am I?</h3>
+      <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+        Who am I?
+      </h3>
       <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-        I'm a passionate and detail-oriented Junior Software Developer with a strong
-        focus on building clean, scalable, and user-friendly web applications. With
-        a background in Computer Science (MSc, Distinction), I have hands-on
-        experience in both frontend and backend technologies including Django,
-        React, Tailwind CSS, and RESTful APIs. I enjoy solving real-world problems
-        through code, continuously learning new technologies, and working on projects
-        that make a meaningful impact.
+        I'm a passionate and detail-oriented Junior Software Developer with a
+        strong focus on building clean, scalable, and user-friendly web
+        applications. With a background in Computer Science (MSc, Distinction),
+        I have hands-on experience in both frontend and backend technologies
+        including Django, React, Tailwind CSS, and RESTful APIs. I enjoy solving
+        real-world problems through code, continuously learning new
+        technologies, and working on projects that make a meaningful impact.
       </p>
     </div>
 
     <!-- Sağ: Yetenekler -->
-    <div id="skills-section" data-aos="fade-left" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
+    <div
+      id="skills-section"
+      data-aos="fade-left"
+      class="grid grid-cols-1 md:grid-cols-3 gap-8"
+    >
       <!-- Backend -->
       <div class="space-y-4">
-        <h4 class="text-xl font-semibold text-gray-700 dark:text-white">Backend</h4>
+        <h4 class="text-xl font-semibold text-gray-700 dark:text-white">
+          Backend
+        </h4>
 
         <!-- Python -->
         <div class="skill">
           <div class="flex items-center justify-between mb-1">
             <div class="flex items-center gap-2">
-              <img src="{% static 'icons/python.svg' %}" class="w-5 h-5" alt="Python" />
+              <img src="{% static 'icons/python.svg' %}" 
+     class="skill-icon w-10 h-10 transition-transform duration-500 hover:rotate-[360deg] dark:invert drop-shadow-lg" 
+     alt="python" />
+
+
               <span class="text-gray-800 dark:text-white">Python</span>
             </div>
             <span class="text-gray-600 dark:text-gray-400">90%</span>
           </div>
-          <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
-            <div class="bg-blue-600 h-4 w-0 rounded-full transition-all duration-700 skill-bar" data-width="90%"></div>
+          <div
+            class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden"
+          >
+            <div
+              class="bg-blue-600 h-4 w-0 rounded-full transition-all duration-700 skill-bar"
+              data-width="90%"
+            ></div>
           </div>
         </div>
 
@@ -143,13 +167,22 @@
         <div class="skill">
           <div class="flex items-center justify-between mb-1">
             <div class="flex items-center gap-2">
-              <img src="{% static 'icons/flask.svg' %}" class="w-5 h-5" alt="Flask" />
+              <img
+                src="{% static 'icons/flask.svg' %}"
+                class="skill-icon w-10 h-10 transition-transform duration-500 hover:rotate-[360deg] dark:invert drop-shadow-lg" 
+                alt="Flask"
+              />
               <span class="text-gray-800 dark:text-white">Flask</span>
             </div>
             <span class="text-gray-600 dark:text-gray-400">80%</span>
           </div>
-          <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
-            <div class="bg-emerald-600 h-4 w-0 rounded-full transition-all duration-700 skill-bar" data-width="80%"></div>
+          <div
+            class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden"
+          >
+            <div
+              class="bg-emerald-600 h-4 w-0 rounded-full transition-all duration-700 skill-bar"
+              data-width="80%"
+            ></div>
           </div>
         </div>
 
@@ -157,13 +190,22 @@
         <div class="skill">
           <div class="flex items-center justify-between mb-1">
             <div class="flex items-center gap-2">
-              <img src="{% static 'icons/mysql.svg' %}" class="w-5 h-5" alt="MySQL" />
+              <img
+                src="{% static 'icons/mysql.svg' %}"
+                class="skill-icon w-10 h-10 transition-transform duration-500 hover:rotate-[360deg] dark:invert drop-shadow-lg" 
+                alt="MySQL"
+              />
               <span class="text-gray-800 dark:text-white">MySQL</span>
             </div>
             <span class="text-gray-600 dark:text-gray-400">80%</span>
           </div>
-          <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
-            <div class="bg-emerald-600 h-4 w-0 rounded-full transition-all duration-700 skill-bar" data-width="80%"></div>
+          <div
+            class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden"
+          >
+            <div
+              class="bg-emerald-600 h-4 w-0 rounded-full transition-all duration-700 skill-bar"
+              data-width="80%"
+            ></div>
           </div>
         </div>
 
@@ -171,13 +213,24 @@
         <div class="skill">
           <div class="flex items-center justify-between mb-1">
             <div class="flex items-center gap-2">
-              <img src="{% static 'icons/node.svg' %}" class="w-5 h-5" alt="Node.js" />
-              <span class="text-gray-800 dark:text-white">Node.js (Express.js)</span>
+              <img
+                src="{% static 'icons/node.svg' %}"
+                class="skill-icon w-10 h-10 transition-transform duration-500 hover:rotate-[360deg] dark:invert drop-shadow-lg" 
+                alt="Node.js"
+              />
+              <span class="text-gray-800 dark:text-white"
+                >Node.js (Express.js)</span
+              >
             </div>
             <span class="text-gray-600 dark:text-gray-400">70%</span>
           </div>
-          <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
-            <div class="bg-emerald-600 h-4 w-0 rounded-full transition-all duration-700 skill-bar" data-width="70%"></div>
+          <div
+            class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden"
+          >
+            <div
+              class="bg-emerald-600 h-4 w-0 rounded-full transition-all duration-700 skill-bar"
+              data-width="70%"
+            ></div>
           </div>
         </div>
 
@@ -185,32 +238,51 @@
         <div class="skill">
           <div class="flex items-center justify-between mb-1">
             <div class="flex items-center gap-2">
-              <img src="{% static 'icons/django.svg' %}" class="w-5 h-5" alt="Django" />
+              <img
+                src="{% static 'icons/django.svg' %}"
+                class="skill-icon w-10 h-10 transition-transform duration-500 hover:rotate-[360deg] dark:invert drop-shadow-lg" 
+                alt="Django"
+              />
               <span class="text-gray-800 dark:text-white">Django</span>
             </div>
             <span class="text-gray-600 dark:text-gray-400">70%</span>
           </div>
-          <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
-            <div class="bg-emerald-600 h-4 w-0 rounded-full transition-all duration-700 skill-bar" data-width="70%"></div>
+          <div
+            class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden"
+          >
+            <div
+              class="bg-emerald-600 h-4 w-0 rounded-full transition-all duration-700 skill-bar"
+              data-width="70%"
+            ></div>
           </div>
         </div>
       </div>
-
       <!-- Frontend -->
       <div class="space-y-4">
-        <h4 class="text-xl font-semibold text-gray-700 dark:text-white">Frontend</h4>
+        <h4 class="text-xl font-semibold text-gray-700 dark:text-white">
+          Frontend
+        </h4>
 
         <!-- JavaScript -->
         <div class="skill">
           <div class="flex items-center justify-between mb-1">
             <div class="flex items-center gap-2">
-              <img src="{% static 'icons/javascript.svg' %}" class="w-5 h-5" alt="JavaScript" />
+              <img
+                src="{% static 'icons/javascript.svg' %}"
+                class="skill-icon w-10 h-10 transition-transform duration-500 hover:rotate-[360deg] dark:invert drop-shadow-lg" 
+                alt="JavaScript"
+              />
               <span class="text-gray-800 dark:text-white">JavaScript</span>
             </div>
             <span class="text-gray-600 dark:text-gray-400">85%</span>
           </div>
-          <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
-            <div class="bg-yellow-400 h-4 w-0 rounded-full transition-all duration-700 skill-bar" data-width="85%"></div>
+          <div
+            class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden"
+          >
+            <div
+              class="bg-yellow-400 h-4 w-0 rounded-full transition-all duration-700 skill-bar"
+              data-width="85%"
+            ></div>
           </div>
         </div>
 
@@ -218,13 +290,22 @@
         <div class="skill">
           <div class="flex items-center justify-between mb-1">
             <div class="flex items-center gap-2">
-              <img src="{% static 'icons/react.svg' %}" class="w-5 h-5" alt="React" />
+              <img
+                src="{% static 'icons/react.svg' %}"
+                class="skill-icon w-10 h-10 transition-transform duration-500 hover:rotate-[360deg] dark:invert drop-shadow-lg" 
+                alt="React"
+              />
               <span class="text-gray-800 dark:text-white">React</span>
             </div>
             <span class="text-gray-600 dark:text-gray-400">70%</span>
           </div>
-          <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
-            <div class="bg-sky-400 h-4 w-0 rounded-full transition-all duration-700 skill-bar" data-width="70%"></div>
+          <div
+            class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden"
+          >
+            <div
+              class="bg-sky-400 h-4 w-0 rounded-full transition-all duration-700 skill-bar"
+              data-width="70%"
+            ></div>
           </div>
         </div>
 
@@ -232,32 +313,77 @@
         <div class="skill">
           <div class="flex items-center justify-between mb-1">
             <div class="flex items-center gap-2">
-              <img src="{% static 'icons/tailwind.svg' %}" class="w-5 h-5" alt="Tailwind CSS" />
-              <span class="text-gray-800 dark:text-white">Tailwind CSS</span>
+              <img
+                src="{% static 'icons/css.svg' %}"
+                class="skill-icon w-10 h-10 transition-transform duration-500 hover:rotate-[360deg] dark:invert drop-shadow-lg" 
+                alt="Tailwind CSS"
+              />
+              <span class="text-gray-800 dark:text-white"
+                >CSS / Tailwind CSS</span
+              >
             </div>
             <span class="text-gray-600 dark:text-gray-400">75%</span>
           </div>
-          <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
-            <div class="bg-cyan-500 h-4 w-0 rounded-full transition-all duration-700 skill-bar" data-width="75%"></div>
+          <div
+            class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden"
+          >
+            <div
+              class="bg-cyan-500 h-4 w-0 rounded-full transition-all duration-700 skill-bar"
+              data-width="75%"
+            ></div>
+          </div>
+        </div>
+
+        <!-- HTML -->
+        <div class="skill">
+          <div class="flex items-center justify-between mb-1">
+            <div class="flex items-center gap-2">
+              <img
+                src="{% static 'icons/html.svg' %}"
+                class="skill-icon w-10 h-10 transition-transform duration-500 hover:rotate-[360deg] dark:invert drop-shadow-lg" 
+                alt="HTML5"
+              />
+              <span class="text-gray-800 dark:text-white">HTML5</span>
+            </div>
+            <span class="text-gray-600 dark:text-gray-400">75%</span>
+          </div>
+          <div
+            class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden"
+          >
+            <div
+              class="bg-cyan-500 h-4 w-0 rounded-full transition-all duration-700 skill-bar"
+              data-width="75%"
+            ></div>
           </div>
         </div>
       </div>
 
       <!-- Tools & Others -->
       <div class="space-y-4">
-        <h4 class="text-xl font-semibold text-gray-700 dark:text-white">Tools & Others</h4>
+        <h4 class="text-xl font-semibold text-gray-700 dark:text-white">
+          Tools & Others
+        </h4>
 
         <!-- Git & GitHub -->
         <div class="skill">
           <div class="flex items-center justify-between mb-1">
             <div class="flex items-center gap-2">
-              <img src="{% static 'icons/git.svg' %}" class="w-5 h-5" alt="Git" />
+              <img
+                src="{% static 'icons/git.svg' %}"
+                class="skill-icon w-10 h-10 transition-transform duration-500 hover:rotate-[360deg] dark:invert drop-shadow-lg" 
+                alt="Git"
+              />
               <span class="text-gray-800 dark:text-white">Git & GitHub</span>
             </div>
             <span class="text-gray-600 dark:text-gray-400">85%</span>
           </div>
-          <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
-            <div class="bg-orange-500 h-4 w-0 rounded-full transition-all duration-700 skill-bar" data-width="85%"></div>
+          <div
+            class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden"
+          >
+            <div
+              class="bg-orange-500 h-4 w-0 rounded-full transition-all duration-700 skill-bar"
+              data-width="85%"
+            ></div>
           </div>
         </div>
 
@@ -265,13 +391,22 @@
         <div class="skill">
           <div class="flex items-center justify-between mb-1">
             <div class="flex items-center gap-2">
-              <img src="{% static 'icons/docker.svg' %}" class="w-5 h-5" alt="Docker" />
+              <img
+                src="{% static 'icons/docker.svg' %}"
+                class="skill-icon w-10 h-10 transition-transform duration-500 hover:rotate-[360deg] dark:invert drop-shadow-lg" 
+                alt="Docker"
+              />
               <span class="text-gray-800 dark:text-white">Docker</span>
             </div>
             <span class="text-gray-600 dark:text-gray-400">60%</span>
           </div>
-          <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
-            <div class="bg-blue-400 h-4 w-0 rounded-full transition-all duration-700 skill-bar" data-width="60%"></div>
+          <div
+            class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden"
+          >
+            <div
+              class="bg-blue-400 h-4 w-0 rounded-full transition-all duration-700 skill-bar"
+              data-width="60%"
+            ></div>
           </div>
         </div>
 
@@ -279,17 +414,47 @@
         <div class="skill">
           <div class="flex items-center justify-between mb-1">
             <div class="flex items-center gap-2">
-              <img src="{% static 'icons/postman.svg' %}" class="w-5 h-5" alt="Postman" />
+              <img
+                src="{% static 'icons/postman.svg' %}"
+                class="skill-icon w-10 h-10 transition-transform duration-500 hover:rotate-[360deg] dark:invert drop-shadow-lg" 
+                alt="Postman"
+              />
               <span class="text-gray-800 dark:text-white">Postman</span>
             </div>
             <span class="text-gray-600 dark:text-gray-400">75%</span>
           </div>
-          <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
-            <div class="bg-orange-400 h-4 w-0 rounded-full transition-all duration-700 skill-bar" data-width="75%"></div>
+          <div
+            class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden"
+          >
+            <div
+              class="bg-orange-400 h-4 w-0 rounded-full transition-all duration-700 skill-bar"
+              data-width="75%"
+            ></div>
+          </div>
+        </div>
+        <!-- n8n -->
+        <div class="skill">
+          <div class="flex items-center justify-between mb-1">
+            <div class="flex items-center gap-2">
+              <img
+                src="{% static 'icons/n8n.svg' %}"
+                class="skill-icon w-10 h-10 transition-transform duration-500 hover:rotate-[360deg] dark:invert drop-shadow-lg" 
+                alt="n8n"
+              />
+              <span class="text-gray-800 dark:text-white">n8n</span>
+            </div>
+            <span class="text-gray-600 dark:text-gray-400">65%</span>
+          </div>
+          <div
+            class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden"
+          >
+            <div
+              class="bg-orange-400 h-4 w-0 rounded-full transition-all duration-700 skill-bar"
+              data-width="65%"
+            ></div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -483,9 +648,9 @@
   let skillInterval;
 
   function animateSkills() {
-    skillBars.forEach(bar => {
-      bar.style.transition = "none";     // animasyonu geçici kapat
-      bar.style.width = "0%";            // sıfırla
+    skillBars.forEach((bar) => {
+      bar.style.transition = "none"; // animasyonu geçici kapat
+      bar.style.width = "0%"; // sıfırla
     });
 
     // Tarayıcının 0%'ı işlemesine fırsat vermek için küçük gecikme
@@ -500,25 +665,49 @@
     }, 50); // 50ms gecikme sayesinde animasyon düzgün başlar
   }
 
-  const observering = new IntersectionObserver((entries, observering) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !animationStarted) {
-        animationStarted = true;
-        animateSkills();
-
-        // Her 10 saniyede bir tekrar et
-        skillInterval = setInterval(() => {
+  const observering = new IntersectionObserver(
+    (entries, observering) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !animationStarted) {
+          animationStarted = true;
           animateSkills();
-        }, 5000);
 
-        observering.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.3
-  });
+          // Her 10 saniyede bir tekrar et
+          skillInterval = setInterval(() => {
+            animateSkills();
+          }, 5000);
+
+          observering.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.3,
+    }
+  );
 
   observering.observe(skillSection);
+</script>
+
+<!-- Icons animations -->
+<script>
+const icons = document.querySelectorAll(".skill-icon");
+
+const iconObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const icon = entry.target;
+      
+      // Class'ı resetleyip yeniden ekle
+      icon.classList.remove("animate-spin-once");
+      void icon.offsetWidth; // reflow hilesi
+      icon.classList.add("animate-spin-once");
+    }
+  });
+}, { threshold: 0.6 });
+
+icons.forEach(icon => iconObserver.observe(icon));
+
 </script>
 
 {% endblock %}
