@@ -1,0 +1,21 @@
+{% load static %}
+
+<div class="skill">
+  <div class="flex items-center justify-between mb-1">
+    <div class="flex items-center gap-2">
+      <img
+        src="{% static icon %}"
+        class="skill-icon w-10 h-10 transition-transform duration-500 hover:rotate-[360deg] dark:invert drop-shadow-lg"
+        alt="{{ name }}"
+      />
+      <span class="text-gray-800 dark:text-white">{{ name }}</span>
+    </div>
+    <span class="text-gray-600 dark:text-gray-400">{{ percentage }}%</span>
+  </div>
+  <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
+    <div
+      class="bg-{{ color }}-500 h-4 w-0 rounded-full transition-all duration-700 skill-bar"
+      data-width="{{ percentage }}%"
+    ></div>
+  </div>
+</div>
