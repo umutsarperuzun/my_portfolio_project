@@ -180,20 +180,31 @@
   </div>
 </section>
 
-<section id="projects" class="relative min-h-screen bg-gray-100 dark:bg-gray-900 py-24 scroll-mt-32 overflow-hidden">
-  <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Projects</h2>
+<section id="projects" class="relative min-h-screen bg-gray-100 dark:bg-zinc-900 py-20 overflow-hidden">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-12">Featured Projects</h2>
 
-  <div class="flex justify-center items-center relative z-10">
-    <!-- Ana kart -->
+    <!-- Ana Kart -->
     <div
       id="main-project-card"
-      class="w-[320px] h-[200px] bg-white dark:bg-zinc-800 text-gray-900 dark:text-white rounded-2xl shadow-xl flex flex-col justify-center items-center text-center transition-transform duration-500 will-change-transform"
+      class="relative z-20 transition-transform duration-700 scale-100 bg-white dark:bg-zinc-800 rounded-2xl shadow-xl w-full max-w-md mx-auto p-8 opacity-100"
     >
-      <h3 class="text-xl font-semibold mb-2">My Projects</h3>
-      <p class="text-sm text-gray-600 dark:text-gray-300 max-w-xs">Scroll down to reveal more.</p>
+      <h3 class="text-xl font-semibold mb-2 dark:text-white">AI-Powered Chatbot</h3>
+      <p class="text-gray-700 dark:text-gray-300">Fleet management için GPT destekli özel chatbot.</p>
+    </div>
+
+    <!-- Diğer Kartlar -->
+    <div id="other-projects" class="relative mt-10 flex justify-center gap-4 flex-wrap">
+      <!-- Kart 1–5 örnek -->
+      <div class="project-card opacity-0 scale-75 transition-all duration-700 absolute"></div>
+      <div class="project-card opacity-0 scale-75 transition-all duration-700 absolute"></div>
+      <div class="project-card opacity-0 scale-75 transition-all duration-700 absolute"></div>
+      <div class="project-card opacity-0 scale-75 transition-all duration-700 absolute"></div>
+      <div class="project-card opacity-0 scale-75 transition-all duration-700 absolute"></div>
     </div>
   </div>
 </section>
+
 
 
 <section
