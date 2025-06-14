@@ -448,5 +448,38 @@ const iconObserver = new IntersectionObserver((entries) => {
 icons.forEach(icon => iconObserver.observe(icon));
 
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const mainCard = document.getElementById("main-project-card");
+  const otherCards = document.querySelectorAll(".project-card");
+
+  // IntersectionObserver ile ana kart görünür olunca tetikle
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // 1️⃣ Ana kartı küçültüp geri plana it
+          mainCard.classList.add("scale-90");
+
+          // 2️⃣ Diğer kartları sırayla aç
+          otherCards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.remove("opacity-0", "scale-75");
+              card.classList.add("opacity-100", "scale-100");
+              card.style.transform = `translateX(${(index - 2) * 160}px) rotate(${(index - 2) * 5}deg)`;
+              card.style.zIndex = `${10 - index}`;
+            }, index * 250); // animasyon gecikmesi
+          });
+
+          observer.unobserve(entry.target); // sadece bir kere çalışsın
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  observer.observe(mainCard);
+});
+</script>
 
 {% endblock %}
