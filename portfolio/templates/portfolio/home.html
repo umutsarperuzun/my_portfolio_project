@@ -150,7 +150,6 @@
         <!-- Django -->
         {% include "portfolio/components/skill_item.html" with icon="icons/django.svg" name="Django" percentage="70" color="emerald" %}
       </div>
-
       <!-- Frontend -->
       <div class="space-y-4">
         <h4 class="text-xl font-semibold text-gray-700 dark:text-white">Frontend</h4>
@@ -163,7 +162,6 @@
         <!-- HTML -->
         {% include "portfolio/components/skill_item.html" with icon="icons/html.svg" name="HTML5" percentage="75" color="cyan" %}
       </div>
-
       <!-- Tools & Others -->
       <div class="space-y-4">
         <h4 class="text-xl font-semibold text-gray-700 dark:text-white">Tools & Others</h4>
@@ -179,40 +177,32 @@
     </div>
   </div>
 </section>
-
 <section
   id="projects"
-  class="relative min-h-screen py-20 bg-gray-100 dark:bg-gray-900 scroll-mt-32 overflow-hidden transition-colors duration-500"
+  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 scroll-mt-32"
 >
-
-  <div class="container mx-auto px-4 text-center">
-    <!-- Tek Kart: Başlık ve Trigger -->
-    <div
-      id="main-project-trigger"
-      class="cursor-pointer relative z-20 transition-transform duration-700 scale-100 bg-white dark:bg-zinc-800 rounded-2xl shadow-xl w-full max-w-md mx-auto p-10"
+  <div class="reveal-manual will-change-transform" data-section="projects">
+    <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">
+      Projects
+    </h2>
+    <p
+      class="text-center mt-4 max-w-xl mx-auto text-gray-800 dark:text-gray-300"
     >
-      <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Projects</h3>
-    </div>
-
-    <!-- Ayrılan Proje Kartları -->
-    <div
-      id="fanout-cards"
-      class="relative mt-10 flex justify-center items-center gap-4 flex-wrap pointer-events-none"
-    >
-      {% for i in "12345" %}
-      <div
-        class="fanout-card opacity-0 scale-75 transition-all duration-500 absolute bg-white dark:bg-zinc-800 text-gray-800 dark:text-white shadow-lg rounded-xl w-60 h-40 p-4 flex flex-col justify-center items-center"
-      >
-        <h4 class="font-semibold text-lg">Project {{ forloop.counter }}</h4>
-        <p class="text-sm text-center mt-2 text-gray-600 dark:text-gray-300">Açıklama</p>
-      </div>
-      {% endfor %}
-    </div>
+      I'm a passionate and detail-oriented Junior Software Developer with a
+      strong focus on building clean, scalable, and user-friendly web
+      applications. With a background in Computer Science (MSc, Distinction), I
+      have hands-on experience in both frontend and backend technologies
+      including Django, React, Tailwind CSS, and RESTful APIs. My projects range
+      from AI-powered chatbots and fleet management tools to e-commerce
+      dashboards and weather apps. I enjoy solving real-world problems through
+      code, continuously learning new technologies, and working on projects that
+      make a meaningful impact. Currently, I’m focused on enhancing my skills in
+      Django, Tailwind CSS, and JavaScript by building this portfolio from
+      scratch — combining technical depth with aesthetic polish. Let’s build
+      something meaningful together.
+    </p>
   </div>
 </section>
-
-
-
 
 <section
   id="blog"
@@ -437,39 +427,6 @@ const iconObserver = new IntersectionObserver((entries) => {
 
 icons.forEach(icon => iconObserver.observe(icon));
 
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const mainCard = document.getElementById("main-project-card");
-  const otherCards = document.querySelectorAll(".project-card");
-
-  // IntersectionObserver ile ana kart görünür olunca tetikle
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // 1️⃣ Ana kartı küçültüp geri plana it
-          mainCard.classList.add("scale-90");
-
-          // 2️⃣ Diğer kartları sırayla aç
-          otherCards.forEach((card, index) => {
-            setTimeout(() => {
-              card.classList.remove("opacity-0", "scale-75");
-              card.classList.add("opacity-100", "scale-100");
-              card.style.transform = `translateX(${(index - 2) * 160}px) rotate(${(index - 2) * 5}deg)`;
-              card.style.zIndex = `${10 - index}`;
-            }, index * 250); // animasyon gecikmesi
-          });
-
-          observer.unobserve(entry.target); // sadece bir kere çalışsın
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
-
-  observer.observe(mainCard);
-});
 </script>
 
 {% endblock %}
