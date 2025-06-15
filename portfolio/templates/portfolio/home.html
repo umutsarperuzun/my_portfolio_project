@@ -473,7 +473,10 @@ function initStarField() {
 
 function drawStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "white";
+
+  const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+  ctx.fillStyle = isDark ? "white" : "#111"; // Light modda yıldızlar koyu olur
+
   stars.forEach((star) => {
     ctx.beginPath();
     ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
@@ -484,6 +487,7 @@ function drawStars() {
       star.x = Math.random() * canvas.width;
     }
   });
+
   requestAnimationFrame(drawStars);
 }
 
