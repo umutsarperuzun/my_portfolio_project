@@ -179,16 +179,17 @@
 </section>
 <section
   id="projects"
-  class="relative min-h-screen bg-gray-100 dark:bg-gray-900 py-10 scroll-mt-32"
+  class="relative py-24 bg-gray-100 dark:bg-gray-900 py-10 scroll-mt-32"
 >
   <!-- Arka plan yıldızlar -->
   <canvas id="star-canvas" class="absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
 
   <!-- Explore Projects Alanı -->
-  <div
-    id="project-trigger"
-    class="flex justify-center items-center h-[300px] transition-all duration-700 relative z-10"
-  >
+<div
+  id="project-trigger"
+  class="flex justify-center items-center min-h-[80vh] md:min-h-[90vh] transition-all duration-700 relative z-10"
+>
+
     <div
       id="main-project-card"
       class="bg-white dark:bg-zinc-800 shadow-lg rounded-2xl px-12 py-20 text-center text-3xl font-bold text-gray-900 dark:text-white transition-transform duration-500 cursor-pointer hover:scale-105 hover:shadow-2xl hover:bg-gradient-to-r hover:from-indigo-500 hover:to-purple-500 dark:hover:brightness-110"
@@ -209,7 +210,7 @@
   <div class="max-w-6xl mx-auto">
     <div
       id="project-fanout"
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-10 opacity-0 transition-opacity duration-700 px-4"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 opacity-0 transition-opacity duration-700 px-4"
     >
       <div class="project-card hidden">Proje 1</div>
       <div class="project-card hidden">Proje 2</div>
@@ -502,13 +503,13 @@ mainCard.addEventListener('click', () => {
   const navbarHeight = document.querySelector("nav").offsetHeight;
 
   window.scrollTo({
-    top: offsetTop - navbarHeight - 16,
+    top: offsetTop - navbarHeight - 24 ,
     behavior: "smooth"
   });
 
 
   // Explore kartı gizle
-  trigger.classList.add('opacity-0', 'pointer-events-none', 'h-0');
+  trigger.classList.add('opacity-0', 'pointer-events-none', 'hidden');
   trigger.classList.remove('h-[300px]');
 
   // Başlık ve kartları göster
@@ -529,7 +530,7 @@ mainCard.addEventListener('click', () => {
 const obsrvr = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (!entry.isIntersecting && opened) {
-      trigger.classList.remove('opacity-0', 'pointer-events-none', 'h-0');
+      trigger.classList.remove('opacity-0', 'pointer-events-none', 'hidden');
       trigger.classList.add('h-[300px]');
 
       heading.classList.add('opacity-0');
@@ -547,7 +548,5 @@ const obsrvr = new IntersectionObserver((entries) => {
 
 obsrvr.observe(document.getElementById('projects'));
 </script>
-
-
 
 {% endblock %}
