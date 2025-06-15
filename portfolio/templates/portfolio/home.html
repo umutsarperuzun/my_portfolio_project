@@ -177,32 +177,50 @@
     </div>
   </div>
 </section>
+
 <section
   id="projects"
-  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 scroll-mt-32"
+  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 scroll-mt-32 relative"
 >
-  <div class="reveal-manual will-change-transform" data-section="projects">
-    <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">
-      Projects
-    </h2>
-    <p
-      class="text-center mt-4 max-w-xl mx-auto text-gray-800 dark:text-gray-300"
-    >
-      I'm a passionate and detail-oriented Junior Software Developer with a
-      strong focus on building clean, scalable, and user-friendly web
-      applications. With a background in Computer Science (MSc, Distinction), I
-      have hands-on experience in both frontend and backend technologies
-      including Django, React, Tailwind CSS, and RESTful APIs. My projects range
-      from AI-powered chatbots and fleet management tools to e-commerce
-      dashboards and weather apps. I enjoy solving real-world problems through
-      code, continuously learning new technologies, and working on projects that
-      make a meaningful impact. Currently, I’m focused on enhancing my skills in
-      Django, Tailwind CSS, and JavaScript by building this portfolio from
-      scratch — combining technical depth with aesthetic polish. Let’s build
-      something meaningful together.
-    </p>
+<div
+  id="project-trigger"
+  class="flex justify-center items-center h-[300px] mt-10 transition-transform duration-700 scale-100"
+>
+
+
+  <div
+    id="main-project-card"
+    class="bg-white dark:bg-zinc-800 shadow-lg rounded-2xl px-12 py-20 text-center text-3xl font-bold text-gray-900 dark:text-white transition-all duration-700 cursor-pointer"
+  >
+    Open Projects
   </div>
+</div>
+<!-- Başlık -->
+<h2
+  id="project-heading"
+  class="text-3xl font-bold text-center text-gray-900 dark:text-white opacity-0 transition-opacity duration-700"
+>
+  Projects
+</h2>
+
+<!-- Wrapper (max width sınırlı) -->
+<div class="max-w-6xl mx-auto">
+<div
+  id="project-fanout"
+  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-10 opacity-0 transition-opacity duration-700 px-4"
+>
+
+  <div class="project-card hidden">Proje 1</div>
+  <div class="project-card hidden">Proje 2</div>
+  <div class="project-card hidden">Proje 3</div>
+  <div class="project-card hidden">Proje 4</div>
+  <div class="project-card hidden">Proje 5</div>
+</div>
+
+
+
 </section>
+
 
 <section
   id="blog"
@@ -428,5 +446,66 @@ const iconObserver = new IntersectionObserver((entries) => {
 icons.forEach(icon => iconObserver.observe(icon));
 
 </script>
+
+<script>
+const trigger = document.getElementById('project-trigger');
+const mainCard = document.getElementById('main-project-card');
+const fanout = document.getElementById('project-fanout');
+const heading = document.getElementById('project-heading');
+const cards = document.querySelectorAll('.project-card');
+
+let opened = false;
+
+mainCard.addEventListener('click', () => {
+  if (opened) return;
+
+  // Ana kartı gizle ve yüksekliğini sıfırla
+  trigger.classList.add('opacity-0', 'pointer-events-none', 'h-0');
+  trigger.classList.remove('h-[300px]');
+
+  // Başlık göster
+  heading.classList.remove('opacity-0');
+
+  // Kartları sırayla göster
+  fanout.classList.remove('opacity-0');
+  cards.forEach((card, index) => {
+    setTimeout(() => {
+      card.classList.remove('hidden');
+      card.style.opacity = "1";
+      card.style.transform = "scale(1)";
+    }, 150 * index);
+  });
+
+  opened = true;
+});
+
+// Scroll ile geri gelince animasyonu sıfırla
+const obsrvr = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting && opened) {
+      // Ana kartı geri getir
+      trigger.classList.remove('opacity-0', 'pointer-events-none', 'h-0');
+      trigger.classList.add('h-[300px]');
+
+      // Başlık ve kartları sıfırla
+      heading.classList.add('opacity-0');
+      fanout.classList.add('opacity-0');
+      cards.forEach(card => {
+        card.classList.add('hidden');
+        card.style.opacity = "0";
+        card.style.transform = "scale(0.9)";
+      });
+
+      opened = false;
+    }
+  });
+}, { threshold: 0.3 });
+
+const section = document.getElementById('projects'); 
+obsrvr.observe(section);
+
+</script>
+
+
 
 {% endblock %}
