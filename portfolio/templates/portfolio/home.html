@@ -494,10 +494,14 @@ document.addEventListener("DOMContentLoaded", initStarField);
 mainCard.addEventListener('click', () => {
   if (opened) return;
 
+  const offsetTop = document.getElementById("projects").offsetTop;
+  const navbarHeight = document.querySelector("nav").offsetHeight;
+
   window.scrollTo({
-    top: document.getElementById("projects").offsetTop,
+    top: offsetTop - navbarHeight - 16,
     behavior: "smooth"
   });
+
 
   // Explore kartı gizle
   trigger.classList.add('opacity-0', 'pointer-events-none', 'h-0');
