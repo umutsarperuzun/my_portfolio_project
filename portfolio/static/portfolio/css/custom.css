@@ -71,3 +71,29 @@
   background-color: #1f2937;
   color: white;
 }
+
+@keyframes pulse-scale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+#main-project-card {
+  animation: pulse-scale 2.5s infinite ease-in-out;
+}
+
+
+#main-project-card {
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+#main-project-card::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: 1rem;
+  background: linear-gradient(45deg, #6366f1, #8b5cf6);
+  filter: blur(8px);
+}

@@ -177,50 +177,48 @@
     </div>
   </div>
 </section>
-
 <section
   id="projects"
-  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 scroll-mt-32 relative"
+  class="relative min-h-screen bg-gray-100 dark:bg-gray-900 py-10 scroll-mt-32"
 >
-<div
-  id="project-trigger"
-  class="flex justify-center items-center h-[300px] mt-10 transition-transform duration-700 scale-100"
->
+  <!-- Arka plan yıldızlar -->
+  <canvas id="star-canvas" class="absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
 
-
+  <!-- Explore Projects Alanı -->
   <div
-    id="main-project-card"
-    class="bg-white dark:bg-zinc-800 shadow-lg rounded-2xl px-12 py-20 text-center text-3xl font-bold text-gray-900 dark:text-white transition-all duration-700 cursor-pointer"
+    id="project-trigger"
+    class="flex justify-center items-center h-[300px] transition-all duration-700 relative z-10"
   >
-    Open Projects
+    <div
+      id="main-project-card"
+      class="bg-white dark:bg-zinc-800 shadow-lg rounded-2xl px-12 py-20 text-center text-3xl font-bold text-gray-900 dark:text-white transition-transform duration-500 cursor-pointer hover:scale-105 hover:shadow-2xl hover:bg-gradient-to-r hover:from-indigo-500 hover:to-purple-500 dark:hover:brightness-110"
+    >
+      🚀 Explore Projects
+    </div>
   </div>
-</div>
-<!-- Başlık -->
-<h2
-  id="project-heading"
-  class="text-3xl font-bold text-center text-gray-900 dark:text-white opacity-0 transition-opacity duration-700"
->
-  Projects
-</h2>
 
-<!-- Wrapper (max width sınırlı) -->
-<div class="max-w-6xl mx-auto">
-<div
-  id="project-fanout"
-  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-10 opacity-0 transition-opacity duration-700 px-4"
->
+  <!-- Başlık -->
+  <h2
+    id="project-heading"
+    class="text-3xl font-bold text-center text-gray-900 dark:text-white opacity-0 transition-opacity duration-700"
+  >
+    Projects
+  </h2>
 
-  <div class="project-card hidden">Proje 1</div>
-  <div class="project-card hidden">Proje 2</div>
-  <div class="project-card hidden">Proje 3</div>
-  <div class="project-card hidden">Proje 4</div>
-  <div class="project-card hidden">Proje 5</div>
-</div>
-
-
-
+  <!-- Kartlar -->
+  <div class="max-w-6xl mx-auto">
+    <div
+      id="project-fanout"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-10 opacity-0 transition-opacity duration-700 px-4"
+    >
+      <div class="project-card hidden">Proje 1</div>
+      <div class="project-card hidden">Proje 2</div>
+      <div class="project-card hidden">Proje 3</div>
+      <div class="project-card hidden">Proje 4</div>
+      <div class="project-card hidden">Proje 5</div>
+    </div>
+  </div>
 </section>
-
 
 <section
   id="blog"
@@ -446,27 +444,67 @@ const iconObserver = new IntersectionObserver((entries) => {
 icons.forEach(icon => iconObserver.observe(icon));
 
 </script>
-
 <script>
 const trigger = document.getElementById('project-trigger');
 const mainCard = document.getElementById('main-project-card');
 const fanout = document.getElementById('project-fanout');
 const heading = document.getElementById('project-heading');
 const cards = document.querySelectorAll('.project-card');
+const canvas = document.getElementById("star-canvas");
+const ctx = canvas.getContext("2d");
 
 let opened = false;
+let stars = [];
 
+// ⭐ Yıldız animasyonu
+function initStarField() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  stars = Array.from({ length: 100 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    radius: Math.random() * 1.5,
+    speed: 0.3 + Math.random() * 0.5,
+  }));
+
+  drawStars();
+}
+
+function drawStars() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "white";
+  stars.forEach((star) => {
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+    ctx.fill();
+    star.y += star.speed;
+    if (star.y > canvas.height) {
+      star.y = 0;
+      star.x = Math.random() * canvas.width;
+    }
+  });
+  requestAnimationFrame(drawStars);
+}
+
+// Yıldızlar her zaman çalışsın
+document.addEventListener("DOMContentLoaded", initStarField);
+
+// Kart tıklanma olayı
 mainCard.addEventListener('click', () => {
   if (opened) return;
 
-  // Ana kartı gizle ve yüksekliğini sıfırla
+  window.scrollTo({
+    top: document.getElementById("projects").offsetTop,
+    behavior: "smooth"
+  });
+
+  // Explore kartı gizle
   trigger.classList.add('opacity-0', 'pointer-events-none', 'h-0');
   trigger.classList.remove('h-[300px]');
 
-  // Başlık göster
+  // Başlık ve kartları göster
   heading.classList.remove('opacity-0');
-
-  // Kartları sırayla göster
   fanout.classList.remove('opacity-0');
   cards.forEach((card, index) => {
     setTimeout(() => {
@@ -479,15 +517,13 @@ mainCard.addEventListener('click', () => {
   opened = true;
 });
 
-// Scroll ile geri gelince animasyonu sıfırla
+// Scroll ile geri gelince sıfırlama
 const obsrvr = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (!entry.isIntersecting && opened) {
-      // Ana kartı geri getir
       trigger.classList.remove('opacity-0', 'pointer-events-none', 'h-0');
       trigger.classList.add('h-[300px]');
 
-      // Başlık ve kartları sıfırla
       heading.classList.add('opacity-0');
       fanout.classList.add('opacity-0');
       cards.forEach(card => {
@@ -501,9 +537,7 @@ const obsrvr = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.3 });
 
-const section = document.getElementById('projects'); 
-obsrvr.observe(section);
-
+obsrvr.observe(document.getElementById('projects'));
 </script>
 
 
