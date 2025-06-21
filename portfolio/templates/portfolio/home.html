@@ -177,16 +177,16 @@
     </div>
   </div>
 </section>
-<section
+<!-- <section
   id="projects"
   class="relative bg-gray-100 dark:bg-gray-900 scroll-mt-32 pt-24 pb-10"
->
+> -->
 
   <!-- Arka plan yıldızlar -->
-  <canvas id="star-canvas" class="absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
+  <!-- <canvas id="star-canvas" class="absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas> -->
 
   <!-- Explore Projects Alanı -->
-<div
+<!-- <div
   id="project-trigger"
   class="flex justify-center items-center transition-all duration-700 relative z-10"
 >
@@ -199,15 +199,15 @@
     >
       🚀 Explore Projects
     </div>
-  </div>
+  </div> -->
 
   <!-- Başlık -->
-  <h2 id="project-heading" class="text-3xl font-bold text-center text-gray-900 dark:text-white opacity-0 transition-opacity duration-700 mb-2 md:mb-8">
+  <!-- <h2 id="project-heading" class="text-3xl font-bold text-center text-gray-900 dark:text-white opacity-0 transition-opacity duration-700 mb-2 md:mb-8">
     Projects
-  </h2>
+  </h2> -->
 
   <!-- Kartlar -->
-  <div class="max-w-6xl mx-auto">
+  <!-- <div class="max-w-6xl mx-auto">
     <div
       id="project-fanout"
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 opacity-0 transition-opacity duration-700 px-4"
@@ -219,7 +219,53 @@
       <div class="project-card hidden">Proje 5</div>
     </div>
   </div>
+</section> -->
+
+<section id="projects" class="relative min-h-screen py-20 bg-gray-100 dark:bg-gray-900 scroll-mt-32">
+  <!-- Ana Kart -->
+  <div class="flex justify-center">
+    <div
+      id="project-toggle"
+      class="bg-white dark:bg-zinc-800 px-12 py-20 text-3xl font-bold text-center text-gray-900 dark:text-white rounded-2xl shadow-lg transition-transform duration-500 cursor-pointer hover:scale-105 hover:shadow-2xl"
+    >
+      🚀 Explore Projects
+    </div>
+  </div>
+
+  <!-- Kartlar Grid -->
+  <div
+    id="project-grid"
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-12 px-4 opacity-0 scale-95 pointer-events-none transition-all duration-700"
+  >
+    <!-- Örnek Kart (5 tane olacak) -->
+    <div class="project-card group relative perspective">
+      <div class="project-card-inner bg-white dark:bg-zinc-800 w-full h-full rounded-xl shadow-md flex items-center justify-center text-xl font-bold text-gray-800 dark:text-white">
+        Proje 1
+      </div>
+    </div>
+    <!-- Diğer 4 kartı kopyalayabilirsin -->
+  </div>
+
+  <!-- Büyüyen Kart Modal -->
+  <div
+    id="project-modal"
+    class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden z-50 flex items-start justify-center pt-20"
+  >
+    <div
+      id="expanded-card"
+      class="relative bg-white dark:bg-zinc-900 rounded-2xl p-8 w-[90%] max-w-3xl transform scale-0 transition-transform duration-700"
+    >
+      <button id="modal-close" class="absolute top-4 right-4 text-2xl text-gray-700 dark:text-white hover:text-red-500">
+        ✖
+      </button>
+      <h3 class="text-2xl font-bold mb-4">Project Title</h3>
+      <p class="text-gray-700 dark:text-gray-300">
+        Project details will go here. You can describe your tech stack, features, etc.
+      </p>
+    </div>
+  </div>
 </section>
+
 
 <section
   id="blog"
@@ -548,5 +594,36 @@ const obsrvr = new IntersectionObserver((entries) => {
 
 obsrvr.observe(document.getElementById('projects'));
 </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const projectCards = document.querySelectorAll('.project-card');
+
+    projectCards.forEach(card => {
+      const inner = card.querySelector('.project-card-inner');
+
+      if (!inner) return;
+
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * -10;
+        const rotateY = ((x - centerX) / centerX) * 10;
+
+        inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        inner.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      });
+    });
+  });
+</script>
+
+
 
 {% endblock %}
