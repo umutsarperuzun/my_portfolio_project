@@ -181,32 +181,18 @@
   id="projects"
   class="relative bg-gray-100 dark:bg-gray-900 scroll-mt-32 pt-24 pb-10"
 >
+
   <!-- Arka plan yıldızlar -->
   <canvas id="star-canvas" class="absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
 
-  <!-- Overlay (blur alan) -->
-  <div
-    id="project-overlay"
-    class="fixed inset-0 z-40 bg-black bg-opacity-50 backdrop-blur-sm hidden"
-  ></div>
+  <!-- Explore Projects Alanı -->
+<div
+  id="project-trigger"
+  class="flex justify-center items-center transition-all duration-700 relative z-10"
+>
 
-  <!-- Büyüyen kart alanı -->
-  <div
-    id="project-expanded"
-    class="fixed inset-0 z-50 flex justify-center items-center hidden"
-  >
-    <div class="relative w-11/12 max-w-3xl bg-white dark:bg-zinc-800 rounded-xl shadow-xl p-6 transform transition-all duration-500 scale-100 rotate-0">
-      <button id="close-expanded" class="absolute top-4 right-4 text-xl font-bold text-gray-800 dark:text-gray-200">✕</button>
-      <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Project Title</h3>
-      <p class="text-gray-700 dark:text-gray-300">Here you can add project details, links, tech used, etc.</p>
-    </div>
-  </div>
 
-  <!-- Explore Projects Kartı -->
-  <div
-    id="project-trigger"
-    class="flex justify-center items-center transition-all duration-700 relative z-10"
-  >
+
     <div
       id="main-project-card"
       class="bg-white dark:bg-zinc-800 shadow-lg rounded-2xl px-12 py-20 text-center text-3xl font-bold text-gray-900 dark:text-white transition-transform duration-500 cursor-pointer hover:scale-105 hover:shadow-2xl hover:bg-gradient-to-r hover:from-indigo-500 hover:to-purple-500 dark:hover:brightness-110"
@@ -226,51 +212,37 @@
       id="project-fanout"
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 opacity-0 transition-opacity duration-700 px-4"
     >
-      <!-- Tekil Proje Kartı -->
-      <div class="project-card hidden">
-        <div class="project-card-inner w-full h-full rounded-xl">
-          <div class="project-card-front flex justify-center items-center w-full h-full rounded-xl bg-white dark:bg-zinc-800 text-gray-800 dark:text-white font-bold text-lg">
-            Proje 1
-          </div>
-          <div class="project-card-back hidden">
-            <!-- Opsiyonel arka yüz içeriği -->
-          </div>
-        </div>
-      </div>
-
-      <!-- Diğer kartlar (aynı yapıda) -->
-      <div class="project-card hidden">
-        <div class="project-card-inner w-full h-full rounded-xl">
-          <div class="project-card-front flex justify-center items-center w-full h-full rounded-xl bg-white dark:bg-zinc-800 text-gray-800 dark:text-white font-bold text-lg">
-            Proje 2
-          </div>
-        </div>
-      </div>
+<div class="project-card hidden">
+  <div class="project-card-inner">
+    <h3 class="text-xl font-semibold">Proje 1</h3>
+    <p class="text-sm mt-2">Kısa açıklama buraya</p>
+  </div>
+</div>
 
       <div class="project-card hidden">
-        <div class="project-card-inner w-full h-full rounded-xl">
-          <div class="project-card-front flex justify-center items-center w-full h-full rounded-xl bg-white dark:bg-zinc-800 text-gray-800 dark:text-white font-bold text-lg">
-            Proje 3
-          </div>
-        </div>
-      </div>
-
+  <div class="project-card-inner">
+    <h3 class="text-xl font-semibold">Proje 1</h3>
+    <p class="text-sm mt-2">Kısa açıklama buraya</p>
+  </div>
+</div>
       <div class="project-card hidden">
-        <div class="project-card-inner w-full h-full rounded-xl">
-          <div class="project-card-front flex justify-center items-center w-full h-full rounded-xl bg-white dark:bg-zinc-800 text-gray-800 dark:text-white font-bold text-lg">
-            Proje 4
-          </div>
-        </div>
-      </div>
-
+  <div class="project-card-inner">
+    <h3 class="text-xl font-semibold">Proje 1</h3>
+    <p class="text-sm mt-2">Kısa açıklama buraya</p>
+  </div>
+</div>
       <div class="project-card hidden">
-        <div class="project-card-inner w-full h-full rounded-xl">
-          <div class="project-card-front flex justify-center items-center w-full h-full rounded-xl bg-white dark:bg-zinc-800 text-gray-800 dark:text-white font-bold text-lg">
-            Proje 5
-          </div>
-        </div>
-      </div>
-
+  <div class="project-card-inner">
+    <h3 class="text-xl font-semibold">Proje 1</h3>
+    <p class="text-sm mt-2">Kısa açıklama buraya</p>
+  </div>
+</div>
+      <div class="project-card hidden">
+  <div class="project-card-inner">
+    <h3 class="text-xl font-semibold">Proje 1</h3>
+    <p class="text-sm mt-2">Kısa açıklama buraya</p>
+  </div>
+</div>
     </div>
   </div>
 </section>
@@ -604,14 +576,11 @@ obsrvr.observe(document.getElementById('projects'));
 </script>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  function activateTiltEffect() {
+    console.log("🎯 Tilt effect başlatıldı");
     const projectCards = document.querySelectorAll('.project-card');
 
     projectCards.forEach(card => {
-      const inner = card.querySelector('.project-card-inner');
-
-      if (!inner) return;
-
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -619,19 +588,58 @@ obsrvr.observe(document.getElementById('projects'));
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
 
-        const rotateX = ((y - centerY) / centerY) * -10;
-        const rotateY = ((x - centerX) / centerX) * 10;
+        const rotateX = ((y - centerY) / centerY) * -20;
+        const rotateY = ((x - centerX) / centerX) * 20;
 
-        inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
       });
 
       card.addEventListener('mouseleave', () => {
-        inner.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        card.style.transform = 'rotateX(0deg) rotateY(0deg)';
       });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("💡 JS başlatıldı");
+
+    const mainCard = document.getElementById('main-project-card');
+    const trigger = document.getElementById('project-trigger');
+    const heading = document.getElementById('project-heading');
+    const fanout = document.getElementById('project-fanout');
+    const cards = document.querySelectorAll('.project-card');
+    let opened = false;
+
+    mainCard.addEventListener('click', () => {
+      if (opened) return;
+
+      const offsetTop = document.getElementById("projects").offsetTop;
+      const navbarHeight = document.querySelector("nav").offsetHeight;
+
+      window.scrollTo({
+        top: offsetTop - navbarHeight - 12,
+        behavior: "smooth"
+      });
+
+      // Kartları aç
+      trigger.classList.add('opacity-0', 'pointer-events-none', 'hidden');
+      heading.classList.remove('opacity-0');
+      fanout.classList.remove('opacity-0');
+
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.classList.remove('hidden');
+          card.style.opacity = "1";
+          card.style.transform = "scale(1)";
+        }, 150 * index);
+      });
+
+      // ✨ Tilt effect burada başlatılıyor
+      activateTiltEffect();
+      opened = true;
     });
   });
 </script>
-
 
 
 {% endblock %}
