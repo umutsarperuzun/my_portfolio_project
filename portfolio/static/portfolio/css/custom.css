@@ -152,19 +152,6 @@
   justify-content: center;
 }
 
-/* Blur arka plan (her kartın içinde) */
-.card-overlay {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(6px);
-  z-index: 40;
-  display: none;
-}
-
-.project-card.active .card-overlay {
-  display: block;
-}
 
 /* Close butonu (her kartın içinde) */
 .card-close {
@@ -183,3 +170,14 @@
 .project-card.active .card-close {
   display: block;
 }
+
+@keyframes flip360 {
+  0% { transform: translate(-50%, -50%) rotateY(0deg) scale(1.6); }
+  100% { transform: translate(-50%, -50%) rotateY(360deg) scale(1.6); }
+}
+
+.project-card.active {
+  animation: flip360 0.6s ease forwards;
+
+}
+

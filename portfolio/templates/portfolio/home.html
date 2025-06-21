@@ -218,36 +218,51 @@
     <h3 class="text-xl font-semibold">Proje 1</h3>
     <p class="text-sm mt-2">Kısa açıklama buraya</p>
   </div>
+  <div class="card-overlay"></div>
+  <button class="card-close">✖</button>
 </div>
 
 
-  <div class="project-card hidden cursor-pointer" data-title="Proje 1" data-description="Bu proje yapay zeka destekli bir sistemdir.">
-  <div class="project-card-inner">
-    <h3 class="text-xl font-semibold">Proje 1</h3>
-    <p class="text-sm mt-2">Kısa açıklama buraya</p>
-  </div>
-</div>
 
 <div class="project-card hidden cursor-pointer" data-title="Proje 1" data-description="Bu proje yapay zeka destekli bir sistemdir.">
   <div class="project-card-inner">
     <h3 class="text-xl font-semibold">Proje 1</h3>
     <p class="text-sm mt-2">Kısa açıklama buraya</p>
   </div>
+  <div class="card-overlay"></div>
+  <button class="card-close">✖</button>
 </div>
+
 
 <div class="project-card hidden cursor-pointer" data-title="Proje 1" data-description="Bu proje yapay zeka destekli bir sistemdir.">
   <div class="project-card-inner">
     <h3 class="text-xl font-semibold">Proje 1</h3>
     <p class="text-sm mt-2">Kısa açıklama buraya</p>
   </div>
+  <div class="card-overlay"></div>
+  <button class="card-close">✖</button>
 </div>
+
 
 <div class="project-card hidden cursor-pointer" data-title="Proje 1" data-description="Bu proje yapay zeka destekli bir sistemdir.">
   <div class="project-card-inner">
     <h3 class="text-xl font-semibold">Proje 1</h3>
     <p class="text-sm mt-2">Kısa açıklama buraya</p>
   </div>
+  <div class="card-overlay"></div>
+  <button class="card-close">✖</button>
 </div>
+
+
+<div class="project-card hidden cursor-pointer" data-title="Proje 1" data-description="Bu proje yapay zeka destekli bir sistemdir.">
+  <div class="project-card-inner">
+    <h3 class="text-xl font-semibold">Proje 1</h3>
+    <p class="text-sm mt-2">Kısa açıklama buraya</p>
+  </div>
+  <div class="card-overlay"></div>
+  <button class="card-close">✖</button>
+</div>
+
 
     </div>
   </div>
@@ -662,7 +677,7 @@ obsrvr.observe(document.getElementById('projects'));
 </script>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll(".project-card");
   const popup = document.getElementById("project-popup");
   const overlay = document.getElementById("overlay-blur");
@@ -673,24 +688,39 @@ document.addEventListener("DOMContentLoaded", () => {
       const title = card.getAttribute("data-title") || "Proje";
       const desc = card.getAttribute("data-description") || "Detay açıklama buraya.";
 
+      // İçeriği güncelle
       document.getElementById("popup-title").textContent = title;
       document.getElementById("popup-desc").textContent = desc;
 
+      // Aktif class ile animasyonlu büyütme ve dönüş
+      card.classList.add("active");
+
+      // Popup ve blur göster
       popup.classList.remove("hidden");
       overlay.classList.remove("hidden");
+
+      // Blur arkaplan üstüne kart oturacaksa, popup'ı gizle → sadece kart büyüsün
+      popup.classList.add("invisible");
     });
   });
 
-  closeBtn.addEventListener("click", () => {
-    popup.classList.add("hidden");
-    overlay.classList.add("hidden");
-  });
+  function closePopup() {
+    // Kart dönüşünü geri al
+    const activeCard = document.querySelector(".project-card.active");
+    if (activeCard) {
+      activeCard.classList.remove("active");
+    }
 
-  overlay.addEventListener("click", () => {
+    // Popup ve blur gizle
+    popup.classList.remove("invisible");
     popup.classList.add("hidden");
     overlay.classList.add("hidden");
-  });
+  }
+
+  closeBtn.addEventListener("click", closePopup);
+  overlay.addEventListener("click", closePopup);
 });
+
 </script>
 
 
