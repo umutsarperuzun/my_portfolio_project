@@ -213,53 +213,62 @@
   class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 px-4"
 >
 
-<div class="project-card hidden cursor-pointer" data-title="Proje 1" data-description="Bu proje yapay zeka destekli bir sistemdir.">
+<div class="project-card"
+     data-title="AI Destekli Sistem"
+     data-description="Bu proje yapay zeka kullanarak araç takip ve veri analizi yapar.">
   <div class="project-card-inner">
     <h3 class="text-xl font-semibold">Proje 1</h3>
-    <p class="text-sm mt-2">Kısa açıklama buraya</p>
+    <p class="text-sm mt-2">Kısa bilgi</p>
   </div>
-  <div class="card-overlay"></div>
   <button class="card-close">✖</button>
 </div>
 
 
 
-<div class="project-card hidden cursor-pointer" data-title="Proje 1" data-description="Bu proje yapay zeka destekli bir sistemdir.">
+
+<div class="project-card"
+     data-title="AI Destekli Sistem"
+     data-description="Bu proje yapay zeka kullanarak araç takip ve veri analizi yapar.">
   <div class="project-card-inner">
     <h3 class="text-xl font-semibold">Proje 1</h3>
-    <p class="text-sm mt-2">Kısa açıklama buraya</p>
+    <p class="text-sm mt-2">Kısa bilgi</p>
   </div>
-  <div class="card-overlay"></div>
   <button class="card-close">✖</button>
 </div>
 
 
-<div class="project-card hidden cursor-pointer" data-title="Proje 1" data-description="Bu proje yapay zeka destekli bir sistemdir.">
+
+<div class="project-card"
+     data-title="AI Destekli Sistem"
+     data-description="Bu proje yapay zeka kullanarak araç takip ve veri analizi yapar.">
   <div class="project-card-inner">
     <h3 class="text-xl font-semibold">Proje 1</h3>
-    <p class="text-sm mt-2">Kısa açıklama buraya</p>
+    <p class="text-sm mt-2">Kısa bilgi</p>
   </div>
-  <div class="card-overlay"></div>
   <button class="card-close">✖</button>
 </div>
 
 
-<div class="project-card hidden cursor-pointer" data-title="Proje 1" data-description="Bu proje yapay zeka destekli bir sistemdir.">
+
+<div class="project-card"
+     data-title="AI Destekli Sistem"
+     data-description="Bu proje yapay zeka kullanarak araç takip ve veri analizi yapar.">
   <div class="project-card-inner">
     <h3 class="text-xl font-semibold">Proje 1</h3>
-    <p class="text-sm mt-2">Kısa açıklama buraya</p>
+    <p class="text-sm mt-2">Kısa bilgi</p>
   </div>
-  <div class="card-overlay"></div>
   <button class="card-close">✖</button>
 </div>
 
 
-<div class="project-card hidden cursor-pointer" data-title="Proje 1" data-description="Bu proje yapay zeka destekli bir sistemdir.">
+
+<div class="project-card"
+     data-title="AI Destekli Sistem"
+     data-description="Bu proje yapay zeka kullanarak araç takip ve veri analizi yapar.">
   <div class="project-card-inner">
     <h3 class="text-xl font-semibold">Proje 1</h3>
-    <p class="text-sm mt-2">Kısa açıklama buraya</p>
+    <p class="text-sm mt-2">Kısa bilgi</p>
   </div>
-  <div class="card-overlay"></div>
   <button class="card-close">✖</button>
 </div>
 
@@ -269,14 +278,6 @@
   <!-- Blur Arkaplan -->
 <div id="overlay-blur" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 hidden"></div>
 
-<!-- Detaylı kart gösterimi -->
-<div id="project-popup" class="fixed inset-0 flex items-center justify-center z-50 hidden">
-  <div class="bg-white dark:bg-zinc-800 rounded-2xl p-8 w-[90%] max-w-xl shadow-2xl text-center transform transition-transform duration-500 scale-100 rotate-[0deg]">
-    <button id="popup-close" class="absolute top-4 right-4 text-gray-700 dark:text-white text-xl">✖</button>
-    <h3 id="popup-title" class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Proje Başlığı</h3>
-    <p id="popup-desc" class="text-gray-700 dark:text-gray-300">Proje açıklaması buraya gelecek.</p>
-  </div>
-</div>
 
 </section>
 
@@ -678,50 +679,62 @@ obsrvr.observe(document.getElementById('projects'));
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".project-card");
-  const popup = document.getElementById("project-popup");
-  const overlay = document.getElementById("overlay-blur");
-  const closeBtn = document.getElementById("popup-close");
+    const cards = document.querySelectorAll(".project-card");
+    const overlay = document.getElementById("overlay-blur");
 
-  cards.forEach(card => {
-    card.addEventListener("click", () => {
-      const title = card.getAttribute("data-title") || "Proje";
-      const desc = card.getAttribute("data-description") || "Detay açıklama buraya.";
+    cards.forEach(card => {
+      const closeBtn = card.querySelector(".card-close");
+      const innerTitle = card.querySelector("h3");
+      const innerDesc = card.querySelector("p");
 
-      // İçeriği güncelle
-      document.getElementById("popup-title").textContent = title;
-      document.getElementById("popup-desc").textContent = desc;
+      // Orijinal içerikleri sakla
+      card.dataset.originalTitle = innerTitle.textContent;
+      card.dataset.originalDesc = innerDesc.textContent;
 
-      // Aktif class ile animasyonlu büyütme ve dönüş
-      card.classList.add("active");
+      // Kart tıklanınca detaylı içeriğe geç
+      card.addEventListener("click", () => {
+        card.classList.add("active");
+        overlay.classList.remove("hidden");
 
-      // Popup ve blur göster
-      popup.classList.remove("hidden");
-      overlay.classList.remove("hidden");
+        // Detay içeriği göster
+        const detailTitle = card.getAttribute("data-title");
+        const detailDesc = card.getAttribute("data-description");
 
-      // Blur arkaplan üstüne kart oturacaksa, popup'ı gizle → sadece kart büyüsün
-      popup.classList.add("invisible");
+        if (detailTitle) innerTitle.textContent = detailTitle;
+        if (detailDesc) innerDesc.textContent = detailDesc;
+      });
+
+      // Kapatma butonuna tıklanınca orijinal içeriğe dön
+      if (closeBtn) {
+        closeBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          card.classList.remove("active");
+          overlay.classList.add("hidden");
+
+          // İçeriği eski haline getir
+          innerTitle.textContent = card.dataset.originalTitle || "";
+          innerDesc.textContent = card.dataset.originalDesc || "";
+        });
+      }
+    });
+
+    // Arka plan blur'a tıklanırsa tüm kartları kapat
+    overlay.addEventListener("click", () => {
+      document.querySelectorAll(".project-card.active").forEach(card => {
+        card.classList.remove("active");
+
+        const innerTitle = card.querySelector("h3");
+        const innerDesc = card.querySelector("p");
+
+        innerTitle.textContent = card.dataset.originalTitle || "";
+        innerDesc.textContent = card.dataset.originalDesc || "";
+      });
+
+      overlay.classList.add("hidden");
     });
   });
-
-  function closePopup() {
-    // Kart dönüşünü geri al
-    const activeCard = document.querySelector(".project-card.active");
-    if (activeCard) {
-      activeCard.classList.remove("active");
-    }
-
-    // Popup ve blur gizle
-    popup.classList.remove("invisible");
-    popup.classList.add("hidden");
-    overlay.classList.add("hidden");
-  }
-
-  closeBtn.addEventListener("click", closePopup);
-  overlay.addEventListener("click", closePopup);
-});
-
 </script>
+
 
 
 {% endblock %}
