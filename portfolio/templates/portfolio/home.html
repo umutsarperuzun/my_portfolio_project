@@ -562,6 +562,8 @@ const obsrvr = new IntersectionObserver((entries) => {
 
       heading.classList.add('opacity-0');
       fanout.classList.add('opacity-0');
+      fanout.classList.remove('active');
+      
       cards.forEach(card => {
         card.classList.add('hidden');
         card.style.opacity = "0";
