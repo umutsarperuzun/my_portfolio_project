@@ -120,3 +120,66 @@
   transform-style: preserve-3d;
   will-change: transform;
 }
+
+
+/* Kartın detay modunda büyümesi ve dönmesi */
+.project-card.active {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90vw;
+  max-width: 600px;
+  height: auto;
+  z-index: 50;
+  background-color: white;
+  transform: translate(-50%, -50%) rotateY(360deg) scale(1.6);
+  transition: transform 0.6s ease, top 0.6s ease, left 0.6s ease;
+  border-radius: 1rem;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+}
+
+[data-theme="dark"] .project-card.active {
+  background-color: #1f2937;
+  color: white;
+}
+
+/* Kart içeriğini ortalamak için */
+.project-card-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Blur arka plan (her kartın içinde) */
+.card-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(6px);
+  z-index: 40;
+  display: none;
+}
+
+.project-card.active .card-overlay {
+  display: block;
+}
+
+/* Close butonu (her kartın içinde) */
+.card-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 50;
+  background: transparent;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  color: white;
+  display: none;
+}
+
+.project-card.active .card-close {
+  display: block;
+}

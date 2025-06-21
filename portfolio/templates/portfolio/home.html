@@ -213,39 +213,56 @@
   class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 px-4"
 >
 
-<div class="project-card hidden">
+<div class="project-card hidden cursor-pointer" data-title="Proje 1" data-description="Bu proje yapay zeka destekli bir sistemdir.">
   <div class="project-card-inner">
     <h3 class="text-xl font-semibold">Proje 1</h3>
     <p class="text-sm mt-2">Kısa açıklama buraya</p>
   </div>
 </div>
 
-      <div class="project-card hidden">
+
+  <div class="project-card hidden cursor-pointer" data-title="Proje 1" data-description="Bu proje yapay zeka destekli bir sistemdir.">
   <div class="project-card-inner">
     <h3 class="text-xl font-semibold">Proje 1</h3>
     <p class="text-sm mt-2">Kısa açıklama buraya</p>
   </div>
 </div>
-      <div class="project-card hidden">
+
+<div class="project-card hidden cursor-pointer" data-title="Proje 1" data-description="Bu proje yapay zeka destekli bir sistemdir.">
   <div class="project-card-inner">
     <h3 class="text-xl font-semibold">Proje 1</h3>
     <p class="text-sm mt-2">Kısa açıklama buraya</p>
   </div>
 </div>
-      <div class="project-card hidden">
+
+<div class="project-card hidden cursor-pointer" data-title="Proje 1" data-description="Bu proje yapay zeka destekli bir sistemdir.">
   <div class="project-card-inner">
     <h3 class="text-xl font-semibold">Proje 1</h3>
     <p class="text-sm mt-2">Kısa açıklama buraya</p>
   </div>
 </div>
-      <div class="project-card hidden">
+
+<div class="project-card hidden cursor-pointer" data-title="Proje 1" data-description="Bu proje yapay zeka destekli bir sistemdir.">
   <div class="project-card-inner">
     <h3 class="text-xl font-semibold">Proje 1</h3>
     <p class="text-sm mt-2">Kısa açıklama buraya</p>
   </div>
 </div>
+
     </div>
   </div>
+  <!-- Blur Arkaplan -->
+<div id="overlay-blur" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 hidden"></div>
+
+<!-- Detaylı kart gösterimi -->
+<div id="project-popup" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+  <div class="bg-white dark:bg-zinc-800 rounded-2xl p-8 w-[90%] max-w-xl shadow-2xl text-center transform transition-transform duration-500 scale-100 rotate-[0deg]">
+    <button id="popup-close" class="absolute top-4 right-4 text-gray-700 dark:text-white text-xl">✖</button>
+    <h3 id="popup-title" class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Proje Başlığı</h3>
+    <p id="popup-desc" class="text-gray-700 dark:text-gray-300">Proje açıklaması buraya gelecek.</p>
+  </div>
+</div>
+
 </section>
 
 <section
@@ -563,7 +580,7 @@ const obsrvr = new IntersectionObserver((entries) => {
       heading.classList.add('opacity-0');
       fanout.classList.add('opacity-0');
       fanout.classList.remove('active');
-      
+
       cards.forEach(card => {
         card.classList.add('hidden');
         card.style.opacity = "0";
@@ -642,6 +659,38 @@ obsrvr.observe(document.getElementById('projects'));
       opened = true;
     });
   });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".project-card");
+  const popup = document.getElementById("project-popup");
+  const overlay = document.getElementById("overlay-blur");
+  const closeBtn = document.getElementById("popup-close");
+
+  cards.forEach(card => {
+    card.addEventListener("click", () => {
+      const title = card.getAttribute("data-title") || "Proje";
+      const desc = card.getAttribute("data-description") || "Detay açıklama buraya.";
+
+      document.getElementById("popup-title").textContent = title;
+      document.getElementById("popup-desc").textContent = desc;
+
+      popup.classList.remove("hidden");
+      overlay.classList.remove("hidden");
+    });
+  });
+
+  closeBtn.addEventListener("click", () => {
+    popup.classList.add("hidden");
+    overlay.classList.add("hidden");
+  });
+
+  overlay.addEventListener("click", () => {
+    popup.classList.add("hidden");
+    overlay.classList.add("hidden");
+  });
+});
 </script>
 
 
