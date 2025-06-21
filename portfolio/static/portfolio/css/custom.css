@@ -48,9 +48,20 @@
 }
 
 #project-fanout {
-  transition: opacity 0.6s ease;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.6s ease;
+  pointer-events: none;
+}
+
+#project-fanout.active {
+  height: auto;
+  opacity: 1;
+  overflow: visible;
   pointer-events: auto;
 }
+
 
 .project-card {
   flex: 0 0 260px; /* width: 260px, shrink/grow yok */
