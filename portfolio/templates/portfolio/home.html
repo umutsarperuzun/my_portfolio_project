@@ -340,7 +340,30 @@
 </section>
 
 <script>
-  // 1. Quick Contact Panel (sol taraftaki açılır panel)
+
+  // 1. Navbar offset'li scroll davranışı
+function setupSmoothScrollWithOffset() {
+  const navbarHeight = document.querySelector("nav").offsetHeight;
+  const links = document.querySelectorAll("a.scroll-link");
+
+  links.forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute("href").substring(1);
+      const targetEl = document.getElementById(targetId);
+
+      if (targetEl) {
+        const offsetTop = targetEl.offsetTop;
+        window.scrollTo({
+          top: offsetTop - navbarHeight + 6, // 6px ince ayar
+          behavior: "smooth"
+        });
+      }
+    });
+  });
+}
+
+  // 2. Quick Contact Panel (sol taraftaki açılır panel)
 function setupQuickContactPanel() {
   const contactToggleBtn = document.getElementById("toggle-panel");
   const iconSection = document.getElementById("icon-area");
@@ -362,7 +385,7 @@ function setupQuickContactPanel() {
   });
 }
 
-// 2. Decode yazı animasyonu (hero başlığı)
+// 3. Decode yazı animasyonu (hero başlığı)
 function decodeEffect() {
   const targetText = "This is my portfolio";
   const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()-_=+";
@@ -393,7 +416,7 @@ function decodeEffect() {
   animate();
 }
 
-// 3. Projects & Blog scroll reveal animasyonları
+// 4. Projects & Blog scroll reveal animasyonları
 function setupScrollRevealAnimations() {
   const sections = document.querySelectorAll(".reveal-manual");
   let lastScrollY = window.scrollY;
@@ -420,7 +443,7 @@ function setupScrollRevealAnimations() {
   sections.forEach(section => observer.observe(section));
 }
 
-// 4. Skill bar animasyonları
+// 5. Skill bar animasyonları
 function setupSkillAnimation() {
   const skillSection = document.getElementById("skills-section");
   const skillBars = document.querySelectorAll(".skill-bar");
@@ -457,7 +480,7 @@ function setupSkillAnimation() {
   observering.observe(skillSection);
 }
 
-// 5. Skill ikonlarına scroll ile spin animasyonu
+// 6. Skill ikonlarına scroll ile spin animasyonu
 function setupSkillIconAnimations() {
   const icons = document.querySelectorAll(".skill-icon");
 
@@ -687,6 +710,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initStarField("footer-stars");
   initStarField("star-canvas");
   setupTerminalTyping();
+  setupSmoothScrollWithOffset();
 });
 
 </script>
