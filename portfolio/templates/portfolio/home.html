@@ -284,10 +284,11 @@
 
 <section
   id="blog"
-  class="min-h-screen flex items-center justify-center py-24 scroll-mt-16 bg-white dark:bg-black"
->
+  class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white pt-16 pb-8 scroll-mt-16">
+  <h2 class="text-3xl font-bold text-center mb-6">Blog</h2>
 
-  <div class="bg-black text-[#00FF00] font-mono w-[90%] max-w-2xl rounded-lg shadow-2xl border border-gray-700"> 
+  <div class="mx-auto bg-black text-[#00FF00] font-mono w-[90%] max-w-2xl rounded-lg shadow-2xl border border-gray-700">
+    
     <!-- Fake Top Bar -->
     <div class="bg-[#1e1e1e] h-8 rounded-t-lg px-4 flex items-center justify-between">
       <span class="text-gray-400 text-xs">Command Prompt</span>
@@ -299,12 +300,14 @@
     </div>
 
     <!-- Terminal Content -->
-    <div class="p-4 text-sm leading-relaxed">
+    <div class="p-4 text-sm leading-relaxed" id="terminal-typing-container">
       <div id="terminal-typing"></div>
       <span class="blink">█</span>
     </div>
+    
   </div>
 </section>
+
 
 
 
