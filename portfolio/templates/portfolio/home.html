@@ -682,16 +682,20 @@ obsrvr.observe(document.getElementById('projects'));
     const cards = document.querySelectorAll(".project-card");
     const overlay = document.getElementById("overlay-blur");
 
-    // Yardımcı fonksiyonlar
+    // Yardımcı fonksiyon: kartı sıfırla
     const resetCard = (card) => {
       card.classList.remove("active");
+      card.style.zIndex = "1";
+      card.style.opacity = "1";
+      card.style.pointerEvents = "auto";
+
       const title = card.querySelector("h3");
       const desc = card.querySelector("p");
       title.textContent = card.dataset.originalTitle || "";
       desc.textContent = card.dataset.originalDesc || "";
     };
 
-    // Kart gözden çıkarsa overlay kaldır
+    // Kart gözden çıkarsa ve aktifse blur'u kapat
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting && entry.target.classList.contains("active")) {
@@ -701,7 +705,7 @@ obsrvr.observe(document.getElementById('projects'));
       });
     }, { threshold: 0.2 });
 
-    // Scroll ile tüm kartlar kapanınca overlay'i kaldır
+    // Scroll ile tüm kartlar görünmezse overlay'i kapat
     const blurResetObserver = new IntersectionObserver((entries) => {
       const anyActive = Array.from(cards).some(card => card.classList.contains("active"));
       const allInvisible = Array.from(entries).every(entry => !entry.isIntersecting);
@@ -712,22 +716,32 @@ obsrvr.observe(document.getElementById('projects'));
       }
     }, { threshold: 0.2 });
 
-    // Kartlara olayları bağla
     cards.forEach(card => {
       const closeBtn = card.querySelector(".card-close");
       const title = card.querySelector("h3");
       const desc = card.querySelector("p");
 
-      // Orijinal metinleri sakla
+      // Başlangıç başlık-açıklamaları sakla
       card.dataset.originalTitle = title.textContent;
       card.dataset.originalDesc = desc.textContent;
 
-      // Kart tıklanınca detaylı içeriğe geç
+      // Kart tıklanınca: aktif yap, overlay göster, diğerlerini pasifleştir
       card.addEventListener("click", () => {
+        cards.forEach(c => {
+          if (c !== card) {
+            c.style.opacity = "0";
+            c.style.pointerEvents = "none";
+            c.style.zIndex = "0";
+          }
+        });
+
         card.classList.add("active");
+        card.style.zIndex = "100";
         overlay.classList.remove("hidden");
+
         const detailTitle = card.getAttribute("data-title");
         const detailDesc = card.getAttribute("data-description");
+
         if (detailTitle) title.textContent = detailTitle;
         if (detailDesc) desc.textContent = detailDesc;
       });
@@ -736,7 +750,7 @@ obsrvr.observe(document.getElementById('projects'));
       if (closeBtn) {
         closeBtn.addEventListener("click", (e) => {
           e.stopPropagation();
-          resetCard(card);
+          cards.forEach(resetCard);
           overlay.classList.add("hidden");
         });
       }
@@ -747,11 +761,12 @@ obsrvr.observe(document.getElementById('projects'));
 
     // Overlay'e tıklanırsa tüm kartları kapat
     overlay.addEventListener("click", () => {
-      document.querySelectorAll(".project-card.active").forEach(resetCard);
+      cards.forEach(resetCard);
       overlay.classList.add("hidden");
     });
   });
 </script>
+
 
 
 
