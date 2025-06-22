@@ -281,32 +281,32 @@
 
 </section>
 
+
 <section
   id="blog"
-  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 scroll-mt-16"
+  class="min-h-screen flex items-center justify-center py-24 scroll-mt-16 bg-white dark:bg-black"
 >
-  <div class="reveal-manual will-change-transform" data-section="blog">
-    <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">
-      Blog
-    </h2>
-    <p
-      class="text-center mt-4 max-w-xl mx-auto text-gray-800 dark:text-gray-300"
-    >
-      I'm a passionate and detail-oriented Junior Software Developer with a
-      strong focus on building clean, scalable, and user-friendly web
-      applications. With a background in Computer Science (MSc, Distinction), I
-      have hands-on experience in both frontend and backend technologies
-      including Django, React, Tailwind CSS, and RESTful APIs. My projects range
-      from AI-powered chatbots and fleet management tools to e-commerce
-      dashboards and weather apps. I enjoy solving real-world problems through
-      code, continuously learning new technologies, and working on projects that
-      make a meaningful impact. Currently, I’m focused on enhancing my skills in
-      Django, Tailwind CSS, and JavaScript by building this portfolio from
-      scratch — combining technical depth with aesthetic polish. Let’s build
-      something meaningful together.
-    </p>
+
+  <div class="bg-black text-[#00FF00] font-mono w-[90%] max-w-2xl rounded-lg shadow-2xl border border-gray-700"> 
+    <!-- Fake Top Bar -->
+    <div class="bg-[#1e1e1e] h-8 rounded-t-lg px-4 flex items-center justify-between">
+      <span class="text-gray-400 text-xs">Command Prompt</span>
+      <div class="flex space-x-2">
+        <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+        <span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
+        <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+      </div>
+    </div>
+
+    <!-- Terminal Content -->
+    <div class="p-4 text-sm leading-relaxed">
+      <div id="terminal-typing"></div>
+      <span class="blink">█</span>
+    </div>
   </div>
 </section>
+
+
 
 <section
   id="contact"
@@ -767,8 +767,47 @@ obsrvr.observe(document.getElementById('projects'));
   });
 </script>
 
+<script>
+  const lines = [
+    "Microsoft Windows [Version 10.0.26100.4061]",
+    "(c) Microsoft Corporation. All rights reserved.",
+    "",
+    "C:\\Users\\sarpe> Initializing blog system...",
+    "C:\\Users\\sarpe> Connecting to GPT-4...",
+    "C:\\Users\\sarpe> Generating knowledge modules...",
+    "C:\\Users\\sarpe> Status: ONLINE ✅"
+  ];
 
+  const terminal = document.getElementById("terminal-typing");
+  let lineIndex = 0;
+  let charIndex = 0;
+  let currentLine = "";
 
+  function typeNextChar() {
+    if (lineIndex >= lines.length) return;
+
+    const line = lines[lineIndex];
+    if (charIndex < line.length) {
+      currentLine += line.charAt(charIndex++);
+      terminal.lastChild.textContent = currentLine;
+      setTimeout(typeNextChar, 30);
+    } else {
+      const br = document.createElement("div");
+      br.textContent = "";
+      terminal.appendChild(br);
+      lineIndex++;
+      charIndex = 0;
+      currentLine = "";
+      setTimeout(typeNextChar, 400);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const firstLine = document.createElement("div");
+    terminal.appendChild(firstLine);
+    typeNextChar();
+  });
+</script>
 
 
 
