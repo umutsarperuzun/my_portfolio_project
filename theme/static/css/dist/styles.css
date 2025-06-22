@@ -1045,6 +1045,14 @@ select {
   height: 2rem;
 }
 
+.h-\[1px\] {
+  height: 1px;
+}
+
+.h-16 {
+  height: 4rem;
+}
+
 .max-h-0 {
   max-height: 0px;
 }
@@ -1248,6 +1256,26 @@ select {
 
 .scroll-mt-40 {
   scroll-margin-top: 10rem;
+}
+
+.scroll-mt-24 {
+  scroll-margin-top: 6rem;
+}
+
+.scroll-mt-36 {
+  scroll-margin-top: 9rem;
+}
+
+.scroll-mt-3 {
+  scroll-margin-top: 0.75rem;
+}
+
+.scroll-mt-4 {
+  scroll-margin-top: 1rem;
+}
+
+.scroll-mt-28 {
+  scroll-margin-top: 7rem;
 }
 
 .grid-cols-1 {
@@ -1486,9 +1514,20 @@ select {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
+.from-transparent {
+  --tw-gradient-from: transparent var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
 .via-gray-200 {
   --tw-gradient-to: rgb(229 231 235 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), #e5e7eb var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+
+.via-gray-600 {
+  --tw-gradient-to: rgb(75 85 99 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #4b5563 var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
 
 .to-black {
@@ -1497,6 +1536,10 @@ select {
 
 .to-white {
   --tw-gradient-to: #fff var(--tw-gradient-to-position);
+}
+
+.to-transparent {
+  --tw-gradient-to: transparent var(--tw-gradient-to-position);
 }
 
 .bg-\[length\:200\%\] {
@@ -1603,6 +1646,10 @@ select {
 
 .pt-16 {
   padding-top: 4rem;
+}
+
+.pb-1 {
+  padding-bottom: 0.25rem;
 }
 
 .text-left {
@@ -1741,6 +1788,10 @@ select {
 
 .opacity-20 {
   opacity: 0.2;
+}
+
+.opacity-40 {
+  opacity: 0.4;
 }
 
 .shadow-lg {
@@ -1975,6 +2026,11 @@ select {
   --tw-gradient-stops: var(--tw-gradient-from), #1f2937 var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
 
+.dark\:via-zinc-700:is([data-theme="dark"] *) {
+  --tw-gradient-to: rgb(63 63 70 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #3f3f46 var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+
 .dark\:to-black:is([data-theme="dark"] *) {
   --tw-gradient-to: #000 var(--tw-gradient-to-position);
 }
@@ -2060,6 +2116,10 @@ select {
 
   .md\:h-32 {
     height: 8rem;
+  }
+
+  .md\:h-20 {
+    height: 5rem;
   }
 
   .md\:grid-cols-2 {

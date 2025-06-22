@@ -67,7 +67,7 @@
 
 <section
   id="home"
-  class="relative min-h-screen flex items-center overflow-hidden"
+  class="relative min-h-screen flex items-center overflow-hidden scroll-mt-28"
 >
   <!-- 1 sector hareketli arka plan -->
   <div
@@ -105,7 +105,7 @@
 </section>
 <section
   id="about"
-  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 scroll-mt-32"
+  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 scroll-mt-28"
 >
   <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">
     About Me
@@ -179,7 +179,7 @@
 </section>
 <section
   id="projects"
-  class="relative bg-gray-100 dark:bg-gray-900 scroll-mt-32 pt-24 pb-10"
+  class="relative bg-gray-100 dark:bg-gray-900 scroll-mt-28 pt-24 pb-15"
 >
 
   <!-- Arka plan yıldızlar -->
@@ -282,12 +282,9 @@
 </section>
 
 
-<!-- Soft gradient transition from previous section -->
-<div class="h-8 bg-gradient-to-b from-gray-100 to-white dark:from-zinc-900 dark:to-black"></div>
-
 <section
   id="blog"
-  class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white pt-16 pb-8 scroll-mt-16"
+  class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white pt-16 pb-8 scroll-mt-28"
 >
   <h2 class="text-3xl font-bold text-center mb-6">Blog</h2>
 
@@ -314,7 +311,7 @@
 
 <section
   id="contact"
-  class="h-auto bg-white dark:bg-gray-900 py-20 transition-colors duration-500 scroll-mt-40"
+  class="h-auto bg-white dark:bg-gray-900 py-20 transition-colors duration-500 scroll-mt-28"
 >
   <div
     data-aos="fade-up"
@@ -342,118 +339,99 @@
   </div>
 </section>
 
-<!-- Quick Contact tags on the left-side -->
 <script>
+  // 1. Quick Contact Panel (sol taraftaki açılır panel)
+function setupQuickContactPanel() {
   const contactToggleBtn = document.getElementById("toggle-panel");
   const iconSection = document.getElementById("icon-area");
-
   let panelOpen = false;
+
   contactToggleBtn.addEventListener("click", () => {
     iconSection.classList.toggle("opacity-0");
     iconSection.classList.toggle("max-h-0");
     iconSection.classList.toggle("max-h-[500px]");
-    panelOpen = !panelOpen; //Panel situation checking
+    panelOpen = !panelOpen;
   });
 
   window.addEventListener("scroll", () => {
     if (panelOpen) {
-      //if panel is open
-      iconSection.classList.add("opacity-0");
-      iconSection.classList.add("max-h-0");
+      iconSection.classList.add("opacity-0", "max-h-0");
       iconSection.classList.remove("max-h-[500px]");
       panelOpen = false;
     }
   });
-</script>
-<!-- decode section in header -->
-<script>
+}
+
+// 2. Decode yazı animasyonu (hero başlığı)
+function decodeEffect() {
   const targetText = "This is my portfolio";
-  const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()-_=+";
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()-_=+";
   const display = document.getElementById("decoding-title");
   let iterations = 0;
 
-  function decodeEffect() {
+  function animate() {
     const length = targetText.length;
     let output = "";
 
     for (let i = 0; i < length; i++) {
-      if (i < iterations) {
-        output += targetText[i];
-      } else {
-        output += characters[Math.floor(Math.random() * characters.length)];
-      }
+      output += i < iterations ? targetText[i] : characters[Math.floor(Math.random() * characters.length)];
     }
 
     display.textContent = output;
 
     if (iterations <= length) {
       iterations++;
-      setTimeout(decodeEffect, 60); // animation speed control
+      setTimeout(animate, 60);
     } else {
-      //for cycle each 5 sec
       setTimeout(() => {
         iterations = 0;
-        decodeEffect();
+        animate();
       }, 2000);
     }
   }
-  document.addEventListener("DOMContentLoaded", decodeEffect);
-</script>
 
-<!-- Projects & Blog section animation with vanilla.js -->
-<script>
+  animate();
+}
+
+// 3. Projects & Blog scroll reveal animasyonları
+function setupScrollRevealAnimations() {
   const sections = document.querySelectorAll(".reveal-manual");
-  let lastScrollY = window.scrollY; // ilk scroll pozisyonu
+  let lastScrollY = window.scrollY;
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const currentScrollY = window.scrollY;
-        const scrollingDown = currentScrollY > lastScrollY;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const currentScrollY = window.scrollY;
+      const scrollingDown = currentScrollY > lastScrollY;
 
-        if (entry.isIntersecting && scrollingDown) {
-          const sectionName = entry.target.dataset.section;
-          // sadece aşağı inerken animasyonu uygula
-          if (sectionName === "projects") {
-            entry.target.classList.add("animate-slide-in");
-          } else if (sectionName === "blog") {
-            entry.target.classList.add("animate-slide-left");
-          }
-        }
+      if (entry.isIntersecting && scrollingDown) {
+        const sectionName = entry.target.dataset.section;
+        if (sectionName === "projects") entry.target.classList.add("animate-slide-in");
+        else if (sectionName === "blog") entry.target.classList.add("animate-slide-left");
+      }
 
-        if (!entry.isIntersecting) {
-          // yeniden animasyon oynatmak için class'ları kaldır
-          entry.target.classList.remove("animate-slide-in");
-          entry.target.classList.remove("animate-slide-left");
-        }
+      if (!entry.isIntersecting) {
+        entry.target.classList.remove("animate-slide-in", "animate-slide-left");
+      }
 
-        // scroll pozisyonunu güncelle
-        lastScrollY = currentScrollY;
-      });
-    },
-    {
-      threshold: 0.05, // %5'i görünür olunca tetiklensin
-    }
-  );
+      lastScrollY = currentScrollY;
+    });
+  }, { threshold: 0.05 });
 
-  sections.forEach((section) => {
-    observer.observe(section);
-  });
-</script>
-<script>
+  sections.forEach(section => observer.observe(section));
+}
+
+// 4. Skill bar animasyonları
+function setupSkillAnimation() {
   const skillSection = document.getElementById("skills-section");
   const skillBars = document.querySelectorAll(".skill-bar");
   let animationStarted = false;
-  let skillInterval;
 
   function animateSkills() {
-    skillBars.forEach((bar) => {
-      bar.style.transition = "none"; // animasyonu geçici kapat
-      bar.style.width = "0%"; // sıfırla
+    skillBars.forEach(bar => {
+      bar.style.transition = "none";
+      bar.style.width = "0%";
     });
 
-    // Tarayıcının 0%'ı işlemesine fırsat vermek için küçük gecikme
     setTimeout(() => {
       skillBars.forEach((bar, index) => {
         setTimeout(() => {
@@ -462,316 +440,203 @@
           bar.style.width = targetWidth;
         }, index * 150);
       });
-    }, 50); // 50ms gecikme sayesinde animasyon düzgün başlar
+    }, 50);
   }
 
-  const observering = new IntersectionObserver(
-    (entries, observering) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !animationStarted) {
-          animationStarted = true;
-          animateSkills();
-
-          // Her 10 saniyede bir tekrar et
-          skillInterval = setInterval(() => {
-            animateSkills();
-          }, 10000);
-
-          observering.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.3,
-    }
-  );
+  const observering = new IntersectionObserver((entries, observering) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && !animationStarted) {
+        animationStarted = true;
+        animateSkills();
+        setInterval(() => animateSkills(), 10000);
+        observering.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
 
   observering.observe(skillSection);
-</script>
-
-<!-- Icons animations -->
-<script>
-const icons = document.querySelectorAll(".skill-icon");
-
-const iconObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const icon = entry.target;
-      
-      // Class'ı resetleyip yeniden ekle
-      icon.classList.remove("animate-spin-once");
-      void icon.offsetWidth; // reflow hilesi
-      icon.classList.add("animate-spin-once");
-    }
-  });
-}, { threshold: 0.6 });
-
-icons.forEach(icon => iconObserver.observe(icon));
-
-</script>
-<script>
-const trigger = document.getElementById('project-trigger');
-const mainCard = document.getElementById('main-project-card');
-const fanout = document.getElementById('project-fanout');
-const heading = document.getElementById('project-heading');
-const cards = document.querySelectorAll('.project-card');
-const canvas = document.getElementById("star-canvas");
-const ctx = canvas.getContext("2d");
-
-let opened = false;
-let stars = [];
-
-// ⭐ Yıldız animasyonu
-function initStarField() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  stars = Array.from({ length: 100 }, () => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    radius: Math.random() * 1.5,
-    speed: 0.3 + Math.random() * 0.5,
-  }));
-
-  drawStars();
 }
 
-function drawStars() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+// 5. Skill ikonlarına scroll ile spin animasyonu
+function setupSkillIconAnimations() {
+  const icons = document.querySelectorAll(".skill-icon");
 
-  const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-  ctx.fillStyle = isDark ? "white" : "#111"; // Light modda yıldızlar koyu olur
+  const iconObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const icon = entry.target;
+        icon.classList.remove("animate-spin-once");
+        void icon.offsetWidth;
+        icon.classList.add("animate-spin-once");
+      }
+    });
+  }, { threshold: 0.6 });
 
-  stars.forEach((star) => {
-    ctx.beginPath();
-    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-    ctx.fill();
-    star.y += star.speed;
-    if (star.y > canvas.height) {
-      star.y = 0;
-      star.x = Math.random() * canvas.width;
-    }
-  });
-
-  requestAnimationFrame(drawStars);
+  icons.forEach(icon => iconObserver.observe(icon));
 }
 
-// Yıldızlar her zaman çalışsın
-document.addEventListener("DOMContentLoaded", initStarField);
+// 7. Proje kartı fanout + scroll + tilt
+function setupProjectCardFanout() {
+  const trigger = document.getElementById("project-trigger");
+  const mainCard = document.getElementById("main-project-card");
+  const fanout = document.getElementById("project-fanout");
+  const heading = document.getElementById("project-heading");
+  const cards = document.querySelectorAll(".project-card");
+  let opened = false;
 
-// Kart tıklanma olayı
-mainCard.addEventListener('click', () => {
-  if (opened) return;
+  if (!mainCard || !trigger || !fanout || !heading) return;
 
-  const offsetTop = document.getElementById("projects").offsetTop;
-  const navbarHeight = document.querySelector("nav").offsetHeight;
+  mainCard.addEventListener("click", () => {
+    if (opened) return;
 
-  window.scrollTo({
-    top: offsetTop - navbarHeight - 12 ,
-    behavior: "smooth"
-  });
+    const offsetTop = document.getElementById("projects").offsetTop;
+    const navbarHeight = document.querySelector("nav").offsetHeight;
 
-
-  // Explore kartı gizle
-  trigger.classList.add('opacity-0', 'pointer-events-none', 'hidden');
-  trigger.classList.remove('h-[300px]');
-
-  // Başlık ve kartları göster
-  heading.classList.remove('opacity-0');
-  fanout.classList.add('active');
-  cards.forEach((card, index) => {
-    setTimeout(() => {
-      card.classList.remove('hidden');
-      card.style.opacity = "1";
-      card.style.transform = "scale(1)";
-    }, 150 * index);
-  });
-
-  opened = true;
-});
-
-// Scroll ile geri gelince sıfırlama
-const obsrvr = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting && opened) {
-      trigger.classList.remove('opacity-0', 'pointer-events-none', 'hidden');
-      trigger.classList.add('h-[300px]');
-
-      heading.classList.add('opacity-0');
-      fanout.classList.add('opacity-0');
-      fanout.classList.remove('active');
-
-      cards.forEach(card => {
-        card.classList.add('hidden');
-        card.style.opacity = "0";
-        card.style.transform = "scale(0.9)";
-      });
-
-      opened = false;
-    }
-  });
-}, { threshold: 0.3 });
-
-obsrvr.observe(document.getElementById('projects'));
-</script>
-
-<script>
-  function activateTiltEffect() {
-    console.log("🎯 Tilt effect başlatıldı");
-    const projectCards = document.querySelectorAll('.project-card');
-
-    projectCards.forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = ((y - centerY) / centerY) * -20;
-        const rotateY = ((x - centerX) / centerX) * 20;
-
-        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'rotateX(0deg) rotateY(0deg)';
-      });
+    window.scrollTo({
+      top: offsetTop - navbarHeight + 4,
+      behavior: "smooth"
     });
-  }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    console.log("💡 JS başlatıldı");
+    trigger.classList.add('opacity-0', 'pointer-events-none', 'hidden');
+    trigger.classList.remove('h-[300px]');
+    heading.classList.remove('opacity-0');
+    fanout.classList.add('active');
 
-    const mainCard = document.getElementById('main-project-card');
-    const trigger = document.getElementById('project-trigger');
-    const heading = document.getElementById('project-heading');
-    const fanout = document.getElementById('project-fanout');
-    const cards = document.querySelectorAll('.project-card');
-    let opened = false;
-
-    mainCard.addEventListener('click', () => {
-      if (opened) return;
-
-      const offsetTop = document.getElementById("projects").offsetTop;
-      const navbarHeight = document.querySelector("nav").offsetHeight;
-
-      window.scrollTo({
-        top: offsetTop - navbarHeight - 12,
-        behavior: "smooth"
-      });
-
-      // Kartları aç
-      trigger.classList.add('opacity-0', 'pointer-events-none', 'hidden');
-      heading.classList.remove('opacity-0');
-      fanout.classList.remove('opacity-0');
-
-      cards.forEach((card, index) => {
-        setTimeout(() => {
-          card.classList.remove('hidden');
-          card.style.opacity = "1";
-          card.style.transform = "scale(1)";
-        }, 150 * index);
-      });
-
-      // ✨ Tilt effect burada başlatılıyor
-      activateTiltEffect();
-      opened = true;
+    cards.forEach((card, index) => {
+      setTimeout(() => {
+        card.classList.remove('hidden');
+        card.style.opacity = "1";
+        card.style.transform = "scale(1)";
+      }, 150 * index);
     });
+
+    activateTiltEffect();
+    opened = true;
   });
-</script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll(".project-card");
-    const overlay = document.getElementById("overlay-blur");
+  const obsrvr = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting && opened) {
+        trigger.classList.remove('opacity-0', 'pointer-events-none', 'hidden');
+        trigger.classList.add('h-[300px]');
+        heading.classList.add('opacity-0');
+        fanout.classList.add('opacity-0');
+        fanout.classList.remove('active');
+        cards.forEach(card => {
+          card.classList.add('hidden');
+          card.style.opacity = "0";
+          card.style.transform = "scale(0.9)";
+        });
+        opened = false;
+      }
+    });
+  }, { threshold: 0.3 });
 
-    // Yardımcı fonksiyon: kartı sıfırla
-    const resetCard = (card) => {
-      card.classList.remove("active");
-      card.style.zIndex = "1";
-      card.style.opacity = "1";
-      card.style.pointerEvents = "auto";
+  obsrvr.observe(document.getElementById('projects'));
+}
 
-      const title = card.querySelector("h3");
-      const desc = card.querySelector("p");
-      title.textContent = card.dataset.originalTitle || "";
-      desc.textContent = card.dataset.originalDesc || "";
-    };
+// 8. Kart büyütme & blur overlay sistemi
+function setupProjectCardOverlay() {
+  const cards = document.querySelectorAll(".project-card");
+  const overlay = document.getElementById("overlay-blur");
 
-    // Kart gözden çıkarsa ve aktifse blur'u kapat
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting && entry.target.classList.contains("active")) {
-          resetCard(entry.target);
-          overlay.classList.add("hidden");
-        }
-      });
-    }, { threshold: 0.2 });
+  const resetCard = (card) => {
+    card.classList.remove("active");
+    card.style.zIndex = "1";
+    card.style.opacity = "1";
+    card.style.pointerEvents = "auto";
+    const title = card.querySelector("h3");
+    const desc = card.querySelector("p");
+    title.textContent = card.dataset.originalTitle || "";
+    desc.textContent = card.dataset.originalDesc || "";
+  };
 
-    // Scroll ile tüm kartlar görünmezse overlay'i kapat
-    const blurResetObserver = new IntersectionObserver((entries) => {
-      const anyActive = Array.from(cards).some(card => card.classList.contains("active"));
-      const allInvisible = Array.from(entries).every(entry => !entry.isIntersecting);
-
-      if (anyActive && allInvisible) {
-        cards.forEach(resetCard);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting && entry.target.classList.contains("active")) {
+        resetCard(entry.target);
         overlay.classList.add("hidden");
       }
-    }, { threshold: 0.2 });
-
-    cards.forEach(card => {
-      const closeBtn = card.querySelector(".card-close");
-      const title = card.querySelector("h3");
-      const desc = card.querySelector("p");
-
-      // Başlangıç başlık-açıklamaları sakla
-      card.dataset.originalTitle = title.textContent;
-      card.dataset.originalDesc = desc.textContent;
-
-      // Kart tıklanınca: aktif yap, overlay göster, diğerlerini pasifleştir
-      card.addEventListener("click", () => {
-        cards.forEach(c => {
-          if (c !== card) {
-            c.style.opacity = "0";
-            c.style.pointerEvents = "none";
-            c.style.zIndex = "0";
-          }
-        });
-
-        card.classList.add("active");
-        card.style.zIndex = "100";
-        overlay.classList.remove("hidden");
-
-        const detailTitle = card.getAttribute("data-title");
-        const detailDesc = card.getAttribute("data-description");
-
-        if (detailTitle) title.textContent = detailTitle;
-        if (detailDesc) desc.textContent = detailDesc;
-      });
-
-      // Kapatma butonu
-      if (closeBtn) {
-        closeBtn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          cards.forEach(resetCard);
-          overlay.classList.add("hidden");
-        });
-      }
-
-      observer.observe(card);
-      blurResetObserver.observe(card);
     });
+  }, { threshold: 0.2 });
 
-    // Overlay'e tıklanırsa tüm kartları kapat
-    overlay.addEventListener("click", () => {
+  const blurResetObserver = new IntersectionObserver((entries) => {
+    const anyActive = Array.from(cards).some(card => card.classList.contains("active"));
+    const allInvisible = Array.from(entries).every(entry => !entry.isIntersecting);
+    if (anyActive && allInvisible) {
       cards.forEach(resetCard);
       overlay.classList.add("hidden");
+    }
+  }, { threshold: 0.2 });
+
+  cards.forEach(card => {
+    const closeBtn = card.querySelector(".card-close");
+    const title = card.querySelector("h3");
+    const desc = card.querySelector("p");
+    card.dataset.originalTitle = title.textContent;
+    card.dataset.originalDesc = desc.textContent;
+
+    card.addEventListener("click", () => {
+      cards.forEach(c => {
+        if (c !== card) {
+          c.style.opacity = "0";
+          c.style.pointerEvents = "none";
+          c.style.zIndex = "0";
+        }
+      });
+      card.classList.add("active");
+      card.style.zIndex = "100";
+      overlay.classList.remove("hidden");
+
+      const detailTitle = card.getAttribute("data-title");
+      const detailDesc = card.getAttribute("data-description");
+
+      if (detailTitle) title.textContent = detailTitle;
+      if (detailDesc) desc.textContent = detailDesc;
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        cards.forEach(resetCard);
+        overlay.classList.add("hidden");
+      });
+    }
+
+    observer.observe(card);
+    blurResetObserver.observe(card);
+  });
+
+  overlay.addEventListener("click", () => {
+    cards.forEach(resetCard);
+    overlay.classList.add("hidden");
+  });
+}
+
+// 9. Tilt efekt
+function activateTiltEffect() {
+  const projectCards = document.querySelectorAll('.project-card');
+
+  projectCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -20;
+      const rotateY = ((x - centerX) / centerX) * 20;
+      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'rotateX(0deg) rotateY(0deg)';
     });
   });
-</script>
+}
 
-<script>
+// 10. Terminal yazısı
+function setupTerminalTyping() {
   const lines = [
     "Microsoft Windows [Version 10.0.26100.4061]",
     "(c) Microsoft Corporation. All rights reserved.",
@@ -806,13 +671,23 @@ obsrvr.observe(document.getElementById('projects'));
     }
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const firstLine = document.createElement("div");
-    terminal.appendChild(firstLine);
-    typeNextChar();
-  });
+  const firstLine = document.createElement("div");
+  terminal.appendChild(firstLine);
+  typeNextChar();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupQuickContactPanel();
+  decodeEffect();
+  setupScrollRevealAnimations();
+  setupSkillAnimation();
+  setupSkillIconAnimations();
+  setupProjectCardFanout();
+  setupProjectCardOverlay();
+  initStarField("footer-stars");
+  initStarField("star-canvas");
+  setupTerminalTyping();
+});
+
 </script>
-
-
-
 {% endblock %}
