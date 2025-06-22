@@ -682,99 +682,77 @@ obsrvr.observe(document.getElementById('projects'));
     const cards = document.querySelectorAll(".project-card");
     const overlay = document.getElementById("overlay-blur");
 
-    const observer3 = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) {
-          const activeCard = entry.target;
-          if (activeCard.classList.contains("active")) {
-            activeCard.classList.remove("active");
-
-            const title = activeCard.querySelector("h3");
-            const desc = activeCard.querySelector("p");
-
-            title.textContent = activeCard.dataset.originalTitle || "";
-            desc.textContent = activeCard.dataset.originalDesc || "";
-
-            overlay.classList.add("hidden");
-          }
-        }
-      });
-    }, { threshold: 0.2 });
-
-    cards.forEach(card => {
-      const closeBtn = card.querySelector(".card-close");
-      const innerTitle = card.querySelector("h3");
-      const innerDesc = card.querySelector("p");
-
-      // Orijinal içerikleri sakla
-      card.dataset.originalTitle = innerTitle.textContent;
-      card.dataset.originalDesc = innerDesc.textContent;
-
-      // Kart tıklanınca detaylı içeriğe geç
-      card.addEventListener("click", () => {
-        card.classList.add("active");
-        overlay.classList.remove("hidden");
-  
-
-        const detailTitle = card.getAttribute("data-title");
-        const detailDesc = card.getAttribute("data-description");
-
-        if (detailTitle) innerTitle.textContent = detailTitle;
-        if (detailDesc) innerDesc.textContent = detailDesc;
-      });
-
-      if (closeBtn) {
-        closeBtn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          card.classList.remove("active");
-          overlay.classList.add("hidden");
-
-          innerTitle.textContent = card.dataset.originalTitle || "";
-          innerDesc.textContent = card.dataset.originalDesc || "";
-        });
-      }
-
-      // ⭐ Observer'ı burada başlat
-      observer3.observe(card);
-    });
-
-    // Blur alana tıklanırsa tüm kartları kapat
-    overlay.addEventListener("click", () => {
-      document.querySelectorAll(".project-card.active").forEach(card => {
-        card.classList.remove("active");
-
-        const innerTitle = card.querySelector("h3");
-        const innerDesc = card.querySelector("p");
-
-        innerTitle.textContent = card.dataset.originalTitle || "";
-        innerDesc.textContent = card.dataset.originalDesc || "";
-      });
-
-      overlay.classList.add("hidden");
-    });
-  });
-  const allCards = document.querySelectorAll(".project-card");
-
-const blurResetObserver = new IntersectionObserver((entries) => {
-  const anyActive = Array.from(allCards).some(card => card.classList.contains("active"));
-  const allInvisible = Array.from(entries).every(entry => !entry.isIntersecting);
-
-  if (anyActive && allInvisible) {
-    allCards.forEach(card => {
+    // Yardımcı fonksiyonlar
+    const resetCard = (card) => {
       card.classList.remove("active");
       const title = card.querySelector("h3");
       const desc = card.querySelector("p");
       title.textContent = card.dataset.originalTitle || "";
       desc.textContent = card.dataset.originalDesc || "";
+    };
+
+    // Kart gözden çıkarsa overlay kaldır
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting && entry.target.classList.contains("active")) {
+          resetCard(entry.target);
+          overlay.classList.add("hidden");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    // Scroll ile tüm kartlar kapanınca overlay'i kaldır
+    const blurResetObserver = new IntersectionObserver((entries) => {
+      const anyActive = Array.from(cards).some(card => card.classList.contains("active"));
+      const allInvisible = Array.from(entries).every(entry => !entry.isIntersecting);
+
+      if (anyActive && allInvisible) {
+        cards.forEach(resetCard);
+        overlay.classList.add("hidden");
+      }
+    }, { threshold: 0.2 });
+
+    // Kartlara olayları bağla
+    cards.forEach(card => {
+      const closeBtn = card.querySelector(".card-close");
+      const title = card.querySelector("h3");
+      const desc = card.querySelector("p");
+
+      // Orijinal metinleri sakla
+      card.dataset.originalTitle = title.textContent;
+      card.dataset.originalDesc = desc.textContent;
+
+      // Kart tıklanınca detaylı içeriğe geç
+      card.addEventListener("click", () => {
+        card.classList.add("active");
+        overlay.classList.remove("hidden");
+        const detailTitle = card.getAttribute("data-title");
+        const detailDesc = card.getAttribute("data-description");
+        if (detailTitle) title.textContent = detailTitle;
+        if (detailDesc) desc.textContent = detailDesc;
+      });
+
+      // Kapatma butonu
+      if (closeBtn) {
+        closeBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          resetCard(card);
+          overlay.classList.add("hidden");
+        });
+      }
+
+      observer.observe(card);
+      blurResetObserver.observe(card);
     });
 
-    document.getElementById("overlay-blur").classList.add("hidden");
-  }
-}, { threshold: 0.2 });
-
-allCards.forEach(card => blurResetObserver.observe(card));
-
+    // Overlay'e tıklanırsa tüm kartları kapat
+    overlay.addEventListener("click", () => {
+      document.querySelectorAll(".project-card.active").forEach(resetCard);
+      overlay.classList.add("hidden");
+    });
+  });
 </script>
+
 
 
 
