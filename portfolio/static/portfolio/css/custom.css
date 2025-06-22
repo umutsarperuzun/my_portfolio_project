@@ -1,17 +1,24 @@
-/* custom.css */
+/* === Mask for fade effect === */
 .fade-mask {
-  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0.3), rgba(0,0,0,0));
-  mask-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0.3), rgba(0,0,0,0));
+  -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
 }
 
-/* Animasyonlu pastel rainbow rengi */
+/* === Hover wave animation === */
 @keyframes rainbowColor {
   0%   { color: #d4d4d4; }
-  20%  { color: #fca5a5; }  
-  40%  { color: #fcd34d; }  
-  60%  { color: #6ee7b7; }  
-  80%  { color: #93c5fd; }  
-  100% { color: #d4d4d4; }  
+  20%  { color: #fca5a5; }
+  40%  { color: #fcd34d; }
+  60%  { color: #6ee7b7; }
+  80%  { color: #93c5fd; }
+  100% { color: #d4d4d4; }
+}
+
+@keyframes wave-bounce {
+  0%   { transform: translateY(0); }
+  30%  { transform: translateY(-6px); }
+  60%  { transform: translateY(3px); }
+  100% { transform: translateY(0); }
 }
 
 .hover-wave span {
@@ -31,15 +38,8 @@
 .hover-wave:hover span:nth-child(6) { animation-delay: 0.25s, 0.5s; }
 .hover-wave:hover span:nth-child(7) { animation-delay: 0.3s, 0.6s; }
 .hover-wave:hover span:nth-child(8) { animation-delay: 0.35s, 0.7s; }
-/* Gerekirse daha fazlası eklenir */
 
-@keyframes wave-bounce {
-  0% { transform: translateY(0); }
-  30% { transform: translateY(-6px); }
-  60% { transform: translateY(3px); }
-  100% { transform: translateY(0); }
-}
-
+/* === Skill bar === */
 .skill-bar {
   width: 0%;
   height: 20px;
@@ -47,12 +47,13 @@
   transition: width 1.5s ease;
 }
 
+/* === Project fanout transition === */
 #project-fanout {
   height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: all 0.6s ease;
   pointer-events: none;
+  transition: all 0.6s ease;
 }
 
 #project-fanout.active {
@@ -62,38 +63,9 @@
   pointer-events: auto;
 }
 
-
-.project-card {
-  flex: 0 0 260px; /* width: 260px, shrink/grow yok */
-  height: 280px;
-  opacity: 0;
-  transform: scale(0.9);
-  transition: transform 0.12s cubic-bezier(0.45, 0, 0.55, 1);
-  background-color: white;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  text-align: center;
-}
-[data-theme='dark'] .project-card {
-  background-color: #1f2937;
-  color: white;
-}
-
-@keyframes pulse-scale {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.04); }
-}
-
+/* === Main project card === */
 #main-project-card {
   animation: pulse-scale 2.5s infinite ease-in-out;
-}
-
-
-#main-project-card {
   border: 2px solid transparent;
   background-clip: padding-box;
   position: relative;
@@ -109,20 +81,47 @@
   filter: blur(8px);
 }
 
+/* === Project cards === */
 .project-card {
+  flex: 0 0 260px;
+  height: 280px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: transform 0.12s cubic-bezier(0.45, 0, 0.55, 1);
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-align: center;
   perspective: 1000px;
-  transform-style: preserve-3d; /* eksik olan bu */
-  overflow: hidden; /* taşmayı engelle */
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+[data-theme='dark'] .project-card {
+  background-color: #1f2937;
+  color: white;
 }
 
 .project-card-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.2s ease;
   transform-style: preserve-3d;
   will-change: transform;
 }
 
+/* === Card expand (detail view) === */
+@keyframes flip360 {
+  0%   { transform: translate(-50%, -50%) rotateY(0deg) scale(1.6); }
+  100% { transform: translate(-50%, -50%) rotateY(360deg) scale(1.6); }
+}
 
-/* Kartın detay modunda büyümesi ve dönmesi */
 .project-card.active {
   position: fixed;
   top: 50%;
@@ -137,6 +136,7 @@
   border-radius: 1rem;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
   padding: 2rem;
+  animation: flip360 0.6s ease forwards;
 }
 
 [data-theme="dark"] .project-card.active {
@@ -144,16 +144,7 @@
   color: white;
 }
 
-/* Kart içeriğini ortalamak için */
-.project-card-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-
-/* Close butonu (her kartın içinde) */
+/* === Card close button === */
 .card-close {
   position: absolute;
   top: 1rem;
@@ -171,13 +162,8 @@
   display: block;
 }
 
-@keyframes flip360 {
-  0% { transform: translate(-50%, -50%) rotateY(0deg) scale(1.6); }
-  100% { transform: translate(-50%, -50%) rotateY(360deg) scale(1.6); }
+/* === Pulse animation === */
+@keyframes pulse-scale {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.04); }
 }
-
-.project-card.active {
-  animation: flip360 0.6s ease forwards;
-
-}
-
