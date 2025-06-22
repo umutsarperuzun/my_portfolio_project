@@ -214,11 +214,11 @@
 >
 
 <div class="project-card"
-     data-title="AI Destekli Sistem"
-     data-description="Bu proje yapay zeka kullanarak araç takip ve veri analizi yapar.">
+     data-title="Huge Title 1"
+     data-description="Huge Description 1.">
   <div class="project-card-inner">
     <h3 class="text-xl font-semibold">Proje 1</h3>
-    <p class="text-sm mt-2">Kısa bilgi</p>
+    <p class="text-sm mt-2">Short Information 1</p>
   </div>
   <button class="card-close">✖</button>
 </div>
@@ -227,11 +227,11 @@
 
 
 <div class="project-card"
-     data-title="AI Destekli Sistem"
-     data-description="Bu proje yapay zeka kullanarak araç takip ve veri analizi yapar.">
+     data-title="Huge Title 2"
+     data-description="Huge Description 2.">
   <div class="project-card-inner">
-    <h3 class="text-xl font-semibold">Proje 1</h3>
-    <p class="text-sm mt-2">Kısa bilgi</p>
+    <h3 class="text-xl font-semibold">Proje 2</h3>
+    <p class="text-sm mt-2">Short Information 2</p>
   </div>
   <button class="card-close">✖</button>
 </div>
@@ -239,11 +239,11 @@
 
 
 <div class="project-card"
-     data-title="AI Destekli Sistem"
-     data-description="Bu proje yapay zeka kullanarak araç takip ve veri analizi yapar.">
+     data-title="Huge Title 3"
+     data-description="Huge Description 3.">
   <div class="project-card-inner">
-    <h3 class="text-xl font-semibold">Proje 1</h3>
-    <p class="text-sm mt-2">Kısa bilgi</p>
+    <h3 class="text-xl font-semibold">Proje 3</h3>
+    <p class="text-sm mt-2">Short Information 3</p>
   </div>
   <button class="card-close">✖</button>
 </div>
@@ -251,11 +251,11 @@
 
 
 <div class="project-card"
-     data-title="AI Destekli Sistem"
-     data-description="Bu proje yapay zeka kullanarak araç takip ve veri analizi yapar.">
+     data-title="Huge Title 4"
+     data-description="Huge Description 4.">
   <div class="project-card-inner">
-    <h3 class="text-xl font-semibold">Proje 1</h3>
-    <p class="text-sm mt-2">Kısa bilgi</p>
+    <h3 class="text-xl font-semibold">Proje 4</h3>
+    <p class="text-sm mt-2">Short Information 4</p>
   </div>
   <button class="card-close">✖</button>
 </div>
@@ -263,11 +263,11 @@
 
 
 <div class="project-card"
-     data-title="AI Destekli Sistem"
-     data-description="Bu proje yapay zeka kullanarak araç takip ve veri analizi yapar.">
+     data-title="Huge Title 5"
+     data-description="Huge Description 5.">
   <div class="project-card-inner">
-    <h3 class="text-xl font-semibold">Proje 1</h3>
-    <p class="text-sm mt-2">Kısa bilgi</p>
+    <h3 class="text-xl font-semibold">Proje 5</h3>
+    <p class="text-sm mt-2">Short Information 5</p>
   </div>
   <button class="card-close">✖</button>
 </div>
@@ -682,6 +682,25 @@ obsrvr.observe(document.getElementById('projects'));
     const cards = document.querySelectorAll(".project-card");
     const overlay = document.getElementById("overlay-blur");
 
+    const observer3 = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          const activeCard = entry.target;
+          if (activeCard.classList.contains("active")) {
+            activeCard.classList.remove("active");
+
+            const title = activeCard.querySelector("h3");
+            const desc = activeCard.querySelector("p");
+
+            title.textContent = activeCard.dataset.originalTitle || "";
+            desc.textContent = activeCard.dataset.originalDesc || "";
+
+            overlay.classList.add("hidden");
+          }
+        }
+      });
+    }, { threshold: 0.2 });
+
     cards.forEach(card => {
       const closeBtn = card.querySelector(".card-close");
       const innerTitle = card.querySelector("h3");
@@ -695,8 +714,8 @@ obsrvr.observe(document.getElementById('projects'));
       card.addEventListener("click", () => {
         card.classList.add("active");
         overlay.classList.remove("hidden");
+  
 
-        // Detay içeriği göster
         const detailTitle = card.getAttribute("data-title");
         const detailDesc = card.getAttribute("data-description");
 
@@ -704,21 +723,22 @@ obsrvr.observe(document.getElementById('projects'));
         if (detailDesc) innerDesc.textContent = detailDesc;
       });
 
-      // Kapatma butonuna tıklanınca orijinal içeriğe dön
       if (closeBtn) {
         closeBtn.addEventListener("click", (e) => {
           e.stopPropagation();
           card.classList.remove("active");
           overlay.classList.add("hidden");
 
-          // İçeriği eski haline getir
           innerTitle.textContent = card.dataset.originalTitle || "";
           innerDesc.textContent = card.dataset.originalDesc || "";
         });
       }
+
+      // ⭐ Observer'ı burada başlat
+      observer3.observe(card);
     });
 
-    // Arka plan blur'a tıklanırsa tüm kartları kapat
+    // Blur alana tıklanırsa tüm kartları kapat
     overlay.addEventListener("click", () => {
       document.querySelectorAll(".project-card.active").forEach(card => {
         card.classList.remove("active");
@@ -733,7 +753,29 @@ obsrvr.observe(document.getElementById('projects'));
       overlay.classList.add("hidden");
     });
   });
+  const allCards = document.querySelectorAll(".project-card");
+
+const blurResetObserver = new IntersectionObserver((entries) => {
+  const anyActive = Array.from(allCards).some(card => card.classList.contains("active"));
+  const allInvisible = Array.from(entries).every(entry => !entry.isIntersecting);
+
+  if (anyActive && allInvisible) {
+    allCards.forEach(card => {
+      card.classList.remove("active");
+      const title = card.querySelector("h3");
+      const desc = card.querySelector("p");
+      title.textContent = card.dataset.originalTitle || "";
+      desc.textContent = card.dataset.originalDesc || "";
+    });
+
+    document.getElementById("overlay-blur").classList.add("hidden");
+  }
+}, { threshold: 0.2 });
+
+allCards.forEach(card => blurResetObserver.observe(card));
+
 </script>
+
 
 
 

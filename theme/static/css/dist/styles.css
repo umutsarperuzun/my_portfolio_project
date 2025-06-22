@@ -803,10 +803,6 @@ select {
   visibility: visible;
 }
 
-.invisible {
-  visibility: hidden;
-}
-
 .collapse {
   visibility: collapse;
 }
@@ -847,14 +843,6 @@ select {
   left: 0.125rem;
 }
 
-.right-2 {
-  right: 0.5rem;
-}
-
-.right-4 {
-  right: 1rem;
-}
-
 .right-6 {
   right: 1.5rem;
 }
@@ -869,14 +857,6 @@ select {
 
 .top-1\/4 {
   top: 25%;
-}
-
-.top-2 {
-  top: 0.5rem;
-}
-
-.top-4 {
-  top: 1rem;
 }
 
 .top-\[128px\] {
@@ -1044,10 +1024,6 @@ select {
   width: 1.5rem;
 }
 
-.w-\[90\%\] {
-  width: 90%;
-}
-
 .w-auto {
   width: auto;
 }
@@ -1087,17 +1063,6 @@ select {
 
 .border-collapse {
   border-collapse: collapse;
-}
-
-.rotate-\[0deg\] {
-  --tw-rotate: 0deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.scale-100 {
-  --tw-scale-x: 1;
-  --tw-scale-y: 1;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .transform {
@@ -1390,10 +1355,6 @@ select {
   padding: 0.75rem;
 }
 
-.p-8 {
-  padding: 2rem;
-}
-
 .px-10 {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
@@ -1551,12 +1512,6 @@ select {
   opacity: 0.2;
 }
 
-.shadow-2xl {
-  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
 .shadow-lg {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
@@ -1707,10 +1662,6 @@ select {
   --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.group.active .group-\[\.active\]\:block {
-  display: block;
 }
 
 .peer:checked ~ .peer-checked\:translate-x-full {
