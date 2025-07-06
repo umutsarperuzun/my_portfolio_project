@@ -879,6 +879,14 @@ select {
   top: 100%;
 }
 
+.left-1 {
+  left: 0.25rem;
+}
+
+.top-3 {
+  top: 0.75rem;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -1535,6 +1543,11 @@ select {
   padding-bottom: 1.5rem;
 }
 
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
 .pb-8 {
   padding-bottom: 2rem;
 }
@@ -1987,6 +2000,14 @@ select {
 }
 
 @media (min-width: 640px) {
+  .sm\:left-3 {
+    left: 0.75rem;
+  }
+
+  .sm\:top-1\/4 {
+    top: 25%;
+  }
+
   .sm\:min-w-\[400px\] {
     min-width: 400px;
   }
@@ -1998,6 +2019,16 @@ select {
   .sm\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  .sm\:px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .sm\:py-1 {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
   }
 
   .sm\:text-5xl {
