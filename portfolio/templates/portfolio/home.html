@@ -286,7 +286,7 @@
     </div>
 
     <!-- Terminal Content -->
-    <div class="p-4 text-sm leading-relaxed" id="terminal-typing-container">
+    <div class="p-4 text-sm leading-relaxed h-64 sm:h-72 overflow-y-auto" id="terminal-typing-container">
       <div id="terminal-typing"></div>
       <span class="blink">█</span>
     </div>
@@ -657,8 +657,10 @@ function activateTiltEffect() {
 
 // 10. Terminal yazısı
 function setupTerminalTyping() {
+  const container = document.getElementById("terminal-typing-container");
   const terminal = document.getElementById("terminal-typing");
-  if (!terminal) return;
+  if (!container || !terminal) return;
+
   const lines = [
     "Microsoft Windows [Version 10.0.26100.4061]",
     "(c) Microsoft Corporation. All rights reserved.",
@@ -669,32 +671,63 @@ function setupTerminalTyping() {
     "C:\\Users\\sarpe> Status: ONLINE ✅"
   ];
 
-  let lineIndex = 0;
-  let charIndex = 0;
-  let currentLine = "";
+  let timeouts = [];
 
-  function typeNextChar() {
-    if (lineIndex >= lines.length) return;
-
-    const line = lines[lineIndex];
-    if (charIndex < line.length) {
-      currentLine += line.charAt(charIndex++);
-      terminal.lastChild.textContent = currentLine;
-      setTimeout(typeNextChar, 30);
-    } else {
-      const br = document.createElement("div");
-      br.textContent = "";
-      terminal.appendChild(br);
-      lineIndex++;
-      charIndex = 0;
-      currentLine = "";
-      setTimeout(typeNextChar, 400);
-    }
+  function clearTimers() {
+    timeouts.forEach(id => clearTimeout(id));
+    timeouts = [];
   }
 
-  const firstLine = document.createElement("div");
-  terminal.appendChild(firstLine);
-  typeNextChar();
+  function startTyping() {
+    terminal.textContent = "";
+    const firstLine = document.createElement("div");
+    terminal.appendChild(firstLine);
+
+    let lineIndex = 0;
+    let charIndex = 0;
+    let currentLine = "";
+
+    function typeNextChar() {
+      if (lineIndex >= lines.length) return;
+
+      const line = lines[lineIndex];
+      if (charIndex < line.length) {
+        currentLine += line.charAt(charIndex++);
+        terminal.lastChild.textContent = currentLine;
+        // Auto-scroll container to bottom without affecting layout height
+        container.scrollTop = container.scrollHeight;
+        timeouts.push(setTimeout(typeNextChar, 30));
+      } else {
+        const br = document.createElement("div");
+        br.textContent = "";
+        terminal.appendChild(br);
+        lineIndex++;
+        charIndex = 0;
+        currentLine = "";
+        container.scrollTop = container.scrollHeight;
+        timeouts.push(setTimeout(typeNextChar, 400));
+      }
+    }
+
+    typeNextChar();
+  }
+
+  // Start immediately on load
+  startTyping();
+
+  // Restart when blog section comes into view
+  const blogSection = document.getElementById("blog");
+  if (blogSection && "IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          clearTimers();
+          startTyping();
+        }
+      });
+    }, { threshold: 0.5 });
+    observer.observe(blogSection);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
