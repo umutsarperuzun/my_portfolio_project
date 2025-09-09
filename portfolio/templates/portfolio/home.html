@@ -306,6 +306,17 @@
   >
     <h2 class="text-3xl font-bold text-center mb-10 dark:text-white">Get in Touch</h2>
 
+    <!-- Django messages -->
+    {% if messages %}
+      <div class="max-w-4xl mx-auto px-4 mb-6">
+        {% for message in messages %}
+          <div class="rounded-lg px-4 py-3 text-sm {{ message.tags|default:'' }} {% if message.tags == 'success' %}bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-200{% elif message.tags == 'error' %}bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-200{% else %}bg-gray-100 text-gray-800 dark:bg-zinc-800/60 dark:text-gray-200{% endif %}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
     <div class="max-w-4xl mx-auto px-4">
       <!-- Gradient ring + glass card -->
       <div class="gradient-ring rounded-2xl p-0.5">
@@ -334,22 +345,23 @@
               </div>
             </div>
 
-            <!-- Right: Contact form (frontend only) -->
+            <!-- Right: Contact form (backend wired) -->
             <div>
-              <form class="space-y-4">
+              <form class="space-y-4" method="post" action="{% url 'contact_submit' %}">
+                {% csrf_token %}
                 <div>
                   <label class="block text-sm mb-1 text-gray-700 dark:text-gray-300">Name</label>
-                  <input type="text" placeholder="Your name" class="w-full rounded-lg bg-white/70 dark:bg-zinc-800/70 border border-gray-300 dark:border-zinc-700 px-4 py-3 contact-input focus:outline-none" />
+                  <input name="name" type="text" placeholder="Your name" class="w-full rounded-lg bg-white/70 dark:bg-zinc-800/70 border border-gray-300 dark:border-zinc-700 px-4 py-3 contact-input focus:outline-none" required />
                 </div>
                 <div>
                   <label class="block text-sm mb-1 text-gray-700 dark:text-gray-300">Email</label>
-                  <input type="email" placeholder="name@example.com" class="w-full rounded-lg bg-white/70 dark:bg-zinc-800/70 border border-gray-300 dark:border-zinc-700 px-4 py-3 contact-input focus:outline-none" />
+                  <input name="email" type="email" placeholder="name@example.com" class="w-full rounded-lg bg-white/70 dark:bg-zinc-800/70 border border-gray-300 dark:border-zinc-700 px-4 py-3 contact-input focus:outline-none" required />
                 </div>
                 <div>
                   <label class="block text-sm mb-1 text-gray-700 dark:text-gray-300">Message</label>
-                  <textarea rows="5" placeholder="Tell me a bit about your project…" class="w-full rounded-lg bg-white/70 dark:bg-zinc-800/70 border border-gray-300 dark:border-zinc-700 px-4 py-3 contact-input focus:outline-none"></textarea>
+                  <textarea name="message" rows="5" placeholder="Tell me a bit about your project…" class="w-full rounded-lg bg-white/70 dark:bg-zinc-800/70 border border-gray-300 dark:border-zinc-700 px-4 py-3 contact-input focus:outline-none" required></textarea>
                 </div>
-                <button type="button" class="shine-btn relative inline-flex items-center justify-center w-full md:w-auto px-6 py-3 rounded-lg font-medium text-white bg-gradient-to-r from-sky-400 via-indigo-500 to-fuchsia-500 hover:from-sky-500 hover:via-indigo-600 hover:to-fuchsia-600 transition">
+                <button type="submit" class="shine-btn relative inline-flex items-center justify-center w-full md:w-auto px-6 py-3 rounded-lg font-medium text-white bg-gradient-to-r from-sky-400 via-indigo-500 to-fuchsia-500 hover:from-sky-500 hover:via-indigo-600 hover:to-fuchsia-600 transition">
                   Send Message
                 </button>
               </form>
