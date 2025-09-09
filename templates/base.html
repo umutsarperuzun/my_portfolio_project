@@ -132,7 +132,13 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      AOS.init();
+      AOS.init({
+        duration: 1500,
+        easing: 'ease-in-out',
+        once: false,
+        mirror: true,
+        offset: 100
+      });
     </script>
     <script>
       const navbar = document.getElementById("navbar");

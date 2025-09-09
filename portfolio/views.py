@@ -7,14 +7,16 @@ from .models import ContactMessage
 
 def home(request):
     slider_images = [
-        'images/testss.png',
-        'images/testss.png',
-        'images/testss.png',
-        'images/testss.png',
-        'images/testss.png',
-        'images/testss.png',
-        'images/testss.png',
-        'images/testss.png',
+        'images/pos-login.png',
+        'images/cb-vehicleadd.png',
+        'images/nl-mainpage.png',
+        'images/pos-stats.png',
+        'images/cb-login.png',
+        'images/nl-blogs.png',
+        'images/pos-anasayfa.png',
+        'images/nl-analiytics.png',
+        'images/pos-invoice.png',
+        'images/cb-download.png',
     ]
     return render(request, 'portfolio/home.html', {'slider_images': slider_images * 6})
 
