@@ -1104,12 +1104,16 @@ select {
   width: 100%;
 }
 
-.min-w-\[200\%\] {
-  min-width: 200%;
+.min-w-\[400\%\] {
+  min-width: 400%;
 }
 
 .min-w-\[500px\] {
   min-width: 500px;
+}
+
+.min-w-\[600\%\] {
+  min-width: 600%;
 }
 
 .max-w-2xl {
