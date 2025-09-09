@@ -2003,11 +2003,6 @@ select {
   color: rgb(243 244 246 / var(--tw-text-opacity, 1));
 }
 
-.dark\:text-gray-200:is([data-theme="dark"] *) {
-  --tw-text-opacity: 1;
-  color: rgb(229 231 235 / var(--tw-text-opacity, 1));
-}
-
 .dark\:text-gray-300:is([data-theme="dark"] *) {
   --tw-text-opacity: 1;
   color: rgb(209 213 219 / var(--tw-text-opacity, 1));
@@ -2016,16 +2011,6 @@ select {
 .dark\:text-gray-400:is([data-theme="dark"] *) {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity, 1));
-}
-
-.dark\:text-green-200:is([data-theme="dark"] *) {
-  --tw-text-opacity: 1;
-  color: rgb(187 247 208 / var(--tw-text-opacity, 1));
-}
-
-.dark\:text-red-200:is([data-theme="dark"] *) {
-  --tw-text-opacity: 1;
-  color: rgb(254 202 202 / var(--tw-text-opacity, 1));
 }
 
 .dark\:text-white:is([data-theme="dark"] *) {
