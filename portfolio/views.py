@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django import forms
+from django.urls import reverse
 from .models import ContactMessage
 
 
@@ -28,12 +29,12 @@ class ContactForm(forms.Form):
 
 def contact_submit(request):
     if request.method != "POST":
-        return redirect('home')
+        return redirect(reverse('home') + '#contact')
 
     form = ContactForm(request.POST)
     if not form.is_valid():
         messages.error(request, "Please check the form fields and try again.")
-        return redirect('home')
+        return redirect(reverse('home') + '#contact')
 
     ContactMessage.objects.create(
         name=form.cleaned_data['name'],
@@ -41,4 +42,4 @@ def contact_submit(request):
         message=form.cleaned_data['message'],
     )
     messages.success(request, "Thanks! Your message has been sent.")
-    return redirect('home')
+    return redirect(reverse('home') + '#contact')
