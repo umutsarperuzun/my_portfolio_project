@@ -328,7 +328,8 @@
 
   // 1. Navbar offset'li scroll davranışı
 function setupSmoothScrollWithOffset() {
-  const navbarHeight = document.querySelector("nav").offsetHeight;
+  const navbar = document.querySelector("nav");
+  const navbarHeight = navbar ? navbar.offsetHeight : 0;
   const links = document.querySelectorAll("a.scroll-link");
 
   links.forEach(link => {
@@ -340,7 +341,7 @@ function setupSmoothScrollWithOffset() {
       if (targetEl) {
         const offsetTop = targetEl.offsetTop;
         window.scrollTo({
-          top: offsetTop - navbarHeight + 6, // 6px ince ayar
+          top: offsetTop - navbarHeight + 6,
           behavior: "smooth"
         });
       }
@@ -352,6 +353,7 @@ function setupSmoothScrollWithOffset() {
 function setupQuickContactPanel() {
   const contactToggleBtn = document.getElementById("toggle-panel");
   const iconSection = document.getElementById("icon-area");
+  if (!contactToggleBtn || !iconSection) return;
   let panelOpen = false;
 
   contactToggleBtn.addEventListener("click", () => {
@@ -372,9 +374,10 @@ function setupQuickContactPanel() {
 
 // 3. Decode yazı animasyonu (hero başlığı)
 function decodeEffect() {
+  const display = document.getElementById("decoding-title");
+  if (!display) return;
   const targetText = "This is my portfolio";
   const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()-_=+";
-  const display = document.getElementById("decoding-title");
   let iterations = 0;
 
   function animate() {
@@ -432,6 +435,7 @@ function setupScrollRevealAnimations() {
 function setupSkillAnimation() {
   const skillSection = document.getElementById("skills-section");
   const skillBars = document.querySelectorAll(".skill-bar");
+  if (!skillSection || !skillBars.length) return;
   let animationStarted = false;
 
   function animateSkills() {
@@ -468,6 +472,7 @@ function setupSkillAnimation() {
 // 6. Skill ikonlarına scroll ile spin animasyonu
 function setupSkillIconAnimations() {
   const icons = document.querySelectorAll(".skill-icon");
+  if (!icons.length) return;
 
   const iconObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -497,13 +502,17 @@ function setupProjectCardFanout() {
   mainCard.addEventListener("click", () => {
     if (opened) return;
 
-    const offsetTop = document.getElementById("projects").offsetTop;
-    const navbarHeight = document.querySelector("nav").offsetHeight;
+    const projectsEl = document.getElementById("projects");
+    const navbar = document.querySelector("nav");
+    const navbarHeight = navbar ? navbar.offsetHeight : 0;
 
-    window.scrollTo({
-      top: offsetTop - navbarHeight + 4,
-      behavior: "smooth"
-    });
+    if (projectsEl) {
+      const offsetTop = projectsEl.offsetTop;
+      window.scrollTo({
+        top: offsetTop - navbarHeight + 4,
+        behavior: "smooth"
+      });
+    }
 
     trigger.classList.add('opacity-0', 'pointer-events-none', 'hidden');
     trigger.classList.remove('h-[300px]');
@@ -540,13 +549,15 @@ function setupProjectCardFanout() {
     });
   }, { threshold: 0.3 });
 
-  obsrvr.observe(document.getElementById('projects'));
+  const projectsEl = document.getElementById('projects');
+  if (projectsEl) obsrvr.observe(projectsEl);
 }
 
 // 8. Kart büyütme & blur overlay sistemi
 function setupProjectCardOverlay() {
   const cards = document.querySelectorAll(".project-card");
   const overlay = document.getElementById("overlay-blur");
+  if (!cards.length || !overlay) return;
 
   const resetCard = (card) => {
     card.classList.remove("active");
@@ -624,6 +635,7 @@ function setupProjectCardOverlay() {
 // 9. Tilt efekt
 function activateTiltEffect() {
   const projectCards = document.querySelectorAll('.project-card');
+  if (!projectCards.length) return;
 
   projectCards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
@@ -645,6 +657,8 @@ function activateTiltEffect() {
 
 // 10. Terminal yazısı
 function setupTerminalTyping() {
+  const terminal = document.getElementById("terminal-typing");
+  if (!terminal) return;
   const lines = [
     "Microsoft Windows [Version 10.0.26100.4061]",
     "(c) Microsoft Corporation. All rights reserved.",
@@ -655,7 +669,6 @@ function setupTerminalTyping() {
     "C:\\Users\\sarpe> Status: ONLINE ✅"
   ];
 
-  const terminal = document.getElementById("terminal-typing");
   let lineIndex = 0;
   let charIndex = 0;
   let currentLine = "";
@@ -692,8 +705,11 @@ document.addEventListener("DOMContentLoaded", () => {
   setupSkillIconAnimations();
   setupProjectCardFanout();
   setupProjectCardOverlay();
-  initStarField("footer-stars");
-  initStarField("star-canvas");
+  // initStarField for footer is already called in base.html
+  if (typeof initStarField === 'function') {
+    const starCanvas = document.getElementById('star-canvas');
+    if (starCanvas) initStarField("star-canvas");
+  }
   setupTerminalTyping();
   setupSmoothScrollWithOffset();
 });
