@@ -1116,6 +1116,10 @@ select {
   min-width: 300px;
 }
 
+.min-w-\[500px\] {
+  min-width: 500px;
+}
+
 .max-w-2xl {
   max-width: 42rem;
 }
@@ -2188,6 +2192,10 @@ select {
 
   .sm\:min-w-\[400px\] {
     min-width: 400px;
+  }
+
+  .sm\:min-w-\[600px\] {
+    min-width: 600px;
   }
 
   .sm\:grid-cols-2 {

@@ -10,11 +10,8 @@ def home(request):
         'images/testss.png',
         'images/testss.png',
         'images/testss.png',
-        'images/testss.png',
-        'images/testss.png',
-        'images/testss.png',
     ]
-    return render(request, 'portfolio/home.html', {'slider_images': slider_images *5})
+    return render(request, 'portfolio/home.html', {'slider_images': slider_images * 3})
 
 
 def redirect_home(request):
