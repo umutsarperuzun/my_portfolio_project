@@ -199,8 +199,12 @@
 >
 
 <div class="project-card"
-     data-title="Huge Title 1"
-     data-description="Huge Description 1.">
+     data-title="Project Name 1"
+     data-description="A short description of the project’s purpose, key features, and what problem it solves."
+     data-cover="{% static 'images/testss.png' %}"
+     data-tags="Django,Tailwind,PostgreSQL"
+     data-live="#"
+     data-repo="#">
   <div class="project-card-inner">
     <h3 class="text-xl font-semibold">Proje 1</h3>
     <p class="text-sm mt-2">Short Information 1</p>
@@ -212,8 +216,12 @@
 
 
 <div class="project-card"
-     data-title="Huge Title 2"
-     data-description="Huge Description 2.">
+     data-title="Project Name 2"
+     data-description="Brief overview of features and stack."
+     data-cover="{% static 'images/testss.png' %}"
+     data-tags="React,FastAPI"
+     data-live="#"
+     data-repo="#">
   <div class="project-card-inner">
     <h3 class="text-xl font-semibold">Proje 2</h3>
     <p class="text-sm mt-2">Short Information 2</p>
@@ -224,8 +232,12 @@
 
 
 <div class="project-card"
-     data-title="Huge Title 3"
-     data-description="Huge Description 3.">
+     data-title="Project Name 3"
+     data-description="Short teaser about the project."
+     data-cover="{% static 'images/testss.png' %}"
+     data-tags="Node,MongoDB"
+     data-live="#"
+     data-repo="#">
   <div class="project-card-inner">
     <h3 class="text-xl font-semibold">Proje 3</h3>
     <p class="text-sm mt-2">Short Information 3</p>
@@ -236,8 +248,12 @@
 
 
 <div class="project-card"
-     data-title="Huge Title 4"
-     data-description="Huge Description 4.">
+     data-title="Project Name 4"
+     data-description="Short teaser about the project."
+     data-cover="{% static 'images/testss.png' %}"
+     data-tags="Flask,MySQL"
+     data-live="#"
+     data-repo="#">
   <div class="project-card-inner">
     <h3 class="text-xl font-semibold">Proje 4</h3>
     <p class="text-sm mt-2">Short Information 4</p>
@@ -248,8 +264,12 @@
 
 
 <div class="project-card"
-     data-title="Huge Title 5"
-     data-description="Huge Description 5.">
+     data-title="Project Name 5"
+     data-description="Short teaser about the project."
+     data-cover="{% static 'images/testss.png' %}"
+     data-tags="Python,Docker"
+     data-live="#"
+     data-repo="#">
   <div class="project-card-inner">
     <h3 class="text-xl font-semibold">Proje 5</h3>
     <p class="text-sm mt-2">Short Information 5</p>
@@ -262,6 +282,37 @@
   </div>
   <!-- Blur Arkaplan -->
 <div id="overlay-blur" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 hidden"></div>
+
+<!-- Single reusable Project Modal -->
+<div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center px-4">
+  <div id="project-modal-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+  <div class="relative bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl max-w-3xl w-full overflow-hidden">
+    <button id="project-modal-close" class="absolute top-3 right-3 text-white bg-zinc-800/70 hover:bg-zinc-700 rounded-full w-8 h-8 flex items-center justify-center">✖</button>
+    <div class="p-6 space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <img id="pm-cover" src="" alt="Cover" class="w-full h-56 md:h-64 object-cover rounded-xl" />
+        </div>
+        <div class="space-y-3">
+          <h3 id="pm-title" class="text-xl font-semibold text-gray-900 dark:text-white"></h3>
+          <p id="pm-desc" class="text-sm text-gray-700 dark:text-gray-300"></p>
+          <div>
+            <h4 class="text-sm font-semibold text-gray-800 dark:text-gray-200">Stack</h4>
+            <div id="pm-tags" class="flex flex-wrap gap-2 mt-2"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-gray-800 dark:text-gray-200">Overview</h4>
+        <ul id="pm-features" class="mt-2 list-disc list-inside text-sm text-gray-700 dark:text-gray-300 space-y-1"></ul>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-gray-800 dark:text-gray-200">Links</h4>
+        <div id="pm-actions" class="flex flex-wrap gap-2 mt-2"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 </section>
@@ -605,82 +656,102 @@ function setupProjectCardFanout() {
 }
 
 // 8. Kart büyütme & blur overlay sistemi
-function setupProjectCardOverlay() {
-  const cards = document.querySelectorAll(".project-card");
-  const overlay = document.getElementById("overlay-blur");
-  if (!cards.length || !overlay) return;
+function setupProjectCardOverlay() { /* deprecated: kept empty to avoid duplicate handlers */ }
 
-  const resetCard = (card) => {
-    card.classList.remove("active");
-    card.style.zIndex = "1";
-    card.style.opacity = "1";
-    card.style.pointerEvents = "auto";
-    const title = card.querySelector("h3");
-    const desc = card.querySelector("p");
-    title.textContent = card.dataset.originalTitle || "";
-    desc.textContent = card.dataset.originalDesc || "";
-  };
+// New: Centralized modal for project details
+function setupProjectModal() {
+  const cards = document.querySelectorAll('.project-card');
+  const modal = document.getElementById('project-modal');
+  const modalOverlay = document.getElementById('project-modal-overlay');
+  const modalClose = document.getElementById('project-modal-close');
+  const pmCover = document.getElementById('pm-cover');
+  const pmTitle = document.getElementById('pm-title');
+  const pmDesc = document.getElementById('pm-desc');
+  const pmTags = document.getElementById('pm-tags');
+  const pmActions = document.getElementById('pm-actions');
+  const pmFeatures = document.getElementById('pm-features');
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting && entry.target.classList.contains("active")) {
-        resetCard(entry.target);
-        overlay.classList.add("hidden");
-      }
-    });
-  }, { threshold: 0.2 });
+  if (!cards.length || !modal) return;
 
-  const blurResetObserver = new IntersectionObserver((entries) => {
-    const anyActive = Array.from(cards).some(card => card.classList.contains("active"));
-    const allInvisible = Array.from(entries).every(entry => !entry.isIntersecting);
-    if (anyActive && allInvisible) {
-      cards.forEach(resetCard);
-      overlay.classList.add("hidden");
-    }
-  }, { threshold: 0.2 });
+  function openModal() {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+    pmCover.src = '';
+    pmTitle.textContent = '';
+    pmDesc.textContent = '';
+    pmTags.innerHTML = '';
+    pmActions.innerHTML = '';
+    pmFeatures.innerHTML = '';
+  }
 
   cards.forEach(card => {
-    const closeBtn = card.querySelector(".card-close");
-    const title = card.querySelector("h3");
-    const desc = card.querySelector("p");
-    card.dataset.originalTitle = title.textContent;
-    card.dataset.originalDesc = desc.textContent;
+    card.addEventListener('click', () => {
+      const title = card.getAttribute('data-title') || '';
+      const desc = card.getAttribute('data-description') || '';
+      const cover = card.getAttribute('data-cover') || '';
+      const tags = (card.getAttribute('data-tags') || '').split(',').map(t => t.trim()).filter(Boolean);
+      const live = card.getAttribute('data-live');
+      const repo = card.getAttribute('data-repo');
+      const features = (card.getAttribute('data-features') || '').split('|').map(f => f.trim()).filter(Boolean);
 
-    card.addEventListener("click", () => {
-      cards.forEach(c => {
-        if (c !== card) {
-          c.style.opacity = "0";
-          c.style.pointerEvents = "none";
-          c.style.zIndex = "0";
-        }
+      pmTitle.textContent = title;
+      pmDesc.textContent = desc;
+      if (cover) pmCover.src = cover;
+
+      pmTags.innerHTML = '';
+      tags.forEach(t => {
+        const span = document.createElement('span');
+        span.className = 'chip';
+        span.textContent = t;
+        pmTags.appendChild(span);
       });
-      card.classList.add("active");
-      card.style.zIndex = "100";
-      overlay.classList.remove("hidden");
 
-      const detailTitle = card.getAttribute("data-title");
-      const detailDesc = card.getAttribute("data-description");
+      pmFeatures.innerHTML = '';
+      features.forEach(f => {
+        const li = document.createElement('li');
+        li.textContent = f;
+        pmFeatures.appendChild(li);
+      });
 
-      if (detailTitle) title.textContent = detailTitle;
-      if (detailDesc) desc.textContent = detailDesc;
+      pmActions.innerHTML = '';
+      if (live && live !== '#') {
+        const a = document.createElement('a');
+        a.href = live; a.target = '_blank';
+        a.className = 'project-btn'; a.textContent = 'Live';
+        pmActions.appendChild(a);
+      }
+      if (repo && repo !== '#') {
+        const a = document.createElement('a');
+        a.href = repo; a.target = '_blank';
+        a.className = 'project-btn'; a.textContent = 'Repo';
+        pmActions.appendChild(a);
+      }
+
+      openModal();
     });
-
-    if (closeBtn) {
-      closeBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        cards.forEach(resetCard);
-        overlay.classList.add("hidden");
-      });
-    }
-
-    observer.observe(card);
-    blurResetObserver.observe(card);
   });
 
-  overlay.addEventListener("click", () => {
-    cards.forEach(resetCard);
-    overlay.classList.add("hidden");
+  function shouldCloseOnWheel(e) {
+    // Close modal if wheel happens outside modal content area (i.e., on overlay)
+    const content = modal.querySelector('.relative.bg-white, .relative.bg-zinc-900');
+    if (!content) return true;
+    return !content.contains(e.target);
+  }
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal || e.target === modalOverlay) closeModal();
   });
+  if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
+  if (modalClose) modalClose.addEventListener('click', closeModal);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+  // Close when scrolling the page (wheel) outside modal content
+  modal.addEventListener('wheel', (e) => { if (shouldCloseOnWheel(e)) closeModal(); }, { passive: true });
 }
 
 // 9. Tilt efekt
@@ -788,7 +859,8 @@ document.addEventListener("DOMContentLoaded", () => {
   setupSkillAnimation();
   setupSkillIconAnimations();
   setupProjectCardFanout();
-  setupProjectCardOverlay();
+  // setupProjectCardOverlay(); // deprecated
+  setupProjectModal();
   // initStarField for footer is already called in base.html
   if (typeof initStarField === 'function') {
     const starCanvas = document.getElementById('star-canvas');
