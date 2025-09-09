@@ -192,3 +192,67 @@
   box-shadow: 0 0 12px rgba(0, 255, 0, 0.1);
 }
 
+/* === Contact UI helpers === */
+.glass-card {
+  background: rgba(255, 255, 255, 0.65);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+[data-theme="dark"] .glass-card {
+  background: rgba(24, 24, 27, 0.55);
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+.gradient-ring {
+  position: relative;
+  z-index: 0;
+}
+.gradient-ring::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: 1rem;
+  background: conic-gradient(
+    from 0deg,
+    #22d3ee,
+    #6366f1,
+    #a855f7,
+    #22d3ee
+  );
+  animation: ring-rotate 6s linear infinite;
+  filter: blur(6px);
+}
+@keyframes ring-rotate {
+  to { transform: rotate(360deg); }
+}
+
+.contact-input {
+  transition: box-shadow 200ms ease, transform 150ms ease;
+}
+.contact-input:focus {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25), 0 10px 25px rgba(99, 102, 241, 0.15);
+}
+
+.shine-btn {
+  position: relative;
+  overflow: hidden;
+}
+.shine-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+  transform: skewX(-20deg);
+  animation: shine-sweep 2.4s ease-in-out infinite;
+}
+@keyframes shine-sweep {
+  0% { left: -150%; }
+  60% { left: 120%; }
+  100% { left: 120%; }
+}
+
