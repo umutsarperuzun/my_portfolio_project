@@ -197,17 +197,27 @@
   class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 px-4"
 >
 
-<div class="project-card"
-     data-title="Project Name 1"
-     data-description="A short description of the project’s purpose, key features, and what problem it solves."
-     data-cover="{% static 'images/testss.png' %}"
-     data-tags="Django,Tailwind,PostgreSQL"
+<div class="project-card bg-gradient-to-br from-blue-500 to-purple-600 dark:from-blue-600 dark:to-purple-700 shadow-xl hover:shadow-2xl transition-all duration-300"
+     data-title="Newsletterly (Team Project)"
+     data-description="AI-driven newsletters auto curation, AI summaries, rich media templates, and optimized subject lines"
+     data-cover="{% static 'images/nl-blogs.png' %}"
+     data-images="{% static 'images/nl-blogs.png' %},{% static 'images/nl-analiytics.png' %}"
+     data-tags="React,Node.js,MongoDB,AI"
      data-live="#"
      data-repo="#">
-  <div class="project-card-inner">
-    <h3 class="text-xl font-semibold">Newsletterly 
-      <br>(Team Project)</h3>
-    <p class="text-sm mt-2">AI-driven newsletters auto curation, AI summaries, rich media templates, and optimized subject lines</p>
+  <div class="project-card-inner relative z-10">
+    <div class="flex items-center justify-center mb-3">
+      <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+        <span class="text-2xl">📧</span>
+      </div>
+    </div>
+    <h3 class="text-lg font-bold text-white mb-2">Newsletterly</h3>
+    <p class="text-xs text-white/90 leading-relaxed">AI-driven newsletters auto curation, AI summaries, rich media templates</p>
+    <div class="mt-3 flex flex-wrap gap-1">
+      <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">React</span>
+      <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">Node.js</span>
+      <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">AI</span>
+    </div>
   </div>
   <button class="card-close">✖</button>
 </div>
@@ -215,64 +225,108 @@
 
 
 
-<div class="project-card"
-     data-title="Project Name 2"
-     data-description="Brief overview of features and stack."
-     data-cover="{% static 'images/testss.png' %}"
-     data-tags="React,FastAPI"
+<div class="project-card bg-gradient-to-br from-green-500 to-teal-600 dark:from-green-600 dark:to-teal-700 shadow-xl hover:shadow-2xl transition-all duration-300"
+     data-title="AI Chatbot (Fleet Management)"
+     data-description="Automates fleet documents & reports via Flask backend with OneDrive + CheckedSafe API integrations and NLP"
+     data-cover="{% static 'images/cb-login.png' %}"
+     data-video="{% static 'videos/ai-chatbot-demo.mp4' %}"
+     data-tags="Flask,Python,AI,NLP"
      data-live="#"
      data-repo="#">
-  <div class="project-card-inner">
-    <h3 class="text-xl font-semibold">AI Chatbot <br>(Fleet Management)</h3>
-    <p class="text-sm mt-2">Automates fleet documents & reports via Flask backend with OneDrive + CheckedSafe API integrations and NLP.</p>
+  <div class="project-card-inner relative z-10">
+    <div class="flex items-center justify-center mb-3">
+      <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+        <span class="text-2xl">🤖</span>
+      </div>
+    </div>
+    <h3 class="text-lg font-bold text-white mb-2">AI Chatbot</h3>
+    <p class="text-xs text-white/90 leading-relaxed">Automates fleet documents & reports via Flask backend with OneDrive + CheckedSafe API</p>
+    <div class="mt-3 flex flex-wrap gap-1">
+      <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">Flask</span>
+      <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">Python</span>
+      <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">AI</span>
+    </div>
   </div>
   <button class="card-close">✖</button>
 </div>
 
 
 
-<div class="project-card"
-     data-title="Project Name 3"
-     data-description="Short teaser about the project."
-     data-cover="{% static 'images/testss.png' %}"
-     data-tags="Node,MongoDB"
+<div class="project-card bg-gradient-to-br from-orange-500 to-red-600 dark:from-orange-600 dark:to-red-700 shadow-xl hover:shadow-2xl transition-all duration-300"
+     data-title="POS App"
+     data-description="Real-time sales, inventory, and reporting with role-based access (React + Node + MongoDB + Redux)"
+     data-cover="{% static 'images/pos-anasayfa.png' %}"
+     data-images="{% static 'images/pos-anasayfa.png' %},{% static 'images/pos-invoice.png' %},{% static 'images/pos-login.png' %}"
+     data-tags="React,Node.js,MongoDB,Redux"
      data-live="#"
      data-repo="#">
-  <div class="project-card-inner">
-    <h3 class="text-xl font-semibold">POS App</h3>
-    <p class="text-sm mt-2">Real-time sales, inventory, and reporting with role-based access (React + Node + MongoDB + Redux).</p>
+  <div class="project-card-inner relative z-10">
+    <div class="flex items-center justify-center mb-3">
+      <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+        <span class="text-2xl">💳</span>
+      </div>
+    </div>
+    <h3 class="text-lg font-bold text-white mb-2">POS App</h3>
+    <p class="text-xs text-white/90 leading-relaxed">Real-time sales, inventory, and reporting with role-based access</p>
+    <div class="mt-3 flex flex-wrap gap-1">
+      <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">React</span>
+      <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">Node.js</span>
+      <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">MongoDB</span>
+    </div>
   </div>
   <button class="card-close">✖</button>
 </div>
 
 
 
-<div class="project-card"
-     data-title="Project Name 4"
-     data-description="Short teaser about the project."
-     data-cover="{% static 'images/testss.png' %}"
-     data-tags="Flask,MySQL"
+<div class="project-card bg-gradient-to-br from-purple-500 to-pink-600 dark:from-purple-600 dark:to-pink-700 shadow-xl hover:shadow-2xl transition-all duration-300"
+     data-title="n8n Blog Generator"
+     data-description="Weekly topics → AI drafts → approval → auto-publish, orchestrated in n8n with Drive integrations"
+     data-cover="{% static 'images/nl-analiytics.png' %}"
+     data-images="{% static 'images/nl-analiytics.png' %},{% static 'images/nl-blogs.png' %}"
+     data-tags="n8n,AI,Automation"
      data-live="#"
      data-repo="#">
-  <div class="project-card-inner">
-    <h3 class="text-xl font-semibold">n8n Blog Generator</h3>
-    <p class="text-sm mt-2">Weekly topics → AI drafts → approval → auto-publish, orchestrated in n8n with Drive integrations.</p>
+  <div class="project-card-inner relative z-10">
+    <div class="flex items-center justify-center mb-3">
+      <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+        <span class="text-2xl">📝</span>
+      </div>
+    </div>
+    <h3 class="text-lg font-bold text-white mb-2">n8n Blog Generator</h3>
+    <p class="text-xs text-white/90 leading-relaxed">Weekly topics → AI drafts → approval → auto-publish, orchestrated in n8n</p>
+    <div class="mt-3 flex flex-wrap gap-1">
+      <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">n8n</span>
+      <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">AI</span>
+      <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">Automation</span>
+    </div>
   </div>
   <button class="card-close">✖</button>
 </div>
 
 
 
-<div class="project-card"
-     data-title="Project Name 5"
-     data-description="Short teaser about the project."
-     data-cover="{% static 'images/testss.png' %}"
-     data-tags="Python,Docker"
+<div class="project-card bg-gradient-to-br from-indigo-500 to-blue-600 dark:from-indigo-600 dark:to-blue-700 shadow-xl hover:shadow-2xl transition-all duration-300"
+     data-title="E-Commerce Platform for Sneaker Sales"
+     data-description="Auth, product filters, secure checkout, and order management — built with React, Node (Express), and MongoDB"
+     data-cover="{% static 'images/cb-upload.png' %}"
+     data-images="{% static 'images/cb-upload.png' %},{% static 'images/cb-vehicleadd.png' %},{% static 'images/cb-download.png' %}"
+     data-tags="React,Node.js,MongoDB,E-commerce"
      data-live="#"
      data-repo="#">
-  <div class="project-card-inner">
-    <h3 class="text-xl font-semibold">E-Commerce Platform for Sneaker Sales</h3>
-    <p class="text-sm mt-2">Auth, product filters, secure checkout, and order management — built with React, Node (Express), and MongoDB.</p>
+  <div class="project-card-inner relative z-10">
+    <div class="flex items-center justify-center mb-3">
+      <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+        <span class="text-2xl">👟</span>
+      </div>
+    </div>
+    <h3 class="text-lg font-bold text-white mb-2">E-Commerce Platform</h3>
+    <p class="text-xs text-white/90 leading-relaxed">Auth, product filters, secure checkout, and order management</p>
+    <div class="mt-3 flex flex-wrap gap-1">
+      <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">React</span>
+      <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">Node.js</span>
+      <span class="px-2 py-1 bg-white/20 text-white text-xs rounded-full">MongoDB</span>
+    </div>
   </div>
   <button class="card-close">✖</button>
 </div>
@@ -286,12 +340,40 @@
 <!-- Single reusable Project Modal -->
 <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center px-4">
   <div id="project-modal-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
-  <div class="relative bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl max-w-3xl w-full overflow-hidden">
+  <div class="relative bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl max-w-3xl w-full overflow-visible">
     <button id="project-modal-close" class="absolute top-3 right-3 text-white bg-zinc-800/70 hover:bg-zinc-700 rounded-full w-8 h-8 flex items-center justify-center">✖</button>
     <div class="p-6 space-y-6">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <img id="pm-cover" src="" alt="Cover" class="w-full h-56 md:h-64 object-cover rounded-xl" />
+        <div class="relative">
+          <!-- Video Container (for AI Chatbot) -->
+          <div id="pm-video-container" class="hidden">
+            <video id="pm-video" class="w-full h-48 md:h-56 object-contain rounded-xl bg-gray-100 dark:bg-gray-800" controls>
+              <source src="" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          
+          <!-- Image Gallery Container -->
+          <div id="pm-gallery-container" class="relative overflow-hidden">
+            <img id="pm-cover" src="" alt="Cover" class="w-full h-48 md:h-56 object-contain rounded-xl cursor-pointer transition-all duration-300 hover:scale-105 transform-origin-center bg-gray-100 dark:bg-gray-800" />
+            
+            <!-- Navigation Arrows -->
+            <button id="pm-prev" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-purple-600/40 to-blue-600/40 hover:from-purple-700/60 hover:to-blue-700/60 text-white/80 rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 z-30 shadow-lg hover:shadow-xl hover:scale-110 backdrop-blur-sm border border-white/10">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </button>
+            <button id="pm-next" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-purple-600/40 to-blue-600/40 hover:from-purple-700/60 hover:to-blue-700/60 text-white/80 rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 z-30 shadow-lg hover:shadow-xl hover:scale-110 backdrop-blur-sm border border-white/10">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </button>
+            
+            <!-- Image Counter -->
+            <div id="pm-counter" class="absolute bottom-3 right-3 bg-gradient-to-r from-purple-600/40 to-blue-600/40 backdrop-blur-sm text-white/80 text-xs px-3 py-1.5 rounded-full border border-white/10 shadow-lg z-40 transition-all duration-300">
+              <span id="pm-current">1</span> / <span id="pm-total">1</span>
+            </div>
+          </div>
         </div>
         <div class="space-y-3">
           <h3 id="pm-title" class="text-xl font-semibold text-gray-900 dark:text-white"></h3>
@@ -670,14 +752,27 @@ function setupProjectModal() {
   const pmTags = document.getElementById('pm-tags');
   const pmActions = document.getElementById('pm-actions');
   const pmFeatures = document.getElementById('pm-features');
+  
+  // Gallery elements
+  const pmVideoContainer = document.getElementById('pm-video-container');
+  const pmGalleryContainer = document.getElementById('pm-gallery-container');
+  const pmVideo = document.getElementById('pm-video');
+  const pmPrev = document.getElementById('pm-prev');
+  const pmNext = document.getElementById('pm-next');
+  const pmCurrent = document.getElementById('pm-current');
+  const pmTotal = document.getElementById('pm-total');
 
   if (!cards.length || !modal) return;
+
+  let currentImages = [];
+  let currentImageIndex = 0;
 
   function openModal() {
     modal.classList.remove('hidden');
     modal.classList.add('flex');
     document.body.style.overflow = 'hidden';
   }
+  
   function closeModal() {
     modal.classList.add('hidden');
     modal.classList.remove('flex');
@@ -688,6 +783,76 @@ function setupProjectModal() {
     pmTags.innerHTML = '';
     pmActions.innerHTML = '';
     pmFeatures.innerHTML = '';
+    
+    // Reset image zoom - oklar ve sayaç normal pozisyonlarında kalır
+    pmCover.classList.remove('zoomed');
+    pmCover.style.transform = 'scale(1)';
+    pmCover.style.zIndex = '1';
+    pmGalleryContainer.style.overflow = 'hidden';
+    
+    // Reset video
+    if (pmVideo) {
+      pmVideo.pause();
+      pmVideo.currentTime = 0;
+    }
+  }
+
+  function showImage(index) {
+    if (currentImages.length === 0) return;
+    
+    currentImageIndex = index;
+    pmCover.src = currentImages[currentImageIndex];
+    pmCurrent.textContent = currentImageIndex + 1;
+    pmTotal.textContent = currentImages.length;
+    
+    // Show/hide navigation arrows
+    pmPrev.style.display = currentImages.length > 1 ? 'flex' : 'none';
+    pmNext.style.display = currentImages.length > 1 ? 'flex' : 'none';
+  }
+
+  function nextImage() {
+    if (currentImages.length === 0) return;
+    currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+    showImage(currentImageIndex);
+  }
+
+  function prevImage() {
+    if (currentImages.length === 0) return;
+    currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+    showImage(currentImageIndex);
+  }
+
+  // Image click to enlarge
+  function enlargeImage() {
+    const img = pmCover;
+    const container = pmGalleryContainer;
+    const prevBtn = pmPrev;
+    const nextBtn = pmNext;
+    const counter = document.getElementById('pm-counter');
+    
+    if (img.classList.contains('zoomed')) {
+      // Reset to normal - oklar ve sayaç normal pozisyonlarında kalır
+      img.classList.remove('zoomed');
+      img.style.transform = 'scale(1)';
+      img.style.zIndex = '1';
+      container.style.overflow = 'hidden';
+    } else {
+      // Enlarge - sadece zoom'da oklar ve sayaç kenarlara gider
+      img.classList.add('zoomed');
+      img.style.transform = 'scale(2.2)';
+      img.style.zIndex = '20';
+      container.style.overflow = 'visible';
+      
+      // Sadece zoom'da okları kenarlara taşı
+      prevBtn.style.left = '-80px';
+      nextBtn.style.right = '-80px';
+      prevBtn.style.top = '50%';
+      nextBtn.style.top = '50%';
+      
+      // Sadece zoom'da sayacı kenara taşı
+      counter.style.right = '-100px';
+      counter.style.bottom = '30px';
+    }
   }
 
   cards.forEach(card => {
@@ -695,6 +860,8 @@ function setupProjectModal() {
       const title = card.getAttribute('data-title') || '';
       const desc = card.getAttribute('data-description') || '';
       const cover = card.getAttribute('data-cover') || '';
+      const video = card.getAttribute('data-video') || '';
+      const images = card.getAttribute('data-images') || '';
       const tags = (card.getAttribute('data-tags') || '').split(',').map(t => t.trim()).filter(Boolean);
       const live = card.getAttribute('data-live');
       const repo = card.getAttribute('data-repo');
@@ -702,7 +869,26 @@ function setupProjectModal() {
 
       pmTitle.textContent = title;
       pmDesc.textContent = desc;
-      if (cover) pmCover.src = cover;
+
+      // Handle video or images
+      if (video && video !== '') {
+        // Show video
+        pmVideoContainer.classList.remove('hidden');
+        pmGalleryContainer.classList.add('hidden');
+        pmVideo.src = video;
+      } else {
+        // Show image gallery
+        pmVideoContainer.classList.add('hidden');
+        pmGalleryContainer.classList.remove('hidden');
+        
+        if (images && images !== '') {
+          currentImages = images.split(',').map(img => img.trim()).filter(Boolean);
+        } else {
+          currentImages = [cover];
+        }
+        
+        showImage(0);
+      }
 
       pmTags.innerHTML = '';
       tags.forEach(t => {
@@ -744,12 +930,93 @@ function setupProjectModal() {
     return !content.contains(e.target);
   }
 
+  // Event listeners
   modal.addEventListener('click', (e) => {
     if (e.target === modal || e.target === modalOverlay) closeModal();
+    
+    // Exit zoom if clicking outside the image when zoomed
+    if (pmCover && pmCover.classList.contains('zoomed')) {
+      const img = pmCover;
+      const container = pmGalleryContainer;
+      const prevBtn = pmPrev;
+      const nextBtn = pmNext;
+      const counter = document.getElementById('pm-counter');
+      
+      // Check if click is outside the image and its controls
+      if (e.target !== img && e.target !== prevBtn && e.target !== nextBtn && e.target !== counter) {
+        // Also check if click is not within the image bounds
+        const rect = img.getBoundingClientRect();
+        const clickX = e.clientX;
+        const clickY = e.clientY;
+        
+        if (clickX < rect.left || clickX > rect.right || clickY < rect.top || clickY > rect.bottom) {
+          // Reset to normal - oklar ve sayaç normal pozisyonlarında kalır
+          img.classList.remove('zoomed');
+          img.style.transform = 'scale(1)';
+          img.style.zIndex = '1';
+          container.style.overflow = 'hidden';
+          
+          // Reset arrow and counter positions
+          prevBtn.style.left = '8px';
+          nextBtn.style.right = '8px';
+          prevBtn.style.top = '50%';
+          nextBtn.style.top = '50%';
+          counter.style.right = '12px';
+          counter.style.bottom = '12px';
+        }
+      }
+    }
   });
   if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
   if (modalClose) modalClose.addEventListener('click', closeModal);
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+  if (pmPrev) pmPrev.addEventListener('click', prevImage);
+  if (pmNext) pmNext.addEventListener('click', nextImage);
+  if (pmCover) {
+    pmCover.addEventListener('click', (e) => {
+      const img = pmCover;
+      
+      if (img.classList.contains('zoomed')) {
+        // When zoomed, handle left/right navigation based on click position
+        const rect = img.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const imgWidth = rect.width;
+        const leftThird = imgWidth / 3;
+        const rightThird = (imgWidth * 2) / 3;
+        
+        if (clickX < leftThird) {
+          // Click on left third - go to previous image
+          prevImage();
+        } else if (clickX > rightThird) {
+          // Click on right third - go to next image
+          nextImage();
+        }
+        // Click in middle third - do nothing (or could exit zoom if desired)
+      } else {
+        // When not zoomed, just enlarge the image
+        enlargeImage();
+      }
+    });
+  }
+  
+  // Container'a tıklayınca zoom'u kapat ve overview'a geç
+  if (pmGalleryContainer) {
+    pmGalleryContainer.addEventListener('click', (e) => {
+      if (e.target === pmGalleryContainer && pmCover.classList.contains('zoomed')) {
+        enlargeImage();
+        // Overview kartına scroll yap
+        const overviewSection = document.querySelector('#pm-features').closest('div');
+        if (overviewSection) {
+          overviewSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  }
+  
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowLeft') prevImage();
+    if (e.key === 'ArrowRight') nextImage();
+  });
   // Close when scrolling the page (wheel) outside modal content
   modal.addEventListener('wheel', (e) => { if (shouldCloseOnWheel(e)) closeModal(); }, { passive: true });
 }
