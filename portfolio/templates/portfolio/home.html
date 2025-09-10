@@ -5,15 +5,15 @@
 <!-- Floating Quick Contact Panel -->
 <div
   id="social-panel"
-  class="fixed left-3 top-1/2 z-50 flex flex-col items-center space-y-3 bg-white/10 dark:bg-zinc-900/20 backdrop-blur-md border border-white/20 dark:border-zinc-700/30 p-3 rounded-2xl shadow-2xl transition-all duration-500 hover:bg-white/20 dark:hover:bg-zinc-900/30"
+  class="fixed left-2 sm:left-3 top-1/2 z-50 flex flex-col items-center space-y-3 bg-white/10 dark:bg-zinc-900/20 backdrop-blur-md border border-white/20 dark:border-zinc-700/30 p-2 sm:p-3 rounded-2xl shadow-2xl transition-all duration-500 hover:bg-white/20 dark:hover:bg-zinc-900/30"
 >
   <!-- Toggle Button -->
   <button
     id="toggle-panel"
-    class="text-xs font-bold px-4 py-2 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+    class="text-xs font-bold px-2 sm:px-4 py-1 sm:py-2 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
   >
-    <span class="block">Quick</span>
-    <span class="block">Contact</span>
+    <span class="block text-xs sm:text-sm">Quick</span>
+    <span class="block text-xs sm:text-sm">Contact</span>
   </button>
 
   <!-- Hidden Social Icons Panel -->
@@ -82,27 +82,27 @@
   </div>
 
   <!-- 3. Decode yazısı (üst katman) -->
-  <div class="relative z-30 w-full text-left px-6 md:px-16">
+  <div class="relative z-30 w-full text-left px-4 sm:px-6 md:px-16">
     <div class="max-w-4xl">
       <h1
-        class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-gray-100 mb-4"
+        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-100 mb-4 break-words"
       >
         <span id="decoding-title"></span>
       </h1>
       
-      <div class="space-y-3 text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-300">
-        <p class="opacity-0" id="subtitle-1">Junior Full-Stack Developer & AI Enthusiast</p>
-        <p class="opacity-0" id="subtitle-2">Building modern web applications with React, Python & Node.js</p>
-        <p class="opacity-0" id="subtitle-3">5+ Projects • 2+ Years Experience • Available for Work</p>
+      <div class="space-y-2 sm:space-y-3 text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 dark:text-gray-300">
+        <p class="opacity-0 break-words" id="subtitle-1">Junior Full-Stack Developer & AI Enthusiast</p>
+        <p class="opacity-0 break-words" id="subtitle-2">Building modern web applications with React, Python & Node.js</p>
+        <p class="opacity-0 break-words" id="subtitle-3">5+ Projects • 2+ Years Experience • Available for Work</p>
       </div>
       
-      <div class="mt-6 flex flex-wrap gap-3 opacity-0" id="tech-badges">
-        <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium">React</span>
-        <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 rounded-full text-sm font-medium">Python</span>
-        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 rounded-full text-sm font-medium">Node.js</span>
-        <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300 rounded-full text-sm font-medium">JavaScript</span>
-        <span class="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 rounded-full text-sm font-medium">Django</span>
-        <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-300 rounded-full text-sm font-medium">MongoDB</span>
+      <div class="mt-4 sm:mt-6 flex flex-wrap gap-2 sm:gap-3 opacity-0" id="tech-badges">
+        <span class="px-2 sm:px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-xs sm:text-sm font-medium">React</span>
+        <span class="px-2 sm:px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 rounded-full text-xs sm:text-sm font-medium">Python</span>
+        <span class="px-2 sm:px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 rounded-full text-xs sm:text-sm font-medium">Node.js</span>
+        <span class="px-2 sm:px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300 rounded-full text-xs sm:text-sm font-medium">JavaScript</span>
+        <span class="px-2 sm:px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 rounded-full text-xs sm:text-sm font-medium">Django</span>
+        <span class="px-2 sm:px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-300 rounded-full text-xs sm:text-sm font-medium">MongoDB</span>
       </div>
     </div>
   </div>
@@ -120,19 +120,19 @@
     About Me
   </h2>
 
-  <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 w-full px-16 relative z-10">
+  <div class="mt-8 sm:mt-12 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 w-full px-4 sm:px-8 lg:px-16 relative z-10">
     <!-- Sol: Yazı -->
-    <div id="about-text" class="text-center max-w-xl mx-auto opacity-0 transform translate-x-[-100px] transition-all duration-1500">
-      <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+    <div id="about-text" class="text-center lg:text-left max-w-xl mx-auto lg:mx-0 opacity-0 transform translate-x-[-100px] transition-all duration-1500">
+      <h3 class="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white mb-3 sm:mb-4">
         Who am I?
       </h3>
-      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-        Hi, I’m Umut Sarper Uzun — a junior software developer who enjoys turning
+      <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+        Hi, I'm Umut Sarper Uzun — a junior software developer who enjoys turning
         real problems into simple, working products. I craft clean UIs with JavaScript/React
         and Tailwind, and build dependable backends with Python (Django/Flask) or Node.js/Express,
         using REST APIs and MySQL. I care about clarity, performance, and shipping in small, frequent
         iterations; Git/GitHub keeps me tidy, while Docker and n8n help me automate and scale. With 
-        an MSc in Computer Science (Distinction), I’m always learning and I like teams where 
+        an MSc in Computer Science (Distinction), I'm always learning and I like teams where 
         straightforward communication and delivering value matter more than buzzwords.
       </p>
     </div>
@@ -140,11 +140,11 @@
     <!-- Sağ: Yetenekler -->
     <div
       id="skills-section"
-      class="grid grid-cols-1 md:grid-cols-3 gap-8 opacity-0 transform translate-x-[100px] transition-all duration-1500"
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 opacity-0 transform translate-x-[100px] transition-all duration-1500"
     >
       <!-- Backend -->
-      <div class="space-y-4">
-        <h4 class="text-xl font-semibold text-gray-700 dark:text-white">
+      <div class="space-y-3 sm:space-y-4">
+        <h4 class="text-lg sm:text-xl font-semibold text-gray-700 dark:text-white">
           Backend
         </h4>
         <!-- Python -->
@@ -159,8 +159,8 @@
         {% include "portfolio/components/skill_item.html" with icon="icons/django.svg" name="Django" percentage="72" color="emerald" %}
       </div>
       <!-- Frontend -->
-      <div class="space-y-4">
-        <h4 class="text-xl font-semibold text-gray-700 dark:text-white">Frontend</h4>
+      <div class="space-y-3 sm:space-y-4">
+        <h4 class="text-lg sm:text-xl font-semibold text-gray-700 dark:text-white">Frontend</h4>
         <!-- JavaScript -->
         {% include "portfolio/components/skill_item.html" with icon="icons/javascript.svg" name="JavaScript" percentage="85" color="yellow" %}
         <!-- React -->
@@ -171,8 +171,8 @@
         {% include "portfolio/components/skill_item.html" with icon="icons/html.svg" name="HTML5" percentage="80" color="cyan" %}
       </div>
       <!-- Tools & Others -->
-      <div class="space-y-4">
-        <h4 class="text-xl font-semibold text-gray-700 dark:text-white">Tools & Others</h4>
+      <div class="space-y-3 sm:space-y-4">
+        <h4 class="text-lg sm:text-xl font-semibold text-gray-700 dark:text-white">Tools & Others</h4>
         <!-- Git & GitHub -->
         {% include "portfolio/components/skill_item.html" with icon="icons/git.svg" name="Git & GitHub" percentage="85" color="orange" %}
         <!-- Docker -->
@@ -216,10 +216,10 @@
   </h2>
 
   <!-- Kartlar -->
-  <div class="max-w-6xl mx-auto">
+  <div class="max-w-7xl mx-auto">
     <div
   id="project-fanout"
-  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 px-4"
+  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6 px-4 sm:px-6 lg:px-8"
 >
 
 <div class="project-card bg-gradient-to-br from-blue-500 to-purple-600 dark:from-blue-600 dark:to-purple-700 shadow-xl hover:shadow-2xl transition-all duration-300"
@@ -368,16 +368,16 @@
 <div id="overlay-blur" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 hidden"></div>
 
 <!-- Single reusable Project Modal -->
-<div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center px-4">
+<div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-2 sm:p-4">
   <div id="project-modal-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
-  <div class="relative bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl max-w-3xl w-full overflow-visible">
-    <button id="project-modal-close" class="absolute top-3 right-3 text-white bg-zinc-800/70 hover:bg-zinc-700 rounded-full w-8 h-8 flex items-center justify-center">✖</button>
-    <div class="p-6 space-y-6">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div class="relative bg-white dark:bg-zinc-900 rounded-xl sm:rounded-2xl shadow-2xl max-w-xs sm:max-w-2xl lg:max-w-3xl xl:max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+    <button id="project-modal-close" class="absolute top-2 right-2 sm:top-3 sm:right-3 text-white bg-zinc-800/70 hover:bg-zinc-700 rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center text-sm sm:text-base">✖</button>
+    <div class="p-4 sm:p-6 space-y-4 sm:space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         <div class="relative">
           <!-- Video Container (for AI Chatbot) -->
           <div id="pm-video-container" class="hidden">
-            <video id="pm-video" class="w-full h-48 md:h-56 object-contain rounded-xl bg-gray-100 dark:bg-gray-800" controls>
+            <video id="pm-video" class="w-full h-40 sm:h-48 md:h-56 object-contain rounded-lg sm:rounded-xl bg-gray-100 dark:bg-gray-800" controls>
               <source src="" type="video/mp4">
               Your browser does not support the video tag.
             </video>
@@ -385,42 +385,42 @@
           
           <!-- Image Gallery Container -->
           <div id="pm-gallery-container" class="relative overflow-hidden">
-            <img id="pm-cover" src="" alt="Cover" class="w-full h-48 md:h-56 object-contain rounded-xl cursor-pointer transition-all duration-300 hover:scale-105 transform-origin-center bg-gray-100 dark:bg-gray-800" />
+            <img id="pm-cover" src="" alt="Cover" class="w-full h-40 sm:h-48 md:h-56 object-contain rounded-lg sm:rounded-xl cursor-pointer transition-all duration-300 hover:scale-105 transform-origin-center bg-gray-100 dark:bg-gray-800" />
             
             <!-- Navigation Arrows -->
-            <button id="pm-prev" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-purple-600/40 to-blue-600/40 hover:from-purple-700/60 hover:to-blue-700/60 text-white/80 rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 z-30 shadow-lg hover:shadow-xl hover:scale-110 backdrop-blur-sm border border-white/10">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button id="pm-prev" class="absolute left-1 sm:left-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-purple-600/40 to-blue-600/40 hover:from-purple-700/60 hover:to-blue-700/60 text-white/80 rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center transition-all duration-300 z-30 shadow-lg hover:shadow-xl hover:scale-110 backdrop-blur-sm border border-white/10">
+              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
               </svg>
             </button>
-            <button id="pm-next" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-purple-600/40 to-blue-600/40 hover:from-purple-700/60 hover:to-blue-700/60 text-white/80 rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 z-30 shadow-lg hover:shadow-xl hover:scale-110 backdrop-blur-sm border border-white/10">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button id="pm-next" class="absolute right-1 sm:right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-purple-600/40 to-blue-600/40 hover:from-purple-700/60 hover:to-blue-700/60 text-white/80 rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center transition-all duration-300 z-30 shadow-lg hover:shadow-xl hover:scale-110 backdrop-blur-sm border border-white/10">
+              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
             </button>
             
             <!-- Image Counter -->
-            <div id="pm-counter" class="absolute bottom-3 right-3 bg-gradient-to-r from-purple-600/40 to-blue-600/40 backdrop-blur-sm text-white/80 text-xs px-3 py-1.5 rounded-full border border-white/10 shadow-lg z-40 transition-all duration-300">
+            <div id="pm-counter" class="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 bg-gradient-to-r from-purple-600/40 to-blue-600/40 backdrop-blur-sm text-white/80 text-xs px-2 py-1 sm:px-3 sm:py-1.5 rounded-full border border-white/10 shadow-lg z-40 transition-all duration-300">
               <span id="pm-current">1</span> / <span id="pm-total">1</span>
             </div>
           </div>
         </div>
-        <div class="space-y-3">
-          <h3 id="pm-title" class="text-xl font-semibold text-gray-900 dark:text-white"></h3>
-          <p id="pm-desc" class="text-sm text-gray-700 dark:text-gray-300"></p>
+        <div class="space-y-2 sm:space-y-3">
+          <h3 id="pm-title" class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white"></h3>
+          <p id="pm-desc" class="text-xs sm:text-sm text-gray-700 dark:text-gray-300"></p>
           <div>
-            <h4 class="text-sm font-semibold text-gray-800 dark:text-gray-200">Stack</h4>
-            <div id="pm-tags" class="flex flex-wrap gap-2 mt-2"></div>
+            <h4 class="text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200">Stack</h4>
+            <div id="pm-tags" class="flex flex-wrap gap-1 sm:gap-2 mt-1 sm:mt-2"></div>
           </div>
         </div>
       </div>
       <div>
-        <h4 class="text-sm font-semibold text-gray-800 dark:text-gray-200">Overview</h4>
-        <ul id="pm-features" class="mt-2 list-disc list-inside text-sm text-gray-700 dark:text-gray-300 space-y-1"></ul>
+        <h4 class="text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200">Overview</h4>
+        <ul id="pm-features" class="mt-1 sm:mt-2 list-disc list-inside text-xs sm:text-sm text-gray-700 dark:text-gray-300 space-y-1"></ul>
       </div>
       <div>
-        <h4 class="text-sm font-semibold text-gray-800 dark:text-gray-200">Links</h4>
-        <div id="pm-actions" class="flex flex-wrap gap-2 mt-2"></div>
+        <h4 class="text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200">Links</h4>
+        <div id="pm-actions" class="flex flex-wrap gap-1 sm:gap-2 mt-1 sm:mt-2"></div>
       </div>
     </div>
   </div>
@@ -439,7 +439,7 @@
 
   <h2 class="text-3xl font-bold text-center mb-6 relative z-10">Blog</h2>
 
-  <div class="mx-auto bg-black text-[#00FF00] font-mono w-[90%] max-w-2xl rounded-lg shadow-2xl border border-gray-700 relative z-10">
+  <div class="mx-auto bg-black text-[#00FF00] font-mono w-[95%] sm:w-[90%] max-w-2xl rounded-lg shadow-2xl border border-gray-700 relative z-10">
     
     <!-- Fake Top Bar -->
     <div class="bg-[#1e1e1e] h-8 rounded-t-lg px-4 flex items-center justify-between">
@@ -452,7 +452,7 @@
     </div>
 
     <!-- Terminal Content -->
-    <div class="p-4 text-sm leading-relaxed h-64 sm:h-72 overflow-y-auto" id="terminal-typing-container">
+    <div class="p-3 sm:p-4 text-xs sm:text-sm leading-relaxed h-48 sm:h-64 md:h-72 overflow-y-auto" id="terminal-typing-container">
       <div id="terminal-typing"></div>
       <span class="blink">█</span>
     </div>
@@ -486,51 +486,51 @@
       </div>
     {% endif %}
 
-    <div class="max-w-4xl mx-auto px-4 relative z-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <!-- Gradient ring + glass card -->
-      <div class="gradient-ring rounded-2xl p-0.5">
-        <div class="glass-card rounded-2xl">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
+      <div class="gradient-ring rounded-xl sm:rounded-2xl p-0.5">
+        <div class="glass-card rounded-xl sm:rounded-2xl">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 p-4 sm:p-6 lg:p-8">
 
             <!-- Left: Copy / Socials -->
-            <div class="flex flex-col justify-center space-y-5">
-              <h3 class="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white leading-tight">
-                Let’s build something meaningful together
+            <div class="flex flex-col justify-center space-y-4 sm:space-y-5">
+              <h3 class="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-900 dark:text-white leading-tight">
+                Let's build something meaningful together
               </h3>
-              <p class="text-gray-700 dark:text-gray-300">
-                Got a project or an idea? I’d love to hear about it. Drop a line and I’ll get back soon.
+              <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300">
+                Got a project or an idea? I'd love to hear about it. Drop a line and I'll get back soon.
               </p>
 
-              <div class="flex items-center gap-4">
+              <div class="flex items-center gap-3 sm:gap-4">
                 <a href="https://www.linkedin.com/in/umut-sarper-uzun" target="_blank" class="dark:invert dark:brightness-125">
-                  <img src="{% static 'icons/linkedin.svg' %}" alt="LinkedIn" class="w-6 h-6" />
+                  <img src="{% static 'icons/linkedin.svg' %}" alt="LinkedIn" class="w-5 h-5 sm:w-6 sm:h-6" />
                 </a>
                 <a href="https://www.github.com/umutsarperuzun" target="_blank" class="dark:invert dark:brightness-125">
-                  <img src="{% static 'icons/github.svg' %}" alt="GitHub" class="w-6 h-6" />
+                  <img src="{% static 'icons/github.svg' %}" alt="GitHub" class="w-5 h-5 sm:w-6 sm:h-6" />
                 </a>
                 <a href="mailto:sarperuzun1@gmail.com" class="dark:invert dark:brightness-125">
-                  <img src="{% static 'icons/gmail.svg' %}" alt="Email" class="w-6 h-6" />
+                  <img src="{% static 'icons/gmail.svg' %}" alt="Email" class="w-5 h-5 sm:w-6 sm:h-6" />
                 </a>
               </div>
             </div>
 
             <!-- Right: Contact form (backend wired) -->
             <div>
-              <form class="space-y-4" method="post" action="{% url 'contact_submit' %}">
+              <form class="space-y-3 sm:space-y-4" method="post" action="{% url 'contact_submit' %}">
                 {% csrf_token %}
                 <div>
-                  <label class="block text-sm mb-1 text-gray-700 dark:text-gray-300">Name</label>
-                  <input name="name" type="text" placeholder="Your name" class="w-full rounded-lg bg-white/70 dark:bg-zinc-800/70 border border-gray-300 dark:border-zinc-700 px-4 py-3 contact-input focus:outline-none" required />
+                  <label class="block text-xs sm:text-sm mb-1 text-gray-700 dark:text-gray-300">Name</label>
+                  <input name="name" type="text" placeholder="Your name" class="w-full rounded-lg bg-white/70 dark:bg-zinc-800/70 border border-gray-300 dark:border-zinc-700 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base contact-input focus:outline-none" required />
                 </div>
                 <div>
-                  <label class="block text-sm mb-1 text-gray-700 dark:text-gray-300">Email</label>
-                  <input name="email" type="email" placeholder="name@example.com" class="w-full rounded-lg bg-white/70 dark:bg-zinc-800/70 border border-gray-300 dark:border-zinc-700 px-4 py-3 contact-input focus:outline-none" required />
+                  <label class="block text-xs sm:text-sm mb-1 text-gray-700 dark:text-gray-300">Email</label>
+                  <input name="email" type="email" placeholder="name@example.com" class="w-full rounded-lg bg-white/70 dark:bg-zinc-800/70 border border-gray-300 dark:border-zinc-700 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base contact-input focus:outline-none" required />
                 </div>
                 <div>
-                  <label class="block text-sm mb-1 text-gray-700 dark:text-gray-300">Message</label>
-                  <textarea name="message" rows="5" placeholder="Tell me a bit about your project…" class="w-full rounded-lg bg-white/70 dark:bg-zinc-800/70 border border-gray-300 dark:border-zinc-700 px-4 py-3 contact-input focus:outline-none" required></textarea>
+                  <label class="block text-xs sm:text-sm mb-1 text-gray-700 dark:text-gray-300">Message</label>
+                  <textarea name="message" rows="4" placeholder="Tell me a bit about your project…" class="w-full rounded-lg bg-white/70 dark:bg-zinc-800/70 border border-gray-300 dark:border-zinc-700 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base contact-input focus:outline-none" required></textarea>
                 </div>
-                <button type="submit" class="shine-btn relative inline-flex items-center justify-center w-full md:w-auto px-6 py-3 rounded-lg font-medium text-white bg-gradient-to-r from-sky-400 via-indigo-500 to-fuchsia-500 hover:from-sky-500 hover:via-indigo-600 hover:to-fuchsia-600 transition">
+                <button type="submit" class="shine-btn relative inline-flex items-center justify-center w-full lg:w-auto px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-sm sm:text-base font-medium text-white bg-gradient-to-r from-sky-400 via-indigo-500 to-fuchsia-500 hover:from-sky-500 hover:via-indigo-600 hover:to-fuchsia-600 transition">
                   Send Message
                 </button>
               </form>

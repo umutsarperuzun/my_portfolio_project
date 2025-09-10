@@ -25,12 +25,12 @@
     <canvas id="navbar-stars" class="absolute top-0 left-0 w-full h-full z-0 pointer-events-none"></canvas>
 
     <!-- İçerik konteyneri -->
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
+    <div class="relative z-10 max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 h-14 sm:h-16 md:h-20 flex items-center justify-between">
 
       <!-- Logo -->
       <div class="flex items-center">
         <a href="#home" class="scroll-link hover:opacity-80 transition">
-          <img src="{% static 'icons/portfolio-logo.svg' %}" alt="Sarper Uzun Portfolio" class="h-12 md:h-14 w-auto hover:scale-105 transition-transform duration-300">
+          <img src="{% static 'icons/portfolio-logo.svg' %}" alt="Sarper Uzun Portfolio" class="h-10 sm:h-12 md:h-14 w-auto hover:scale-105 transition-transform duration-300">
         </a>
       </div>
 
@@ -44,10 +44,10 @@
       </ul>
 
       <!-- Hamburger (sadece mobilde) -->
-      <button id="mobile-menu-button" class="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
-        <span class="block w-6 h-0.5 bg-gray-700 dark:bg-gray-200 mb-1"></span>
-        <span class="block w-6 h-0.5 bg-gray-700 dark:bg-gray-200 mb-1"></span>
-        <span class="block w-6 h-0.5 bg-gray-700 dark:bg-gray-200"></span>
+      <button id="mobile-menu-button" class="md:hidden flex flex-col justify-center items-center w-8 h-8 sm:w-10 sm:h-10 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+        <span class="block w-5 h-0.5 sm:w-6 sm:h-0.5 bg-gray-700 dark:bg-gray-200 mb-1"></span>
+        <span class="block w-5 h-0.5 sm:w-6 sm:h-0.5 bg-gray-700 dark:bg-gray-200 mb-1"></span>
+        <span class="block w-5 h-0.5 sm:w-6 sm:h-0.5 bg-gray-700 dark:bg-gray-200"></span>
       </button>
 
       <!-- Mobil Menü Paneli -->
@@ -61,10 +61,10 @@
       </div>
 
       <!-- Dark Mode Toggle -->
-      <label class="inline-flex relative items-center cursor-pointer ml-4">
+      <label class="inline-flex relative items-center cursor-pointer ml-2 sm:ml-4">
         <input type="checkbox" id="theme-toggle" class="sr-only peer">
-        <div class="w-11 h-6 bg-gray-300 dark:bg-gray-700 rounded-full peer-checked:bg-blue-600 transition-colors duration-300"></div>
-        <div class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-full"></div>
+        <div class="w-9 h-5 sm:w-11 sm:h-6 bg-gray-300 dark:bg-gray-700 rounded-full peer-checked:bg-blue-600 transition-colors duration-300"></div>
+        <div class="absolute left-0.5 top-0.5 w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-full"></div>
       </label>
 
     </div>
