@@ -16,7 +16,7 @@
       }
     </style>
   </head>
-  <body data-theme="dark" class="overflow-x-hidden bg-zinc-900 text-gray-100">
+  <body class="overflow-x-hidden bg-gray-100 dark:bg-zinc-900 text-gray-900 dark:text-gray-100">
     <!-- Navbar -->
     <header>
   <nav id="navbar" class="fixed top-0 left-0 w-full z-50 bg-white dark:bg-zinc-900 text-black dark:text-white shadow transition-all duration-300">
@@ -28,8 +28,10 @@
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
 
       <!-- Logo -->
-      <div class="text-lg md:text-xl font-bold">
-        <a href="#home" class="scroll-link hover:opacity-80 transition">My Portfolio</a>
+      <div class="flex items-center">
+        <a href="#home" class="scroll-link hover:opacity-80 transition">
+          <img src="{% static 'icons/portfolio-logo.svg' %}" alt="Sarper Uzun Portfolio" class="h-12 md:h-14 w-auto hover:scale-105 transition-transform duration-300">
+        </a>
       </div>
 
       <!-- Menü -->
@@ -133,11 +135,11 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({
-        duration: 1500,
+        duration: 800,
         easing: 'ease-in-out',
         once: false,
         mirror: true,
-        offset: 100
+        offset: 20
       });
     </script>
     <script>
@@ -215,23 +217,29 @@
     <script>
       const toggle=document.getElementById("theme-toggle") //checkbox bolumunu js definition
       const root = document.documentElement; //html etiketini temsil ediyor sunun gibi -> document.documentElement = <html>
-        console.log("xxxxxxxxxxxxx")
-        console.log(root)
-        console.log("xxxxxxxxxxxxx")
+      
+      // Test için localStorage'ı temizle (isteğe bağlı - production'da kaldırılabilir)
+      localStorage.removeItem("theme");
+      
       const savedTheme = localStorage.getItem("theme"); //onceden secilmis tema varsa onu kaydediyoruz
 
       //Eger kullanicida light kayitliysa checkout box kapali kalir degilse dark ayarlanir ve check box acik kalir
       if(savedTheme === "light") {
-        root.setAttribute("data-theme","light");
+        root.classList.remove("dark");
         toggle.checked=false;
       } else {
-        root.setAttribute("data-theme","dark");
+        // Default olarak dark mode (savedTheme null, undefined veya "dark" ise)
+        root.classList.add("dark");
         toggle.checked=true;
       }
       //checkbox a degisiklik oldu olayi kullanici tiklarsa bu func calisir
       toggle.addEventListener("change", function() {
         const newTheme=toggle.checked ? "dark" : "light"; //kisa if kullandim eger checkbox isaretliyse true yani dark degilse light
-        root.setAttribute("data-theme",newTheme); //html etiketine yazilir dark or light
+        if(newTheme === "dark") {
+          root.classList.add("dark");
+        } else {
+          root.classList.remove("dark");
+        }
         localStorage.setItem("theme",newTheme) //tarayiciya kullanicinin tercihi kaydedlir
       })     
     </script>
