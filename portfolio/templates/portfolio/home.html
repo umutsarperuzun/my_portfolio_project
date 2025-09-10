@@ -111,13 +111,16 @@
 
 <section
   id="about"
-  class="min-h-screen bg-gray-100 dark:bg-gray-900 py-20 scroll-mt-28"
+  class="relative min-h-screen bg-gray-50 dark:bg-gray-900 py-20 scroll-mt-28"
 >
-  <h2 id="about-title" class="text-3xl font-bold text-center text-gray-900 dark:text-white opacity-0 transform scale-50 transition-all duration-1500">
+  <!-- Arka plan yıldızlar -->
+  <canvas id="about-stars" class="absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
+  
+  <h2 id="about-title" class="text-3xl font-bold text-center text-gray-900 dark:text-white opacity-0 transform scale-50 transition-all duration-1500 relative z-10">
     About Me
   </h2>
 
-  <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 w-full px-16">
+  <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 w-full px-16 relative z-10">
     <!-- Sol: Yazı -->
     <div id="about-text" class="text-center max-w-xl mx-auto opacity-0 transform translate-x-[-100px] transition-all duration-1500">
       <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
@@ -185,7 +188,7 @@
 
 <section
   id="projects"
-  class="relative bg-gray-100 dark:bg-gray-900 scroll-mt-28 pt-24 pb-15"
+  class="relative bg-gray-50 dark:bg-gray-900 scroll-mt-28 pt-24 pb-15"
 >
 
   <!-- Arka plan yıldızlar -->
@@ -429,11 +432,14 @@
 
 <section
   id="blog"
-  class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white pt-16 pb-8 scroll-mt-28"
+  class="relative bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white pt-16 pb-8 scroll-mt-28"
 >
-  <h2 class="text-3xl font-bold text-center mb-6">Blog</h2>
+  <!-- Arka plan yıldızlar -->
+  <canvas id="blog-stars" class="absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
 
-  <div class="mx-auto bg-black text-[#00FF00] font-mono w-[90%] max-w-2xl rounded-lg shadow-2xl border border-gray-700">
+  <h2 class="text-3xl font-bold text-center mb-6 relative z-10">Blog</h2>
+
+  <div class="mx-auto bg-black text-[#00FF00] font-mono w-[90%] max-w-2xl rounded-lg shadow-2xl border border-gray-700 relative z-10">
     
     <!-- Fake Top Bar -->
     <div class="bg-[#1e1e1e] h-8 rounded-t-lg px-4 flex items-center justify-between">
@@ -456,13 +462,16 @@
 
 <section
   id="contact"
-  class="h-auto bg-gray-100 dark:bg-gray-900 py-20 transition-colors duration-500 scroll-mt-28"
+  class="relative h-auto bg-gray-50 dark:bg-gray-900 py-20 transition-colors duration-500 scroll-mt-28"
 >
+  <!-- Arka plan yıldızlar -->
+  <canvas id="contact-stars" class="absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
+  
   <div
     data-aos="fade-up"
     data-aos-duration="1200"
     data-aos-easing="ease-out-cubic"
-    class="bg-transparent"
+    class="bg-transparent relative z-10"
   >
     <h2 class="text-3xl font-bold text-center mb-10 dark:text-white relative z-10">Get in Touch</h2>
 
@@ -605,12 +614,10 @@ function decodeEffect() {
       iterations++;
       setTimeout(animate, 60);
     } else {
-      // Ana başlık tamamlandıktan sonra alt yazıları göster
-      setTimeout(() => {
+      // Ana başlık tamamlandıktan sonra alt yazıları hemen göster
         showSubtitles();
         iterations = 0;
         animate();
-      }, 1500);
     }
   }
 
@@ -1230,6 +1237,16 @@ document.addEventListener("DOMContentLoaded", () => {
   if (typeof initStarField === 'function') {
     const starCanvas = document.getElementById('star-canvas');
     if (starCanvas) initStarField("star-canvas");
+    
+    // Initialize new star fields
+    const aboutStars = document.getElementById('about-stars');
+    if (aboutStars) initStarField("about-stars");
+    
+    const blogStars = document.getElementById('blog-stars');
+    if (blogStars) initStarField("blog-stars");
+    
+    const contactStars = document.getElementById('contact-stars');
+    if (contactStars) initStarField("contact-stars");
   }
   setupTerminalTyping();
   setupSmoothScrollWithOffset();

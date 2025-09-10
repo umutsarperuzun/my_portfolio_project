@@ -16,7 +16,7 @@
       }
     </style>
   </head>
-  <body class="overflow-x-hidden bg-gray-100 dark:bg-zinc-900 text-gray-900 dark:text-gray-100">
+  <body class="overflow-x-hidden bg-gray-50 dark:bg-zinc-900 text-gray-800 dark:text-gray-100">
     <!-- Navbar -->
     <header>
   <nav id="navbar" class="fixed top-0 left-0 w-full z-50 bg-white dark:bg-zinc-900 text-black dark:text-white shadow transition-all duration-300">
@@ -197,7 +197,13 @@
             let dx=(mouseX-canvas.width /2) *0.001;
             ctx.beginPath();
             ctx.arc(star.x+dx*star.y,star.y,star.radius,0,2*Math.PI);
-            ctx.fillStyle="rgba(200, 200, 200, 0.6)";
+            // Light mode için daha koyu yıldızlar, dark mode için açık yıldızlar
+            const isDarkMode = root.classList.contains('dark');
+            if (isDarkMode) {
+              ctx.fillStyle="rgba(200, 200, 200, 0.6)";
+            } else {
+              ctx.fillStyle="rgba(100, 100, 100, 0.8)";
+            }
             ctx.fill()
           }
           requestAnimationFrame(animate);
