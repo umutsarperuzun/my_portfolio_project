@@ -4,6 +4,28 @@
   mask-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
 }
 
+/* === Slider animation === */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-66.66%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 45s linear infinite;
+}
+
+.slider-track {
+  animation-play-state: running;
+}
+
+.slider-track:hover {
+  animation-play-state: paused;
+}
+
 /* === Hover wave animation === */
 @keyframes rainbowColor {
   0%   { color: #d4d4d4; }
@@ -100,6 +122,12 @@
   transform-style: preserve-3d;
   overflow: hidden;
   z-index: 1;
+  pointer-events: none;
+}
+
+.project-card.visible {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 [data-theme='dark'] .project-card {
@@ -267,6 +295,38 @@
   .project-detail {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+/* === Modal and overlay fixes === */
+#project-modal {
+  display: none !important;
+}
+
+#overlay-blur {
+  display: none !important;
+}
+
+#project-modal.show {
+  display: flex !important;
+}
+
+#overlay-blur.show {
+  display: block !important;
+}
+
+/* === Hide scrollbars === */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+/* === Image zoom disabled === */
+#pm-cover {
+  cursor: default;
 }
 
 /* === Responsive improvements === */

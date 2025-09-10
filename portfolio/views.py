@@ -18,7 +18,7 @@ def home(request):
         'images/pos-invoice.png',
         'images/cb-download.png',
     ]
-    return render(request, 'portfolio/home.html', {'slider_images': slider_images * 6})
+    return render(request, 'portfolio/home.html', {'slider_images': slider_images * 3})
 
 
 def redirect_home(request):

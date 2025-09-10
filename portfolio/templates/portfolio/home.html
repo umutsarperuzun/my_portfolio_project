@@ -5,7 +5,7 @@
 <!-- Floating Quick Contact Panel -->
 <div
   id="social-panel"
-  class="fixed left-2 sm:left-3 top-1/2 z-50 flex flex-col items-center space-y-3 bg-white/10 dark:bg-zinc-900/20 backdrop-blur-md border border-white/20 dark:border-zinc-700/30 p-2 sm:p-3 rounded-2xl shadow-2xl transition-all duration-500 hover:bg-white/20 dark:hover:bg-zinc-900/30"
+  class="fixed left-2 sm:left-3 top-3/4 z-50 flex flex-col items-center space-y-3 bg-white/10 dark:bg-zinc-900/20 backdrop-blur-md border border-white/20 dark:border-zinc-700/30 p-2 sm:p-3 rounded-2xl shadow-2xl transition-all duration-500 hover:bg-white/20 dark:hover:bg-zinc-900/30"
 >
   <!-- Toggle Button -->
   <button
@@ -54,7 +54,7 @@
 
 <section
   id="home"
-  class="relative h-[40vh] sm:h-[50vh] overflow-hidden scroll-mt-28 flex items-center"
+  class="relative h-[50vh] sm:h-[60vh] md:h-[70vh] overflow-hidden scroll-mt-28 flex items-center pt-16 sm:pt-20 md:pt-24"
 >
 
   <!-- 1. Arka plan geçişli efekt -->
@@ -68,13 +68,13 @@
 
     <div class="relative w-full h-full">
       <div
-        class="slider-track flex animate-marquee h-full items-end min-w-[600%]"
+        class="slider-track flex animate-marquee h-full items-center w-[300%]"
       >
         {% for img in slider_images %}
         <img
           src="{% static img %}"
           alt="Slider Image"
-          class="h-[80%] w-auto min-w-[700px] sm:min-w-[800px] object-contain opacity-20 grayscale contrast-75 dark:opacity-30 dark:grayscale-0 dark:contrast-100"
+          class="h-[90%] w-auto min-w-[700px] sm:min-w-[800px] object-contain opacity-20 grayscale contrast-75 dark:opacity-30 dark:grayscale-0 dark:contrast-100"
         />
         {% endfor %}
       </div>
@@ -87,7 +87,7 @@
       <h1
         class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-100 mb-4 break-words"
       >
-        <span id="decoding-title"></span>
+        <span id="decoding-title">Hi, I'm Sarper Uzun</span>
       </h1>
       
       <div class="space-y-2 sm:space-y-3 text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 dark:text-gray-300">
@@ -111,7 +111,7 @@
 
 <section
   id="about"
-  class="relative min-h-screen bg-gray-50 dark:bg-gray-900 py-20 scroll-mt-28"
+  class="relative min-h-screen bg-gray-50 dark:bg-gray-900 py-20 scroll-mt-28 pt-24 sm:pt-28 md:pt-32"
 >
   <!-- Arka plan yıldızlar -->
   <canvas id="about-stars" class="absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
@@ -188,7 +188,7 @@
 
 <section
   id="projects"
-  class="relative bg-gray-50 dark:bg-gray-900 scroll-mt-28 pt-24 pb-15"
+  class="relative bg-gray-50 dark:bg-gray-900 scroll-mt-28 pt-24 sm:pt-28 md:pt-32 pb-15"
 >
 
   <!-- Arka plan yıldızlar -->
@@ -368,16 +368,16 @@
 <div id="overlay-blur" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 hidden"></div>
 
 <!-- Single reusable Project Modal -->
-<div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-2 sm:p-4">
+<div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-2 sm:p-4" style="display: none !important;">
   <div id="project-modal-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
-  <div class="relative bg-white dark:bg-zinc-900 rounded-xl sm:rounded-2xl shadow-2xl max-w-xs sm:max-w-2xl lg:max-w-3xl xl:max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+  <div class="relative bg-white dark:bg-zinc-900 rounded-xl sm:rounded-2xl shadow-2xl max-w-xs sm:max-w-2xl lg:max-w-5xl xl:max-w-6xl w-full max-h-[90vh] overflow-hidden">
     <button id="project-modal-close" class="absolute top-2 right-2 sm:top-3 sm:right-3 text-white bg-zinc-800/70 hover:bg-zinc-700 rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center text-sm sm:text-base">✖</button>
-    <div class="p-4 sm:p-6 space-y-4 sm:space-y-6">
+    <div class="p-3 sm:p-4 space-y-3 sm:space-y-4 h-full overflow-y-auto scrollbar-hide">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         <div class="relative">
           <!-- Video Container (for AI Chatbot) -->
           <div id="pm-video-container" class="hidden">
-            <video id="pm-video" class="w-full h-40 sm:h-48 md:h-56 object-contain rounded-lg sm:rounded-xl bg-gray-100 dark:bg-gray-800" controls>
+            <video id="pm-video" class="w-full h-48 sm:h-56 md:h-64 lg:h-72 object-contain rounded-lg sm:rounded-xl bg-gray-100 dark:bg-gray-800" controls>
               <source src="" type="video/mp4">
               Your browser does not support the video tag.
             </video>
@@ -385,7 +385,7 @@
           
           <!-- Image Gallery Container -->
           <div id="pm-gallery-container" class="relative overflow-hidden">
-            <img id="pm-cover" src="" alt="Cover" class="w-full h-40 sm:h-48 md:h-56 object-contain rounded-lg sm:rounded-xl cursor-pointer transition-all duration-300 hover:scale-105 transform-origin-center bg-gray-100 dark:bg-gray-800" />
+            <img id="pm-cover" src="" alt="Cover" class="w-full h-48 sm:h-56 md:h-64 lg:h-72 object-contain rounded-lg sm:rounded-xl bg-gray-100 dark:bg-gray-800" />
             
             <!-- Navigation Arrows -->
             <button id="pm-prev" class="absolute left-1 sm:left-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-purple-600/40 to-blue-600/40 hover:from-purple-700/60 hover:to-blue-700/60 text-white/80 rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center transition-all duration-300 z-30 shadow-lg hover:shadow-xl hover:scale-110 backdrop-blur-sm border border-white/10">
@@ -405,22 +405,22 @@
             </div>
           </div>
         </div>
-        <div class="space-y-2 sm:space-y-3">
-          <h3 id="pm-title" class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white"></h3>
-          <p id="pm-desc" class="text-xs sm:text-sm text-gray-700 dark:text-gray-300"></p>
+        <div class="space-y-1 sm:space-y-2">
+          <h3 id="pm-title" class="text-sm sm:text-base font-semibold text-gray-900 dark:text-white"></h3>
+          <p id="pm-desc" class="text-xs text-gray-700 dark:text-gray-300"></p>
           <div>
-            <h4 class="text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200">Stack</h4>
-            <div id="pm-tags" class="flex flex-wrap gap-1 sm:gap-2 mt-1 sm:mt-2"></div>
+            <h4 class="text-xs font-semibold text-gray-800 dark:text-gray-200">Stack</h4>
+            <div id="pm-tags" class="flex flex-wrap gap-1 mt-1"></div>
           </div>
         </div>
       </div>
       <div>
-        <h4 class="text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200">Overview</h4>
-        <ul id="pm-features" class="mt-1 sm:mt-2 list-disc list-inside text-xs sm:text-sm text-gray-700 dark:text-gray-300 space-y-1"></ul>
+        <h4 class="text-xs font-semibold text-gray-800 dark:text-gray-200">Overview</h4>
+        <ul id="pm-features" class="mt-1 list-disc list-inside text-xs text-gray-700 dark:text-gray-300 space-y-0.5"></ul>
       </div>
       <div>
-        <h4 class="text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200">Links</h4>
-        <div id="pm-actions" class="flex flex-wrap gap-1 sm:gap-2 mt-1 sm:mt-2"></div>
+        <h4 class="text-xs font-semibold text-gray-800 dark:text-gray-200">Links</h4>
+        <div id="pm-actions" class="flex flex-wrap gap-1 mt-1"></div>
       </div>
     </div>
   </div>
@@ -432,7 +432,7 @@
 
 <section
   id="blog"
-  class="relative bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white pt-16 pb-8 scroll-mt-28"
+  class="relative bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white pt-24 sm:pt-28 md:pt-32 pb-8 scroll-mt-28"
 >
   <!-- Arka plan yıldızlar -->
   <canvas id="blog-stars" class="absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
@@ -462,7 +462,7 @@
 
 <section
   id="contact"
-  class="relative h-auto bg-gray-50 dark:bg-gray-900 py-20 transition-colors duration-500 scroll-mt-28"
+  class="relative h-auto bg-gray-50 dark:bg-gray-900 py-20 transition-colors duration-500 scroll-mt-28 pt-24 sm:pt-28 md:pt-32"
 >
   <!-- Arka plan yıldızlar -->
   <canvas id="contact-stars" class="absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
@@ -549,7 +549,7 @@
   // 1. Navbar offset'li scroll davranışı
 function setupSmoothScrollWithOffset() {
   const navbar = document.querySelector("nav");
-  const navbarHeight = navbar ? navbar.offsetHeight : 0;
+  const navbarHeight = navbar ? navbar.offsetHeight : 80; // Default 80px if navbar not found
   const links = document.querySelectorAll("a.scroll-link");
 
   links.forEach(link => {
@@ -561,7 +561,7 @@ function setupSmoothScrollWithOffset() {
       if (targetEl) {
         const offsetTop = targetEl.offsetTop;
         window.scrollTo({
-          top: offsetTop - navbarHeight + 6,
+          top: offsetTop - navbarHeight - 20, // Extra 20px buffer
           behavior: "smooth"
         });
       }
@@ -614,14 +614,23 @@ function decodeEffect() {
       iterations++;
       setTimeout(animate, 60);
     } else {
-      // Ana başlık tamamlandıktan sonra alt yazıları hemen göster
-        showSubtitles();
+      // Ana başlık tamamlandıktan sonra alt yazıları göster
+      showSubtitles();
+      
+      // 3 saniye bekle ve animasyonu tekrar başlat
+      setTimeout(() => {
         iterations = 0;
         animate();
+      }, 3000);
     }
   }
 
+  let subtitlesShown = false;
+  
   function showSubtitles() {
+    if (subtitlesShown) return; // Sadece bir kez göster
+    subtitlesShown = true;
+    
     const subtitles = ['subtitle-1', 'subtitle-2', 'subtitle-3'];
     const techBadges = document.getElementById('tech-badges');
     
@@ -765,6 +774,7 @@ function setupProjectCardFanout() {
     cards.forEach((card, index) => {
       setTimeout(() => {
         card.classList.remove('hidden');
+        card.classList.add('visible');
         card.style.opacity = "1";
         card.style.transform = "scale(1)";
       }, 150 * index);
@@ -784,6 +794,7 @@ function setupProjectCardFanout() {
         fanout.classList.remove('active');
         cards.forEach(card => {
           card.classList.add('hidden');
+          card.classList.remove('visible');
           card.style.opacity = "0";
           card.style.transform = "scale(0.9)";
         });
@@ -828,13 +839,15 @@ function setupProjectModal() {
 
   function openModal() {
     modal.classList.remove('hidden');
-    modal.classList.add('flex');
+    modal.classList.add('show');
+    modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
   }
   
   function closeModal() {
     modal.classList.add('hidden');
-    modal.classList.remove('flex');
+    modal.classList.remove('show');
+    modal.style.display = 'none';
     document.body.style.overflow = '';
     pmCover.src = '';
     pmTitle.textContent = '';
@@ -881,41 +894,21 @@ function setupProjectModal() {
     showImage(currentImageIndex);
   }
 
-  // Image click to enlarge
+  // Image click to enlarge - DISABLED
   function enlargeImage() {
-    const img = pmCover;
-    const container = pmGalleryContainer;
-    const prevBtn = pmPrev;
-    const nextBtn = pmNext;
-    const counter = document.getElementById('pm-counter');
-    
-    if (img.classList.contains('zoomed')) {
-      // Reset to normal - oklar ve sayaç normal pozisyonlarında kalır
-      img.classList.remove('zoomed');
-      img.style.transform = 'scale(1)';
-      img.style.zIndex = '1';
-      container.style.overflow = 'hidden';
-    } else {
-      // Enlarge - sadece zoom'da oklar ve sayaç kenarlara gider
-      img.classList.add('zoomed');
-      img.style.transform = 'scale(2.2)';
-      img.style.zIndex = '20';
-      container.style.overflow = 'visible';
-      
-      // Sadece zoom'da okları kenarlara taşı
-      prevBtn.style.left = '-80px';
-      nextBtn.style.right = '-80px';
-      prevBtn.style.top = '50%';
-      nextBtn.style.top = '50%';
-      
-      // Sadece zoom'da sayacı kenara taşı
-      counter.style.right = '-100px';
-      counter.style.bottom = '30px';
-    }
+    // Zoom özelliği tamamen devre dışı
+    return;
   }
 
   cards.forEach(card => {
-    card.addEventListener('click', () => {
+    card.addEventListener('click', (e) => {
+      // Sadece görünür kartlara tıklanabilsin
+      if (!card.classList.contains('visible')) {
+        return;
+      }
+      
+      e.preventDefault();
+      e.stopPropagation();
       const title = card.getAttribute('data-title') || '';
       const desc = card.getAttribute('data-description') || '';
       const cover = card.getAttribute('data-cover') || '';
@@ -1009,9 +1002,10 @@ function setupProjectModal() {
         const clickY = e.clientY;
         
         if (clickX < rect.left || clickX > rect.right || clickY < rect.top || clickY > rect.bottom) {
-          // Reset to normal - oklar ve sayaç normal pozisyonlarında kalır
+          // Reset to normal
           img.classList.remove('zoomed');
           img.style.transform = 'scale(1)';
+          img.style.transformOrigin = 'center center';
           img.style.zIndex = '1';
           container.style.overflow = 'hidden';
           
@@ -1082,11 +1076,13 @@ function setupProjectModal() {
 
 // 9. Tilt efekt
 function activateTiltEffect() {
-  const projectCards = document.querySelectorAll('.project-card');
+  const projectCards = document.querySelectorAll('.project-card.visible');
   if (!projectCards.length) return;
 
   projectCards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
+      if (!card.classList.contains('visible')) return;
+      
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
@@ -1094,11 +1090,12 @@ function activateTiltEffect() {
       const centerY = rect.height / 2;
       const rotateX = ((y - centerY) / centerY) * -20;
       const rotateY = ((x - centerX) / centerX) * 20;
-      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      card.style.transform = `scale(1) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
 
     card.addEventListener('mouseleave', () => {
-      card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      if (!card.classList.contains('visible')) return;
+      card.style.transform = 'scale(1) rotateX(0deg) rotateY(0deg)';
     });
   });
 }
@@ -1113,10 +1110,10 @@ function setupTerminalTyping() {
     "Microsoft Windows [Version 10.0.26100.4061]",
     "(c) Microsoft Corporation. All rights reserved.",
     "",
-    "C:\\Users\\sarpe> Initializing blog system...",
-    "C:\\Users\\sarpe> Connecting to GPT-4...",
-    "C:\\Users\\sarpe> Generating knowledge modules...",
-    "C:\\Users\\sarpe> Status: ONLINE ✅"
+    "C:\\Users\\sarper> Initializing blog system...",
+    "C:\\Users\\sarper> Connecting to GPT-4...",
+    "C:\\Users\\sarper> Generating knowledge modules...",
+    "C:\\Users\\sarper> Status: ONLINE ✅"
   ];
 
   let timeouts = [];
