@@ -62,23 +62,55 @@
     class="absolute inset-0 z-0 bg-gradient-to-r from-white via-gray-200 to-black bg-[length:200%] animate-slideBg dark:from-gray-900 dark:via-gray-800 dark:to-black"
   ></div>
 
-  <!-- 2. Kayan görseller -->
+  <!-- 2. Modern Background Pattern -->
   <div class="absolute inset-0 z-10 overflow-hidden pointer-events-none">
-    <div class="fade-mask absolute inset-0 z-10"></div>
-
-    <div class="relative w-full h-full">
-      <div
-        class="slider-track flex animate-marquee h-full items-center w-[300%]"
-      >
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-black/70 z-20"></div>
+    
+    <!-- Floating Project Cards Background -->
+    <div class="absolute inset-0 z-15">
+      <!-- Project Screenshots as Background Elements -->
+      <div class="project-bg-grid absolute inset-0 opacity-10 dark:opacity-15">
         {% for img in slider_images %}
-        <img
-          src="{% static img %}"
-          alt="Slider Image"
-          class="h-[90%] w-auto min-w-[700px] sm:min-w-[800px] object-contain opacity-20 grayscale contrast-75 dark:opacity-30 dark:grayscale-0 dark:contrast-100"
-        />
+        <div class="project-bg-item absolute transform rotate-12 scale-75 transition-all duration-1000 hover:scale-90 hover:rotate-6">
+          <img
+            src="{% static img %}"
+            alt="Project Background"
+            class="w-32 h-20 sm:w-40 sm:h-24 md:w-48 md:h-28 object-cover rounded-lg shadow-2xl grayscale contrast-125 dark:grayscale-0 dark:contrast-100"
+          />
+        </div>
         {% endfor %}
       </div>
+      
+      <!-- Floating Code Elements -->
+      <div class="code-elements absolute inset-0">
+        <div class="code-element absolute top-10 left-10 text-green-400/20 font-mono text-xs opacity-30 animate-fadeInOut">
+          <div>&lt;div class="project"&gt;</div>
+          <div>&nbsp;&nbsp;&lt;h1&gt;{{ title }}&lt;/h1&gt;</div>
+          <div>&lt;/div&gt;</div>
+        </div>
+        
+        <div class="code-element absolute top-20 right-20 text-blue-400/20 font-mono text-xs opacity-30 animate-fadeInOut">
+          <div>function createApp() {</div>
+          <div>&nbsp;&nbsp;return React.createElement(...)</div>
+          <div>}</div>
+        </div>
+        
+        <div class="code-element absolute bottom-20 left-20 text-purple-400/20 font-mono text-xs opacity-30 animate-fadeInOut">
+          <div>const api = {</div>
+          <div>&nbsp;&nbsp;endpoint: '/api/data'</div>
+          <div>}</div>
+        </div>
+        
+        <div class="code-element absolute bottom-10 right-10 text-yellow-400/20 font-mono text-xs opacity-30 animate-fadeInOut">
+          <div>npm install</div>
+          <div>npm run dev</div>
+        </div>
+      </div>
     </div>
+    
+    <!-- Subtle Grid Pattern -->
+    <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0); background-size: 20px 20px;"></div>
   </div>
 
   <!-- 3. Decode yazısı (üst katman) -->
