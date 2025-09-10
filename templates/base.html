@@ -224,8 +224,8 @@
       const toggle=document.getElementById("theme-toggle") //checkbox bolumunu js definition
       const root = document.documentElement; //html etiketini temsil ediyor sunun gibi -> document.documentElement = <html>
       
-      // Test için localStorage'ı temizle (isteğe bağlı - production'da kaldırılabilir)
-      localStorage.removeItem("theme");
+      // Test için localStorage'ı temizle (production'da kaldırıldı)
+      // localStorage.removeItem("theme");
       
       const savedTheme = localStorage.getItem("theme"); //onceden secilmis tema varsa onu kaydediyoruz
 
