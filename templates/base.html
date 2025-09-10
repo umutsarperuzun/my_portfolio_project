@@ -16,7 +16,7 @@
       }
     </style>
   </head>
-  <body data-theme="light" class="overflow-x-hidden bg-gray-100 text-gray-900">
+  <body data-theme="dark" class="overflow-x-hidden bg-zinc-900 text-gray-100">
     <!-- Navbar -->
     <header>
   <nav id="navbar" class="fixed top-0 left-0 w-full z-50 bg-white dark:bg-zinc-900 text-black dark:text-white shadow transition-all duration-300">
@@ -220,13 +220,13 @@
         console.log("xxxxxxxxxxxxx")
       const savedTheme = localStorage.getItem("theme"); //onceden secilmis tema varsa onu kaydediyoruz
 
-      //Eger kullanicida dark kayitliysa checkout box acik kalir degilse light ayarlanir ve check box kapali kalir
-      if(savedTheme === "dark") {
-        root.setAttribute("data-theme","dark");
-        toggle.checked=true;
-      } else {
+      //Eger kullanicida light kayitliysa checkout box kapali kalir degilse dark ayarlanir ve check box acik kalir
+      if(savedTheme === "light") {
         root.setAttribute("data-theme","light");
         toggle.checked=false;
+      } else {
+        root.setAttribute("data-theme","dark");
+        toggle.checked=true;
       }
       //checkbox a degisiklik oldu olayi kullanici tiklarsa bu func calisir
       toggle.addEventListener("change", function() {
