@@ -1,10 +1,6 @@
-[phases.setup]
-nixPkgs = ["nodejs", "npm"]
-
 [phases.install]
 cmds = [
-  "pip install -r requirements_production.txt",
-  "cd theme/static_src && npm install && npm run build"
+  "pip install -r requirements_production.txt"
 ]
 
 [phases.build]
