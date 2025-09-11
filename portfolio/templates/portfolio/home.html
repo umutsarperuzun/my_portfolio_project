@@ -5,7 +5,7 @@
 <!-- Floating Quick Contact Panel -->
 <div
   id="social-panel"
-  class="fixed left-2 sm:left-3 top-1/2 z-50 flex flex-col items-center space-y-3 bg-white/10 dark:bg-zinc-900/20 backdrop-blur-md border border-white/20 dark:border-zinc-700/30 p-2 sm:p-3 rounded-2xl shadow-2xl transition-all duration-500 hover:bg-white/20 dark:hover:bg-zinc-900/30"
+  class="fixed right-2 sm:right-3 top-1/2 z-50 flex flex-col items-center space-y-3 bg-white/10 dark:bg-zinc-900/20 backdrop-blur-md border border-white/20 dark:border-zinc-700/30 p-2 sm:p-3 rounded-2xl shadow-2xl transition-all duration-500 hover:bg-white/20 dark:hover:bg-zinc-900/30"
 >
   <!-- Toggle Button -->
   <button
@@ -601,11 +601,12 @@ function setupSmoothScrollWithOffset() {
   });
 }
 
-  // 2. Quick Contact Panel (sol taraftaki açılır panel)
+  // 2. Quick Contact Panel (sağ taraftaki açılır panel)
 function setupQuickContactPanel() {
   const contactToggleBtn = document.getElementById("toggle-panel");
   const iconSection = document.getElementById("icon-area");
-  if (!contactToggleBtn || !iconSection) return;
+  const socialPanel = document.getElementById("social-panel");
+  if (!contactToggleBtn || !iconSection || !socialPanel) return;
   let panelOpen = false;
 
   contactToggleBtn.addEventListener("click", () => {
@@ -622,6 +623,70 @@ function setupQuickContactPanel() {
       panelOpen = false;
     }
   });
+
+  // Smart overlap detection for gradual transparency effect
+  function checkForOverlap() {
+    const panelRect = socialPanel.getBoundingClientRect();
+    // Only check for important text elements that should not be blocked
+    const importantElements = document.querySelectorAll('h1, h2, h3, .glass-card, .project-card');
+    let maxOverlapPercentage = 0;
+    let shouldBeTransparent = false;
+
+    importantElements.forEach(element => {
+      const elementRect = element.getBoundingClientRect();
+      
+      // Calculate overlap area
+      const overlapLeft = Math.max(panelRect.left, elementRect.left);
+      const overlapRight = Math.min(panelRect.right, elementRect.right);
+      const overlapTop = Math.max(panelRect.top, elementRect.top);
+      const overlapBottom = Math.min(panelRect.bottom, elementRect.bottom);
+      
+      if (overlapLeft < overlapRight && overlapTop < overlapBottom) {
+        const overlapArea = (overlapRight - overlapLeft) * (overlapBottom - overlapTop);
+        const panelArea = (panelRect.right - panelRect.left) * (panelRect.bottom - panelRect.top);
+        const overlapPercentage = (overlapArea / panelArea) * 100;
+        
+        maxOverlapPercentage = Math.max(maxOverlapPercentage, overlapPercentage);
+        
+        // Only make transparent if overlap is significant (>30%)
+        if (overlapPercentage > 30) {
+          shouldBeTransparent = true;
+        }
+      }
+    });
+
+    // Apply transparency based on overlap percentage
+    if (shouldBeTransparent) {
+      socialPanel.classList.add('overlap-transparent');
+      // Set custom opacity based on overlap percentage
+      const opacity = Math.max(0.1, 1 - (maxOverlapPercentage / 100));
+      socialPanel.style.setProperty('--overlap-opacity', opacity);
+    } else {
+      socialPanel.classList.remove('overlap-transparent');
+      socialPanel.style.removeProperty('--overlap-opacity');
+    }
+  }
+
+  // Throttle function for better performance
+  function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+      const args = arguments;
+      const context = this;
+      if (!inThrottle) {
+        func.apply(context, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    }
+  }
+
+  // Check for overlap on scroll and resize (throttled for performance)
+  window.addEventListener('scroll', throttle(checkForOverlap, 200));
+  window.addEventListener('resize', throttle(checkForOverlap, 200));
+  
+  // Initial check with delay to ensure all elements are loaded
+  setTimeout(checkForOverlap, 1500);
 }
 
 // 3. Decode yazı animasyonu (hero başlığı)
