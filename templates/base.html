@@ -200,12 +200,13 @@
             let dx=(mouseX-canvas.width /2) *0.001;
             ctx.beginPath();
             ctx.arc(star.x+dx*star.y,star.y,star.radius,0,2*Math.PI);
-            // Light mode için daha koyu yıldızlar, dark mode için açık yıldızlar
+            // Light mode için daha belirgin yıldızlar, dark mode için açık yıldızlar
             const isDarkMode = root.classList.contains('dark');
             if (isDarkMode) {
               ctx.fillStyle="rgba(200, 200, 200, 0.6)";
             } else {
-              ctx.fillStyle="rgba(100, 100, 100, 0.8)";
+              // Light mode'da daha koyu ve belirgin yıldızlar
+              ctx.fillStyle="rgba(60, 60, 60, 0.9)";
             }
             ctx.fill()
           }
