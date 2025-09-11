@@ -1,0 +1,23 @@
+<svg width="220" height="50" viewBox="0 0 220 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle with gradient -->
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EC4899;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1E3A8A;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#7C2D12;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#991B1B;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Logo icon - stylized "S" for Sarper -->
+  <circle cx="25" cy="25" r="22" fill="url(#logoGradient)" stroke="none"/>
+  <path d="M15 15 C15 10, 20 10, 25 10 C30 10, 35 10, 35 15 C35 20, 30 20, 25 20 C20 20, 15 20, 15 25 C15 30, 20 30, 25 30 C30 30, 35 30, 35 35" 
+        stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Text - Unique cursive font with larger size and vibrant colors -->
+  <text x="55" y="35" font-family="Lucida Handwriting, Segoe Script, Comic Sans MS, cursive" font-size="18" font-weight="bold" fill="url(#textGradient)" stroke="#000000" stroke-width="1">Sarper Portfolio</text>
+</svg>

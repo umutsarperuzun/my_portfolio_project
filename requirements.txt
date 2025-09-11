@@ -1,5 +1,4 @@
 alembic==1.14.0
-audioop-lts==0.2.1
 blinker==1.8.2
 certifi==2024.8.30
 cffi==1.17.1
