@@ -8,7 +8,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-hsqc*l&x0_-!2&#!dva8!q&pb=lxw3pml7q_ie*jt2zw^hcjrb")
 
 # Production'da DEBUG False olacak
-DEBUG = os.environ.get("DEBUG", "False") == "True"
+# DEBUG = os.environ.get("DEBUG", "False") == "True"
+DEBUG=True
 
 if DEBUG:
     ALLOWED_HOSTS = ["*"]

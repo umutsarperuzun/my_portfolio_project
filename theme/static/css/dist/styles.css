@@ -939,6 +939,18 @@ select {
   top: 5rem;
 }
 
+.top-\[55\%\] {
+  top: 55%;
+}
+
+.top-\[40\%\] {
+  top: 40%;
+}
+
+.top-2\/3 {
+  top: 66.666667%;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -1221,6 +1233,11 @@ select {
 
 .translate-x-\[100px\] {
   --tw-translate-x: 100px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-y-12 {
+  --tw-translate-y: 3rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
